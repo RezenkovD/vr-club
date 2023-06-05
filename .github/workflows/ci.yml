@@ -86,6 +86,8 @@ jobs:
           PORT: ${{ secrets.PORT }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           USER: ${{ secrets.USER }}
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+          DEBUG: ${{ secrets.DEBUG }}
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v2
