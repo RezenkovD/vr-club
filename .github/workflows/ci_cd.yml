@@ -132,7 +132,7 @@ jobs:
           black --check --verbose .
 
   deploy:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
     steps:
