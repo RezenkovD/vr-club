@@ -164,7 +164,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
 
-      - uses: jake-101/pythonanywhere-deploy@v2
+      - name: Reload webapp
+        uses: jensvog/pythonanywhere-webapp-reload-action@v1
         with:
           host: 'www.pythonanywhere.com'
           username: ${{ secrets.PYTHONANYWHERE_USERNAME }}
