@@ -30,7 +30,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
 
-        uses: jake-101/pythonanywhere-deploy@v2
+      - uses: jake-101/pythonanywhere-deploy@v2
         with:
           host: 'www.pythonanywhere.com'
           username: ${{ secrets.PYTHONANYWHERE_USERNAME }}
