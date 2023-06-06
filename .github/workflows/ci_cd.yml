@@ -4,7 +4,6 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -142,6 +141,7 @@ jobs:
           black --check --verbose .
 
   deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'}}
     runs-on: ubuntu-latest
 
     steps:
