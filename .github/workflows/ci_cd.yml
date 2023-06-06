@@ -171,6 +171,3 @@ jobs:
           username: ${{ secrets.PYTHONANYWHERE_USERNAME }}
           api-token: ${{ secrets.API_TOKEN }}
           domain-name: ${{ secrets.DOMAIN_NAME }}
-
-      - name: Collect static files
-        run: python manage.py collectstatic --noinput
