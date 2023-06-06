@@ -132,7 +132,7 @@ jobs:
           black --check --verbose .
 
   deploy:
-    if: github.event_name == 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
