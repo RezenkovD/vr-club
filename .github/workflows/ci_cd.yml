@@ -132,27 +132,14 @@ jobs:
           black --check --verbose .
 
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Python version
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements-dev.txt') }}
-          restore-keys: ${{ runner.os }}-pip-
-
-      - name: Install dependencies
+      - name: Deploy to digital ocean
         run: |
           sudo apt install sshpass
-          sshpass -p '${{ secrets.PASSWORD_DO }}' ssh root@164.92.131.125 '
+          sshpass -p '${{ secrets.PASSWORD_DO }}' ssh root@64.226.109.186 '
           directory="/var/www/vr-club/"
 
           if [ -d "$directory" ]; then
@@ -204,7 +191,7 @@ jobs:
       
               location = /favicon.ico { access_log off; log_not_found off; }
       
-              server_name 164.92.131.125;
+              server_name 64.226.109.186;
       
               # add here the ip address of your server
       
@@ -247,7 +234,7 @@ jobs:
               pip3 install gunicorn
       
               cd /var/www/vr-club/
-              gunicorn vr_club.wsgi:application --bind 164.92.131.125:8000 --pid /tmp/gunicorn.pid --daemon
+              gunicorn vr_club.wsgi:application --bind 64.226.109.186:8000 --pid /tmp/gunicorn.pid --daemon
               kill -HUP $(cat /tmp/gunicorn.pid)
           else
               cd /var/www/vr-club/
