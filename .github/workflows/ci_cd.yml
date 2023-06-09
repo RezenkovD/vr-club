@@ -138,7 +138,7 @@ jobs:
     steps:
       - name: Deploy to digital ocean
         run: |
-          sshpass -p '${{ secrets.PASSWORD_DO }}' ssh root@64.226.109.186 '
+          sshpass -p ${{ secrets.PASSWORD_DO }} ssh root@64.226.109.186 '
           directory="/var/www/vr-club/"
 
           if [ -d "$directory" ]; then
