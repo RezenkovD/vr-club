@@ -175,6 +175,10 @@ jobs:
             export SECRET_KEY='${{ secrets.SECRET_KEY }}'
             export USER=${{ secrets.USER }}
             export DEBUG=${{ secrets.DEBUG }}" >> /var/www/vr-club/venv/bin/activate
+            export URI='$uri'
+            export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
+            export http_host='$http_host'
+            export request_filename='$request_filename'
         
                 source venv/bin/activate
         
@@ -225,7 +229,7 @@ jobs:
             # checks for static file, if not found proxy to app
 
             location / {
-            try_files $uri @proxy_to_app;
+            try_files $URI @proxy_to_app;
             }
             location @proxy_to_app {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -246,7 +250,7 @@ jobs:
             
                 nginx -t
                 sudo systemctl restart nginx
-                yes | pip3 install gunicorn
+                sudo apt-get install -y gunicorn
 
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
