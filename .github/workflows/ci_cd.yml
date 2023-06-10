@@ -170,7 +170,7 @@ jobs:
                 echo "export HOST=localhost
             export NAME=${{ secrets.NAME }}
             export PASSWORD=${{ secrets.PASSWORD }}
-            export ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+            export ALLOWED_HOSTS=${{ secrets.SSH_HOST }}
             export PORT=${{ secrets.PORT }}
             export SECRET_KEY='${{ secrets.SECRET_KEY }}'
             export USER=${{ secrets.USER }}
@@ -247,6 +247,6 @@ jobs:
                 yes | pip3 install gunicorn
 
                 cd /var/www/vr-club/
-                gunicorn vr_club.wsgi:application --bind ${{ secrets.SSH_HOST }}:8000 --pid /tmp/gunicorn.pid --daemon
+                gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
                 kill -HUP $(cat /tmp/gunicorn.pid)
             fi
