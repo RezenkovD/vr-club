@@ -137,12 +137,12 @@ jobs:
 
     steps:
       - name: Deploy to digital ocean
-        uses: appleboy/ssh-action@v0.1.2
+        uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{ secrets.SSH_USERNAME }}
-          run: |
+          script:
             directory="/var/www/vr-club/"
             if [ -d "$directory" ]; then
                 cd /var/www/vr-club/
