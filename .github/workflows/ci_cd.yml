@@ -154,8 +154,8 @@ jobs:
                 kill -HUP $(cat /tmp/gunicorn.pid)
                 echo "successful"
             else
-                sudo apt-get update
-                sudo apt-get install nginx
+                sudo apt-get update -y
+                sudo apt-get install -y nginx
                 nginx -v
                 sudo systemctl start nginx
                 sudo systemctl status nginx
@@ -164,7 +164,7 @@ jobs:
                 git clone https://github.com/RezenkovD/vr-club.git
         
                 cd vr-club/
-                apt install python3.11-venv
+                sudo apt-get install -ypython3.11-venv
                 python3.11 -m venv venv
         
                 echo "export HOST=localhost
@@ -178,11 +178,11 @@ jobs:
         
                 source venv/bin/activate
         
-                sudo apt install libpq-dev python3-dev
-                sudo apt install build-essential
-                sudo apt-get install python3.11-dev
-        
-                pip3 install -r requirements.txt
+                sudo apt-get install -y libpq-dev python3-dev
+                sudo apt-get install -y build-essential
+                sudo apt-get install -y python3.11-dev
+
+                pip3 install -y $(yes | pip3 install -r requirements.txt)
         
                 sudo apt-get -y install postgresql
                 sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.NAME }};"
@@ -242,7 +242,7 @@ jobs:
         
                 nginx -t
                 sudo systemctl restart nginx
-                pip3 install gunicorn
+                pip3 install -y gunicorn
         
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind ${{ secrets.SSH_HOST }}:8000 --pid /tmp/gunicorn.pid --daemon
