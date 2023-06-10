@@ -197,13 +197,14 @@ jobs:
                 cd /etc/nginx/sites-available/
                 rm default
                 cd
-                echo "upstream app_server {
+                echo "
+            upstream app_server {
                 server unix:/var/www/vr-club/web.sock fail_timeout=0;
-                }
+            }
             server {
             location = /favicon.ico { access_log off; log_not_found off; }
 
-            server_name ${{ secrets.SSH_HOST }}6;
+            server_name ${{ secrets.SSH_HOST }};
 
             # add here the ip address of your server
 
@@ -236,7 +237,8 @@ jobs:
             break;
             }
             }
-            }" > /etc/nginx/sites-available/web
+            }
+            " > /etc/nginx/sites-available/web
 
                 cd
                 sudo rm /etc/nginx/sites-enabled/default
