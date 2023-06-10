@@ -240,8 +240,8 @@ jobs:
                 }" > /etc/nginx/sites-available/web
 
                 cd
+                sudo rm /etc/nginx/sites-enabled/default
                 ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/web
-                rm default 
             
                 nginx -t
                 sudo systemctl restart nginx
