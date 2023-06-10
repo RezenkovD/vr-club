@@ -241,10 +241,11 @@ jobs:
 
                 cd
                 ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/web
-
+                rm default 
+            
                 nginx -t
                 sudo systemctl restart nginx
-                pip3 install -y gunicorn
+                pip3 install gunicorn
 
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind ${{ secrets.SSH_HOST }}:8000 --pid /tmp/gunicorn.pid --daemon
