@@ -146,6 +146,13 @@ jobs:
         run: |
           directory="/var/www/vr-club/"
           if [ -d "$directory" ]; then
+              cd /var/www/vr-club/
+              git pull
+              python manage.py migrate
+              python manage.py collectstatic
+              kill -HUP $(cat /tmp/gunicorn.pid)
+              echo "successful"
+          else
               sudo apt-get update
               sudo apt-get install nginx
               nginx -v
@@ -239,11 +246,4 @@ jobs:
               cd /var/www/vr-club/
               gunicorn vr_club.wsgi:application --bind ${{ secrets.SSH_HOST }}:8000 --pid /tmp/gunicorn.pid --daemon
               kill -HUP $(cat /tmp/gunicorn.pid)
-          else
-              cd /var/www/vr-club/
-              git pull
-              python manage.py migrate
-              python manage.py collectstatic
-              kill -HUP $(cat /tmp/gunicorn.pid)
-              echo "successful"
           fi
