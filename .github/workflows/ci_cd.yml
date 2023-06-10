@@ -144,7 +144,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           run: |
             directory="/var/www/vr-club/"
-  
             if [ -d "$directory" ]; then
                 sudo apt-get update
                 sudo apt-get install nginx
@@ -245,5 +244,5 @@ jobs:
                 python manage.py migrate
                 python manage.py collectstatic
                 kill -HUP $(cat /tmp/gunicorn.pid)
+                echo "successful"
             fi
-                      '
