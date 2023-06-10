@@ -168,13 +168,13 @@ jobs:
                 python3.11 -m venv venv
         
                 echo "export HOST=localhost
-                export NAME=${{ secrets.NAME }}
-                export PASSWORD=${{ secrets.PASSWORD }}
-                export ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
-                export PORT=${{ secrets.PORT }}
-                export SECRET_KEY=${{ secrets.SECRET_KEY }}
-                export USER=${{ secrets.USER }}
-                export DEBUG=${{ secrets.DEBUG }}" >> /var/www/vr-club/venv/bin/activate
+            export NAME=${{ secrets.NAME }}
+            export PASSWORD=${{ secrets.PASSWORD }}
+            export ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }}
+            export PORT=${{ secrets.PORT }}
+            export SECRET_KEY=${{ secrets.SECRET_KEY }}
+            export USER=${{ secrets.USER }}
+            export DEBUG=${{ secrets.DEBUG }}" >> /var/www/vr-club/venv/bin/activate
         
                 source venv/bin/activate
         
@@ -183,10 +183,12 @@ jobs:
                 sudo apt-get install -y python3.11-dev
 
                 pip3 install -y $(yes | pip3 install -r requirements.txt)
-
-                sudo apt-get -y install postgresql
+                
+                sudo apt-get update
+                sudo apt-get install postgresql postgresql-contrib -y
+                sudo service postgresql start
                 sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.NAME }};"
-                sudo -u postgres psql -c "ALTER USER ${{ secrets.USER }} WITH PASSWORD ${{ secrets.PASSWORD }};"
+                sudo -u postgres psql -c "ALTER USER ${{ secrets.USER }} WITH PASSWORD '${{ secrets.PASSWORD }}';"
                 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.NAME }} TO  ${{ secrets.USER }};"
 
                 python manage.py migrate
