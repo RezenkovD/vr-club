@@ -200,44 +200,43 @@ jobs:
                 echo "upstream app_server {
                 server unix:/var/www/vr-club/web.sock fail_timeout=0;
                 }
-                server {
+            server {
+            location = /favicon.ico { access_log off; log_not_found off; }
 
-                location = /favicon.ico { access_log off; log_not_found off; }
+            server_name ${{ secrets.SSH_HOST }}6;
 
-                server_name ${{ secrets.SSH_HOST }}6;
+            # add here the ip address of your server
 
-                # add here the ip address of your server
+            keepalive_timeout 5;
+            client_max_body_size 4G;
 
-                keepalive_timeout 5;
-                client_max_body_size 4G;
-
-                access_log /var/log/nginx/access.log;
-                error_log /var/log/nginx/error.log;
+            access_log /var/log/nginx/access.log;
+            error_log /var/log/nginx/error.log;
 
 
-                location /static/ {
-                alias /var/www/vr-club/whole-static/;
-                }
+            location /static/ {
+            alias /var/www/vr-club/whole-static/;
+            }
 
-                location /media/ {
-                alias /var/www/vr-club/whole-media/;
-                }
-                # checks for static file, if not found proxy to app
+            location /media/ {
+            alias /var/www/vr-club/whole-media/;
+            }
+            # checks for static file, if not found proxy to app
 
-                location / {
-                try_files $uri @proxy_to_app;
-                }
-                location @proxy_to_app {
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header Host $http_host;
-                proxy_redirect off;
-                #proxy_pass http://app_server;
-                if (!-f $request_filename) {
-                proxy_pass http://app_server;
-                break;
-                }
-                }
-                }" > /etc/nginx/sites-available/web
+            location / {
+            try_files $uri @proxy_to_app;
+            }
+            location @proxy_to_app {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+            #proxy_pass http://app_server;
+            if (!-f $request_filename) {
+            proxy_pass http://app_server;
+            break;
+            }
+            }
+            }" > /etc/nginx/sites-available/web
 
                 cd
                 sudo rm /etc/nginx/sites-enabled/default
@@ -245,7 +244,7 @@ jobs:
             
                 nginx -t
                 sudo systemctl restart nginx
-                pip3 install gunicorn
+                yes | pip3 install gunicorn
 
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind ${{ secrets.SSH_HOST }}:8000 --pid /tmp/gunicorn.pid --daemon
