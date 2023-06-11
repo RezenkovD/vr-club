@@ -49,9 +49,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install postgresql postgresql-contrib -y
           sudo service postgresql start
-          sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.NAME }};"
-          sudo -u postgres psql -c "ALTER USER ${{ secrets.USER }} WITH PASSWORD '${{ secrets.PASSWORD }}';"
-          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.NAME }} TO  ${{ secrets.USER }};"
+          sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.DB_NAME }};"
+          sudo -u postgres psql -c "ALTER USER ${{ secrets.DB_USER }} WITH PASSWORD '${{ secrets.DB_PASSWORD }}';"
+          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.DB_NAME }} TO  ${{ secrets.DB_USER }};"
 
       - uses: actions/cache@v3
         with:
@@ -71,12 +71,12 @@ jobs:
           coverage xml
         env:
           CI: true
-          HOST: ${{ secrets.HOST }}
-          NAME: ${{ secrets.NAME }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          PORT: ${{ secrets.PORT }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          USER: ${{ secrets.USER }}
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DEBUG: ${{ secrets.DEBUG }}
 
@@ -132,7 +132,7 @@ jobs:
           black --check --verbose .
 
   deploy:
-#    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
@@ -142,23 +142,22 @@ jobs:
           host: ${{secrets.SSH_HOST}}
           key: ${{secrets.SSH_KEY}}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.PASSWORD_DO }}
+          password: ${{ secrets.DROPLET_PASSWORD }}
           script: |
-            ls 
             directory="/var/www/vr-club/"
             if [ -d "$directory" ]; then
-            
                 cd /var/www/vr-club/
                 source venv/bin/activate
+      
                 pip3 install -r requirements.txt
             
-                export HOST=localhost
-                export NAME=${{ secrets.NAME }}
-                export PASSWORD=${{ secrets.PASSWORD }}
+                export DB_HOST=${{ secrets.DB_HOST }}
+                export DB_PORT=${{ secrets.DB_PORT }}
+                export DB_NAME=${{ secrets.DB_NAME }}
+                export DB_USER=${{ secrets.DB_USER }}
+                export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
                 export ALLOWED_HOSTS=${{ secrets.SSH_HOST }}
-                export PORT=${{ secrets.PORT }}
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
-                export USER=${{ secrets.USER }}
                 export DEBUG=${{ secrets.DEBUG }}
                 export uri='$uri'
                 export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
@@ -168,7 +167,8 @@ jobs:
                 cd /var/www/vr-club/
                 git pull
                 python manage.py migrate
-                python manage.py collectstatic
+                yes | python manage.py collectstatic
+                sudo systemctl restart nginx
                 kill -HUP $(cat /tmp/gunicorn.pid)
             else
                 sudo apt-get update -y
@@ -185,15 +185,15 @@ jobs:
                 python3.11 -m venv venv
                 source venv/bin/activate
                 
-                export HOST=localhost
-                export NAME=${{ secrets.NAME }}
-                export PASSWORD=${{ secrets.PASSWORD }}
+                export DB_HOST=${{ secrets.DB_HOST }}
+                export DB_PORT=${{ secrets.DB_PORT }}
+                export DB_NAME=${{ secrets.DB_NAME }}
+                export DB_USER=${{ secrets.DB_USER }}
+                export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
                 export ALLOWED_HOSTS=${{ secrets.SSH_HOST }}
-                export PORT=${{ secrets.PORT }}
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
-                export USER=${{ secrets.USER }}
                 export DEBUG=${{ secrets.DEBUG }}
-                export URI='$uri'
+                export uri='$uri'
                 export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
                 export http_host='$http_host'
                 export request_filename='$request_filename'
@@ -207,16 +207,15 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install postgresql postgresql-contrib -y
                 sudo service postgresql start
-                sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.NAME }};"
-                sudo -u postgres psql -c "ALTER USER ${{ secrets.USER }} WITH PASSWORD '${{ secrets.PASSWORD }}';"
-                sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.NAME }} TO  ${{ secrets.USER }};"
+                sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.DB_NAME }};"
+                sudo -u postgres psql -c "ALTER USER ${{ secrets.DB_USER }} WITH PASSWORD '${{ secrets.DB_PASSWORD }}';"
+                sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.DB_NAME }} TO  ${{ secrets.DB_USER }};"
 
                 python manage.py migrate
                 yes | python manage.py collectstatic
 
-                cd /etc/nginx/sites-available/
-                rm default
                 cd
+                sudo rm /etc/nginx/sites-available/default
                 echo "
             upstream app_server {
                 server unix:/var/www/vr-club/web.sock fail_timeout=0;
@@ -233,7 +232,6 @@ jobs:
 
             access_log /var/log/nginx/access.log;
             error_log /var/log/nginx/error.log;
-
 
             location /static/ {
             alias /var/www/vr-club/whole-static/;
@@ -260,7 +258,6 @@ jobs:
             }
             " > /etc/nginx/sites-available/web
 
-                cd
                 sudo rm /etc/nginx/sites-enabled/default
                 ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/web
             
