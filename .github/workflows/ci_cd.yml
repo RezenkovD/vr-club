@@ -149,8 +149,6 @@ jobs:
             if [ -d "$directory" ]; then
                 cd /var/www/vr-club/
                 source venv/bin/activate
-      
-                pip3 install -r requirements.txt
             
                 export DB_HOST=${{ secrets.DB_HOST }}
                 export DB_PORT=${{ secrets.DB_PORT }}
@@ -167,6 +165,7 @@ jobs:
             
                 cd /var/www/vr-club/
                 git pull
+                pip3 install -r requirements.txt
                 python manage.py migrate
                 yes | python manage.py collectstatic
                 sudo systemctl restart nginx
