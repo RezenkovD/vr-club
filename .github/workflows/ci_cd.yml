@@ -136,7 +136,6 @@ jobs:
   deploy:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to digital ocean
         uses: appleboy/ssh-action@v0.1.10
