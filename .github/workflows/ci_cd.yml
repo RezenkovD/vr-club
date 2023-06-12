@@ -233,11 +233,11 @@ jobs:
             error_log /var/log/nginx/error.log;
 
             location /static/ {
-            alias /var/www/vr-club/whole-static/;
+            alias /var/www/vr-club/static/;
             }
 
             location /media/ {
-            alias /var/www/vr-club/whole-media/;
+            alias /var/www/vr-club/media/;
             }
             # checks for static file, if not found proxy to app
 
