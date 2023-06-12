@@ -1,0 +1,272 @@
+name: Continuous Integration/Continuous Deployment
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements-dev.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+  tests:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install PostgreSQL
+        run: |
+          sudo apt-get update
+          sudo apt-get install postgresql postgresql-contrib -y
+          sudo service postgresql start
+          sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.DB_NAME }};"
+          sudo -u postgres psql -c "ALTER USER ${{ secrets.DB_USER }} WITH PASSWORD '${{ secrets.DB_PASSWORD }}';"
+          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.DB_NAME }} TO  ${{ secrets.DB_USER }};"
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements-dev.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Test with Pytest
+        run: |
+          coverage run --source='.' manage.py test
+          coverage xml
+        env:
+          CI: true
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+          DEBUG: ${{ secrets.DEBUG }}
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: pytest-coverage
+          path: |
+            ./coverage.xml
+
+      - name: Check coverage
+        run: |
+          export coverage=$(grep -oP 'line-rate="\K[^"]+' coverage.xml | head -1 | awk '{print $1 * 100}')
+          echo "Code coverage: $coverage%"
+          if (( $(echo "$coverage < 60" | bc -l) )); then
+            echo "Code coverage is less than 60%: $coverage%"
+            exit 1
+          fi
+
+  linters:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python version
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('requirements-dev.txt') }}
+          restore-keys: ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Check code formatting with Flake8
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Check code formatting with Black
+        run: |
+          black --check --verbose .
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to digital ocean
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.DROPLET_PASSWORD }}
+          script: |
+            directory="/var/www/vr-club/"
+            if [ -d "$directory" ]; then
+                cd /var/www/vr-club/
+                source venv/bin/activate
+      
+                pip3 install -r requirements.txt
+            
+                export DB_HOST=${{ secrets.DB_HOST }}
+                export DB_PORT=${{ secrets.DB_PORT }}
+                export DB_NAME=${{ secrets.DB_NAME }}
+                export DB_USER=${{ secrets.DB_USER }}
+                export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+                export ALLOWED_HOSTS=${{ secrets.SSH_HOST }}
+                export SECRET_KEY='${{ secrets.SECRET_KEY }}'
+                export DEBUG=${{ secrets.DEBUG }}
+                export uri='$uri'
+                export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
+                export http_host='$http_host'
+                export request_filename='$request_filename'
+            
+                cd /var/www/vr-club/
+                git pull
+                python manage.py migrate
+                yes | python manage.py collectstatic
+                sudo systemctl restart nginx
+                gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
+                kill -HUP $(cat /tmp/gunicorn.pid)
+            else
+                sudo apt-get update -y
+                sudo apt-get install -y nginx
+                nginx -v
+                sudo systemctl start nginx
+                sudo systemctl status nginx
+        
+                cd /var/www/
+                git clone https://github.com/RezenkovD/vr-club.git
+        
+                cd vr-club/
+                sudo apt-get install -y python3.11-venv
+                python3.11 -m venv venv
+                source venv/bin/activate
+                
+                export DB_HOST=${{ secrets.DB_HOST }}
+                export DB_PORT=${{ secrets.DB_PORT }}
+                export DB_NAME=${{ secrets.DB_NAME }}
+                export DB_USER=${{ secrets.DB_USER }}
+                export DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+                export ALLOWED_HOSTS=${{ secrets.SSH_HOST }}
+                export SECRET_KEY='${{ secrets.SECRET_KEY }}'
+                export DEBUG=${{ secrets.DEBUG }}
+                export uri='$uri'
+                export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
+                export http_host='$http_host'
+                export request_filename='$request_filename'
+            
+                sudo apt-get install -y libpq-dev python3-dev
+                sudo apt-get install -y build-essential
+                sudo apt-get install -y python3.11-dev
+
+                pip3 install -r requirements.txt
+                
+                sudo apt-get update
+                sudo apt-get install postgresql postgresql-contrib -y
+                sudo service postgresql start
+                sudo -u postgres psql -c "CREATE DATABASE ${{ secrets.DB_NAME }};"
+                sudo -u postgres psql -c "ALTER USER ${{ secrets.DB_USER }} WITH PASSWORD '${{ secrets.DB_PASSWORD }}';"
+                sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.DB_NAME }} TO  ${{ secrets.DB_USER }};"
+
+                python manage.py migrate
+                yes | python manage.py collectstatic
+
+                cd
+                sudo rm /etc/nginx/sites-available/default
+                echo "
+            upstream app_server {
+                server unix:/var/www/vr-club/web.sock fail_timeout=0;
+            }
+            server {
+            location = /favicon.ico { access_log off; log_not_found off; }
+
+            server_name ${{ secrets.SSH_HOST }};
+
+            # add here the ip address of your server
+
+            keepalive_timeout 5;
+            client_max_body_size 4G;
+
+            access_log /var/log/nginx/access.log;
+            error_log /var/log/nginx/error.log;
+
+            location /static/ {
+            alias /var/www/vr-club/whole-static/;
+            }
+
+            location /media/ {
+            alias /var/www/vr-club/whole-media/;
+            }
+            # checks for static file, if not found proxy to app
+
+            location / {
+            try_files $uri @proxy_to_app;
+            }
+            location @proxy_to_app {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+            #proxy_pass http://app_server;
+            if (!-f $request_filename) {
+            proxy_pass http://app_server;
+            break;
+            }
+            }
+            }
+            " > /etc/nginx/sites-available/web
+
+                sudo rm /etc/nginx/sites-enabled/default
+                ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/web
+            
+                nginx -t
+                yes | sudo systemctl restart nginx
+                yes | pip3 install gunicorn
+
+                cd /var/www/vr-club/
+                gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
+                kill -HUP $(cat /tmp/gunicorn.pid)
+            fi
