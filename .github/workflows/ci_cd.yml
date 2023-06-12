@@ -166,7 +166,7 @@ jobs:
                 git pull
                 pip3 install -r requirements.txt
                 python manage.py migrate
-                yes | python manage.py collectstatic
+                python manage.py collectstatic --no-input
                 sudo systemctl restart nginx
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
                 kill -HUP $(cat /tmp/gunicorn.pid)
@@ -211,7 +211,7 @@ jobs:
                 sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ${{ secrets.DB_NAME }} TO  ${{ secrets.DB_USER }};"
 
                 python manage.py migrate
-                yes | python manage.py collectstatic
+                python manage.py collectstatic --no-input
 
                 cd
                 sudo rm /etc/nginx/sites-available/default
