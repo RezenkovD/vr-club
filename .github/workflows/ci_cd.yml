@@ -4,10 +4,6 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    types:
-      - closed
-    branches:
-      - main
 
 permissions:
   contents: read
@@ -136,7 +132,7 @@ jobs:
           black --check --verbose .
 
   deploy:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to digital ocean
