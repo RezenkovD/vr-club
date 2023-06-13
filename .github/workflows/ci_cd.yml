@@ -273,3 +273,4 @@ jobs:
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
             fi
+
