@@ -233,11 +233,15 @@ jobs:
             error_log /var/log/nginx/error.log;
 
             location /static/ {
-            alias /var/www/vr-club/static/;
+            autoindex on;
+            autoindex_exact_size off;
+            root /var/www/vr-club/;
             }
 
             location /media/ {
-            alias /var/www/vr-club/media/;
+            autoindex on;
+            autoindex_exact_size off;
+            root /var/www/vr-club/;
             }
             # checks for static file, if not found proxy to app
 
@@ -266,5 +270,4 @@ jobs:
 
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
-                kill -HUP $(cat /tmp/gunicorn.pid)
             fi
