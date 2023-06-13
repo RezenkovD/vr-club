@@ -159,24 +159,24 @@ jobs:
                 export ALLOWED_HOSTS='${{ secrets.ALLOWED_HOSTS }}'
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
                 export DEBUG='${{ secrets.DEBUG }}'
-                export uri='$uri'
-                export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
-                export http_host='$http_host'
-                export request_filename='$request_filename'
+#                export uri='$uri'
+#                export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
+#                export http_host='$http_host'
+#                export request_filename='$request_filename'
             
                 cd /var/www/vr-club/
                 git pull
                 pip3 install -r requirements.txt
                 python manage.py migrate
                 python manage.py collectstatic --no-input
-                sudo systemctl restart nginx
+#                sudo systemctl restart nginx
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
                 kill -HUP $(cat /tmp/gunicorn.pid)
             else
                 sudo apt-get update -y
-                sudo apt-get install -y nginx
-                sudo systemctl start nginx
-                sudo systemctl status nginx
+#                sudo apt-get install -y nginx
+#                sudo systemctl start nginx
+#                sudo systemctl status nginx
         
                 cd /var/www/
                 git clone https://github.com/RezenkovD/vr-club.git
@@ -194,10 +194,10 @@ jobs:
                 export ALLOWED_HOSTS='${{ secrets.ALLOWED_HOSTS }}'
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
                 export DEBUG='${{ secrets.DEBUG }}'
-                export uri='$uri'
-                export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
-                export http_host='$http_host'
-                export request_filename='$request_filename'
+#                export uri='$uri'
+#                export proxy_add_x_forwarded_for='$proxy_add_x_forwarded_for'
+#                export http_host='$http_host'
+#                export request_filename='$request_filename'
             
                 sudo apt-get install -y libpq-dev python3-dev
                 sudo apt-get install -y build-essential
@@ -215,61 +215,60 @@ jobs:
                 python manage.py migrate
                 python manage.py collectstatic --no-input
 
-                cd
-                sudo rm /etc/nginx/sites-available/default
-                echo "
-            upstream app_server {
-                server unix:/var/www/vr-club/web.sock fail_timeout=0;
-            }
-            server {
-            location = /favicon.ico { access_log off; log_not_found off; }
-
-            server_name ${{ secrets.SSH_HOST }};
-
-            # add here the ip address of your server
-
-            keepalive_timeout 5;
-            client_max_body_size 4G;
-
-            access_log /var/log/nginx/access.log;
-            error_log /var/log/nginx/error.log;
-
-            location /static/ {
-            autoindex on;
-            autoindex_exact_size off;
-            root /var/www/vr-club/;
-            }
-
-            location /media/ {
-            autoindex on;
-            autoindex_exact_size off;
-            root /var/www/vr-club/;
-            }
-            # checks for static file, if not found proxy to app
-
-            location / {
-            try_files $uri @proxy_to_app;
-            }
-            location @proxy_to_app {
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $http_host;
-            proxy_redirect off;
-            proxy_pass http://app_server;
-            if (!-f $request_filename) {
-            proxy_pass http://app_server;
-            break;
-            }
-            }
-            }
-            " > /etc/nginx/sites-available/web
-
-                sudo rm /etc/nginx/sites-enabled/default
-                ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/web
-            
-                nginx -t
-                yes | sudo systemctl restart nginx
+#                cd
+#                sudo rm /etc/nginx/sites-available/default
+#                echo "
+#            upstream app_server {
+#                server unix:/var/www/vr-club/web.sock fail_timeout=0;
+#            }
+#            server {
+#            location = /favicon.ico { access_log off; log_not_found off; }
+#
+#            server_name ${{ secrets.SSH_HOST }};
+#
+#            # add here the ip address of your server
+#
+#            keepalive_timeout 5;
+#            client_max_body_size 4G;
+#
+#            access_log /var/log/nginx/access.log;
+#            error_log /var/log/nginx/error.log;
+#
+#            location /static/ {
+#            autoindex on;
+#            autoindex_exact_size off;
+#            root /var/www/vr-club/;
+#            }
+#
+#            location /media/ {
+#            autoindex on;
+#            autoindex_exact_size off;
+#            root /var/www/vr-club/;
+#            }
+#            # checks for static file, if not found proxy to app
+#
+#            location / {
+#            try_files $uri @proxy_to_app;
+#            }
+#            location @proxy_to_app {
+#            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#            proxy_set_header Host $http_host;
+#            proxy_redirect off;
+#            proxy_pass http://app_server;
+#            if (!-f $request_filename) {
+#            proxy_pass http://app_server;
+#            break;
+#            }
+#            }
+#            }
+#            " > /etc/nginx/sites-available/web
+#
+#                sudo rm /etc/nginx/sites-enabled/default
+#                ln -s /etc/nginx/sites-available/web /etc/nginx/sites-enabled/web
+#            
+#                nginx -t
+#                yes | sudo systemctl restart nginx
                 yes | pip3 install gunicorn
-
                 cd /var/www/vr-club/
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
             fi
