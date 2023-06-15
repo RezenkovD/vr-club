@@ -24,8 +24,8 @@ def sign_up(request):
                 hashed_password = hashlib.sha256(password.encode()).hexdigest()
                 user.password = hashed_password
                 user.save()
-                email = form.cleaned_data.get("email")
-                messages.success(request, f"Account created for {email}")
+                username = form.cleaned_data.get("username")
+                messages.success(request, f"Account created for {username}")
                 return redirect(to="/users")
             else:
                 for error in errors:
