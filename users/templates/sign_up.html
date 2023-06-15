@@ -57,27 +57,36 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="small mb-1">Username</label>
-                                                {{ form.username }}
+                                                {{ user_form.username }}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="small mb-1">Phone number</label>
-                                                {{ form.phone_number }}
+                                                <label class="small mb-1">Email</label>
+                                                {{ user_form.email }}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="small mb-1">Email</label>
-                                                {{ form.email }}
+                                                <label class="small mb-1">Phone number</label>
+                                                {{ profile_form.phone_number }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="small mb-1">Password</label>
+                                                {{ user_form.password1 }}
+                                                {{ user_form.errors.password }}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="small mb-1">Password</label>
-                                                {{ form.password }}
+                                                <label class="small mb-1">Confirm Password</label>
+                                                {{ user_form.password2 }}
                                             </div>
                                         </div>
                                     </div>
@@ -88,7 +97,7 @@
                             </div>
                             <div class="card-footer text-center">
                                 <div class="small">
-                                    <a href="#">Have an account? Go to Sign in</a>
+                                    <a href="/users/sign-in/">Have an account? Go to Sign in</a>
                                 </div>
                             </div>
                         </div>
