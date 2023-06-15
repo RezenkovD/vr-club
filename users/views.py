@@ -3,9 +3,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 
-from .forms import UserForm, ProfileForm
+from .forms import ProfileForm, UserForm
+from .models import Profile, Role
 from .utils import is_valid_password
-from .models import Profile
 
 
 def home(request):
@@ -24,6 +24,8 @@ def register_request(request):
                 phone_number = profile_form.cleaned_data.get("phone_number")
                 profile = Profile(user=user, phone_number=phone_number)
                 profile.save()
+                role = Role.objects.get(title="Visitor")
+                profile.roles.add(role)
                 login(request, user)
                 messages.success(request, "Registration successful.")
                 return redirect("main:homepage")
