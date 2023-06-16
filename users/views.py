@@ -1,11 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from .forms import ProfileForm, UserForm
+from .forms import PhoneNumberForm, UserForm
 from .models import Profile, Role
-from .utils import is_valid_password
 
 
 def home(request):
@@ -15,30 +15,24 @@ def home(request):
 def register_request(request):
     if request.method == "POST":
         user_form = UserForm(request.POST)
-        profile_form = ProfileForm(request.POST)
+        profile_form = PhoneNumberForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
-            password = user_form.cleaned_data.get("password1")
-            errors = is_valid_password(password)
-            if not errors:
-                user = user_form.save()
-                phone_number = profile_form.cleaned_data.get("phone_number")
-                profile = Profile(user=user, phone_number=phone_number)
-                profile.save()
-                role = Role.objects.get(title="Visitor")
-                profile.roles.add(role)
-                login(request, user)
-                messages.success(request, "Registration successful.")
-                return redirect("users:homepage")
-            else:
-                for error in errors:
-                    user_form.add_error("password1", error)
+            user = user_form.save()
+            phone_number = profile_form.cleaned_data.get("phone_number")
+            profile = Profile(user=user, phone_number=phone_number)
+            profile.save()
+            role = Role.objects.get(title="Visitor")
+            profile.roles.add(role)
+            login(request, user)
+            messages.success(request, "Registration successful.")
+            return redirect("users:homepage")
         else:
             if not profile_form.is_valid():
                 messages.error(request, "The number is already registered or invalid")
         messages.error(request, "Unsuccessful registration. Invalid information.")
     else:
         user_form = UserForm()
-        profile_form = ProfileForm()
+        profile_form = PhoneNumberForm()
     return render(
         request=request,
         template_name="sign_up.html",
