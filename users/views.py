@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from .forms import PhoneNumberForm, UserForm
+from .forms import LoginForm, PhoneNumberForm, UserForm
 from .models import Profile, Role
 
 
@@ -42,20 +42,31 @@ def register_request(request):
 
 def login_request(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get("username")
+            phone_number = form.cleaned_data.get("phone_number")
             password = form.cleaned_data.get("password")
-            user = authenticate(username=username, password=password)
+            try:
+                profile = Profile.objects.get(phone_number=phone_number)
+            except Profile.DoesNotExist:
+                messages.error(request, "Invalid phone number.")
+                form = LoginForm()
+                return render(
+                    request=request,
+                    template_name="sign_in.html",
+                    context={"form": form},
+                )
+            user = User.objects.get(id=profile.user_id)
+            user = authenticate(username=user.username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
+                messages.info(request, f"You are now logged in as {user.username}.")
                 return redirect("users:homepage")
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.error(request, "Invalid phone number or password.")
         else:
-            messages.error(request, "Invalid username or password.")
-    form = AuthenticationForm()
+            messages.error(request, "Invalid phone number or password.")
+    form = LoginForm()
     return render(request=request, template_name="sign_in.html", context={"form": form})
 
 

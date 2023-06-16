@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from phonenumber_field.formfields import PhoneNumberField as PhoneNumberFormField
 from phonenumber_field.modelfields import PhoneNumberField
 
 from .models import Profile
@@ -8,7 +9,7 @@ from .models import Profile
 
 class UserForm(UserCreationForm):
     username = forms.CharField(
-        max_length=100,
+        max_length=32,
         required=True,
         widget=forms.TextInput(
             attrs={
@@ -18,7 +19,7 @@ class UserForm(UserCreationForm):
         ),
     )
     password1 = forms.CharField(
-        max_length=50,
+        max_length=32,
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -30,7 +31,7 @@ class UserForm(UserCreationForm):
         ),
     )
     password2 = forms.CharField(
-        max_length=50,
+        max_length=32,
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -59,3 +60,8 @@ class PhoneNumberForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["phone_number"]
+
+
+class LoginForm(forms.Form):
+    phone_number = PhoneNumberFormField(widget=forms.TextInput(), required=False)
+    password = forms.CharField(max_length=32)
