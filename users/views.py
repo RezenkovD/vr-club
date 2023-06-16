@@ -28,7 +28,7 @@ def register_request(request):
                 profile.roles.add(role)
                 login(request, user)
                 messages.success(request, "Registration successful.")
-                return redirect("main:homepage")
+                return redirect("users:homepage")
             else:
                 for error in errors:
                     user_form.add_error("password1", error)
@@ -56,7 +56,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
-                return redirect("main:homepage")
+                return redirect("users:homepage")
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -68,4 +68,4 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
-    return redirect("main:homepage")
+    return redirect("users:homepage")
