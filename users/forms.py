@@ -45,7 +45,7 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["username", "password1", "password2"]
+        fields = ("username", "password1", "password2")
 
     def save(self, commit=True):
         user = super(UserForm, self).save(commit=False)
@@ -54,14 +54,14 @@ class UserForm(UserCreationForm):
         return user
 
 
-class PhoneNumberForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     phone_number = PhoneNumberField(null=False, blank=False, unique=True)
 
     class Meta:
         model = Profile
-        fields = ["phone_number"]
+        fields = ("phone_number",)
 
 
-class LoginForm(forms.Form):
+class SignInForm(forms.Form):
     phone_number = PhoneNumberFormField(widget=forms.TextInput(), required=False)
     password = forms.CharField(max_length=32)
