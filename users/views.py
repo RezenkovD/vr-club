@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
 from .forms import LoginForm, PhoneNumberForm, UserForm
-from .models import Profile, Role
+from .models import VISITOR, Profile
 
 
 def home(request):
@@ -19,10 +19,8 @@ def register_request(request):
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             phone_number = profile_form.cleaned_data.get("phone_number")
-            profile = Profile(user=user, phone_number=phone_number)
+            profile = Profile(user=user, phone_number=phone_number, role=VISITOR)
             profile.save()
-            role = Role.objects.get(title="Visitor")
-            profile.roles.add(role)
             login(request, user)
             messages.success(request, "Registration successful.")
             return redirect("users:homepage")
