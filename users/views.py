@@ -21,6 +21,7 @@ def sign_up(request):
             phone_number = profile_form.cleaned_data.get("phone_number")
             if phonenumbers.parse(str(phone_number), "UA").country_code != 380:
                 messages.error(request, "Enter the telephone number of Ukraine.")
+                messages.error(request, "Unsuccessful registration. Invalid information.")
             else:
                 user = user_form.save()
                 profile = Profile(user=user, phone_number=phone_number, role=VISITOR)
@@ -31,7 +32,7 @@ def sign_up(request):
         else:
             if not profile_form.is_valid():
                 messages.error(request, "The number is already registered or invalid.")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
+            messages.error(request, "Unsuccessful registration. Invalid information.")
     else:
         user_form = UserForm()
         profile_form = ProfileForm()

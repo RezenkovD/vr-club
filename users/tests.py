@@ -86,13 +86,14 @@ class SignUpTests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Unsuccessful registration. Invalid information.")
+        self.assertContains(response, "The number is already registered or invalid.")
         self.assertFalse(User.objects.filter(username="testuser").exists())
 
     def test_sign_up_existing_phone_number(self):
-        user = User.objects.create_user(username="existinguser", password="testpassword")
-        Profile.objects.create(
-            user_id=user.id, phone_number="+380980437157", role="VI"
+        user = User.objects.create_user(
+            username="existinguser", password="testpassword"
         )
+        Profile.objects.create(user_id=user.id, phone_number="+380980437157", role="VI")
         response = self.client.post(
             reverse("users:sign-up"),
             {
@@ -103,14 +104,15 @@ class SignUpTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Unsuccessful registration. Invalid information.")
         self.assertContains(response, "The number is already registered or invalid.")
         self.assertFalse(User.objects.filter(username="testuser").exists())
 
     def test_sign_up_existing_user(self):
-        user = User.objects.create_user(username="existinguser", password="testpassword")
-        Profile.objects.create(
-            user_id=user.id, phone_number="+380980437157", role="VI"
+        user = User.objects.create_user(
+            username="existinguser", password="testpassword"
         )
+        Profile.objects.create(user_id=user.id, phone_number="+380980437157", role="VI")
         response = self.client.post(
             reverse("users:sign-up"),
             {
@@ -136,3 +138,4 @@ class SignUpTests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Enter the telephone number of Ukraine.")
+        self.assertContains(response, "Unsuccessful registration. Invalid information.")
