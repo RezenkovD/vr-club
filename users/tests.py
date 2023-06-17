@@ -40,22 +40,26 @@ class LogoutViewTest(TestCase):
 class SignUpTests(TestCase):
     def setUp(self):
         self.client = Client()
+        self.username = "testuser"
+        self.password = "testpassword"
+        self.phone_number = "+380980437157"
+        self.role = "VI"
 
     def test_sign_up_success(self):
         response = self.client.post(
             reverse("users:sign-up"),
             {
-                "username": "testuser",
-                "password1": "testpassword",
-                "password2": "testpassword",
-                "phone_number": "+380980437157",
+                "username": self.username,
+                "password1": self.password,
+                "password2": self.password,
+                "phone_number": self.phone_number,
             },
         )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("users:homepage"))
-        self.assertTrue(User.objects.filter(username="testuser").exists())
-        self.assertTrue(Profile.objects.filter(phone_number="+380980437157").exists())
-        self.assertTrue(Profile.objects.filter(role="VI").exists())
+        self.assertTrue(User.objects.filter(username=self.username).exists())
+        self.assertTrue(Profile.objects.filter(phone_number=self.phone_number).exists())
+        self.assertTrue(Profile.objects.filter(role=self.role).exists())
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), "Registration successful.")
@@ -64,10 +68,10 @@ class SignUpTests(TestCase):
         response = self.client.post(
             reverse("users:sign-up"),
             {
-                "username": "testuser",
+                "username": self.username,
                 "password1": "test",
                 "password2": "test",
-                "phone_number": "+380980437157",
+                "phone_number": self.phone_number,
             },
         )
         self.assertEqual(response.status_code, 200)
@@ -78,9 +82,9 @@ class SignUpTests(TestCase):
         response = self.client.post(
             reverse("users:sign-up"),
             {
-                "username": "testuser",
-                "password1": "testpassword",
-                "password2": "testpassword",
+                "username": self.username,
+                "password1": self.password,
+                "password2": self.password,
                 "phone_number": "+3809804371571",
             },
         )
@@ -90,17 +94,17 @@ class SignUpTests(TestCase):
         self.assertFalse(User.objects.filter(username="testuser").exists())
 
     def test_sign_up_existing_phone_number(self):
-        user = User.objects.create_user(
-            username="existinguser", password="testpassword"
+        user = User.objects.create_user(username="existinguser", password=self.password)
+        Profile.objects.create(
+            user_id=user.id, phone_number=self.phone_number, role=self.role
         )
-        Profile.objects.create(user_id=user.id, phone_number="+380980437157", role="VI")
         response = self.client.post(
             reverse("users:sign-up"),
             {
-                "username": "testuser",
-                "password1": "testpassword",
-                "password2": "testpassword",
-                "phone_number": "+380980437157",
+                "username": self.username,
+                "password1": self.password,
+                "password2": self.password,
+                "phone_number": self.phone_number,
             },
         )
         self.assertEqual(response.status_code, 200)
@@ -109,16 +113,16 @@ class SignUpTests(TestCase):
         self.assertFalse(User.objects.filter(username="testuser").exists())
 
     def test_sign_up_existing_user(self):
-        user = User.objects.create_user(
-            username="existinguser", password="testpassword"
+        user = User.objects.create_user(username="existinguser", password=self.password)
+        Profile.objects.create(
+            user_id=user.id, phone_number=self.phone_number, role=self.role
         )
-        Profile.objects.create(user_id=user.id, phone_number="+380980437157", role="VI")
         response = self.client.post(
             reverse("users:sign-up"),
             {
                 "username": "existinguser",
-                "password1": "testpassword",
-                "password2": "testpassword",
+                "password1": self.password,
+                "password2": self.password,
                 "phone_number": "+380980437155",
             },
         )
@@ -131,11 +135,62 @@ class SignUpTests(TestCase):
             reverse("users:sign-up"),
             {
                 "username": "existinguser",
-                "password1": "testpassword",
-                "password2": "testpassword",
+                "password1": self.password,
+                "password2": self.password,
                 "phone_number": "+33612345678",
             },
         )
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Enter the telephone number of Ukraine.")
         self.assertContains(response, "Unsuccessful registration. Invalid information.")
+
+
+class SignInTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.username = "testuser"
+        self.password = "testpassword"
+        self.user = User.objects.create_user(
+            username=self.username, password=self.password
+        )
+        self.phone_number = "+380980437157"
+        self.role = "VI"
+        self.profile = Profile.objects.create(
+            user=self.user, phone_number=self.phone_number, role=self.role
+        )
+
+    def test_sign_in_valid_credentials(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"phone_number": self.phone_number, "password": self.password},
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("users:homepage"))
+        self.assertTrue("_auth_user_id" in self.client.session)
+
+    def test_sign_in_invalid_credentials(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"phone_number": self.phone_number, "password": "wrongpassword"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Wrong phone number or password.")
+        self.assertFalse("_auth_user_id" in self.client.session)
+
+    def test_sign_in_unregistered_number(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"phone_number": "+380980437152", "password": "wrongpassword"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "The phone number is not registered.")
+        self.assertFalse("_auth_user_id" in self.client.session)
+
+    def test_sign_in_invalid_form(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"phone_number": "0980437152", "password": "wrongpassword"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Invalid phone number or password.")
+        self.assertFalse("_auth_user_id" in self.client.session)
