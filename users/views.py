@@ -1,3 +1,4 @@
+import phonenumbers
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -26,7 +27,7 @@ def sign_up(request):
             return redirect("users:homepage")
         else:
             if not profile_form.is_valid():
-                messages.error(request, "The number is already registered or invalid")
+                messages.error(request, "The number is already registered or invalid.")
         messages.error(request, "Unsuccessful registration. Invalid information.")
     else:
         user_form = UserForm()
