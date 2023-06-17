@@ -146,7 +146,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.DROPLET_PASSWORD }}
           script: |
-            directory="vr-club/"
+            directory="vr-club"
             if [ -d "$directory" ]; then
                 cd vr-club/
                 source venv/bin/activate
