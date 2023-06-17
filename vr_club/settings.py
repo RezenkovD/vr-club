@@ -10,10 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
-import environ
-
 from pathlib import Path
 
+import environ
 
 env = environ.Env(
     # set casting, default value
@@ -46,6 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "users",
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
