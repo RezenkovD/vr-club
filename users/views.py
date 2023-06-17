@@ -18,13 +18,16 @@ def sign_up(request):
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
             phone_number = profile_form.cleaned_data.get("phone_number")
-            profile = Profile(user=user, phone_number=phone_number, role=VISITOR)
-            profile.save()
-            login(request, user)
-            messages.success(request, "Registration successful.")
-            return redirect("users:homepage")
+            if phonenumbers.parse(str(phone_number), "UA").country_code != 380:
+                messages.error(request, "Enter the telephone number of Ukraine.")
+            else:
+                user = user_form.save()
+                profile = Profile(user=user, phone_number=phone_number, role=VISITOR)
+                profile.save()
+                login(request, user)
+                messages.success(request, "Registration successful.")
+                return redirect("users:homepage")
         else:
             if not profile_form.is_valid():
                 messages.error(request, "The number is already registered or invalid.")

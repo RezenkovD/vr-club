@@ -123,4 +123,16 @@ class SignUpTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Unsuccessful registration. Invalid information.")
         self.assertFalse(User.objects.filter(username="testuser").exists())
-        
+
+    def test_sign_up_non_ukraine_code(self):
+        response = self.client.post(
+            reverse("users:sign-up"),
+            {
+                "username": "existinguser",
+                "password1": "testpassword",
+                "password2": "testpassword",
+                "phone_number": "+33612345678",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Enter the telephone number of Ukraine.")
