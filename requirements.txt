@@ -4,3 +4,4 @@ django-environ==0.10.0
 whitenoise==6.4.0
 phonenumbers==8.13.14
 django-phonenumber-field==7.1.0
+requests==2.31.0
