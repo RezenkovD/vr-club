@@ -19,4 +19,4 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 application = get_wsgi_application()
 application = WhiteNoise(application)
-application.add_files(os.path.join(BASE_DIR, "static/"))
+application.add_files(os.path.join(BASE_DIR, "vr_club_app/templates/"))
