@@ -148,7 +148,7 @@ jobs:
           script: |
             directory="vr-club"
             if [ -d "$directory" ]; then
-                cd vr-club/
+                cd vr-club
                 source venv/bin/activate
             
                 export DB_HOST='${{ secrets.DB_HOST }}'
@@ -160,7 +160,7 @@ jobs:
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
                 export DEBUG='${{ secrets.DEBUG }}'
             
-                cd vr-club/
+                cd vr-club
                 git pull
                 pip3 install -r requirements.txt
                 python manage.py migrate
@@ -172,7 +172,7 @@ jobs:
         
                 git clone https://github.com/RezenkovD/vr-club.git
         
-                cd vr-club/
+                cd vr-club
                 sudo apt-get install -y python3.11-venv
                 python3.11 -m venv venv
                 source venv/bin/activate
@@ -203,6 +203,6 @@ jobs:
                 python manage.py collectstatic --no-input
 
                 yes | pip3 install gunicorn
-                cd vr-club/
+                cd vr-club
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
             fi
