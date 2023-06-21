@@ -82,7 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "vr_club.wsgi.application"
 STORAGES = {
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 # Database
