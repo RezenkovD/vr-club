@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BoxRec</title>
+    <link rel="shortcut icon" href="/src/boxrec-logo.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .header {
+    padding: 30px;
+    text-align: center;
+    background: rgb(255, 255, 255);
+    color: #000000;
+}
+.logo {
+    background-size: contain!important;
+    width: 120px;
+    background: url(/src/boxrec-logo.svg) no-repeat;
+    height: 30px;
+    float: left;
+}
+
+.navbar {
+    display: flex;
+    position: center;
+    max-width: max-content;
+    max-height: max-content;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.navbar a {
+    color: #000000;
+    padding: 10px 20px;
+    text-align: center;
+}
+.navbar a:hover {
+    background-color: #bb0101;
+    color: black;
+    text-decoration: none;
+}
+.fantasy_text {
+    font-family: fantasy;
+}
+
+
+
+section.banner {
+}
+.banner {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.3);
+    z-index: 1;
+    border-radius: 5px;
+}
+.banner .container {
+    position: relative;
+    z-index: 2;
+}
+.banner .banner-caption {
+    padding: 200px 0;
+}
+.banner-secondary .banner-caption {
+    padding: 90px 0;
+}
+.banner .banner-caption .line-dec {
+    width: 80px;
+    height: 3px;
+    background-color: #4883ff;
+}
+.banner .banner-caption h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 42px;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+.banner .banner-caption span {
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.banner .banner-caption {
+    margin-top: 30px;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+
+.flex-container-p4p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    margin-top: 30px;
+    list-style: none;
+}
+.flex-item {
+    background: #ffffff;
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+}
+.container {
+    position: relative;
+    width: 50%;
+}
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.container:hover .image {
+    opacity: 0.35;
+}
+.container:hover .middle {
+    opacity: 1;
+}
+.text {
+    color: #000000;
+    font-size: 14px;
+    font-family: fantasy;
+}
+
+
+
+.header {
+    grid-area: hd;
+}
+.footer {
+    grid-area: ft;
+}
+.content {
+    grid-area: main;
+}
+.sidebar {
+    grid-area: sd;
+}
+.wrapper {
+    margin-left: 30px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas:
+    "hd hd hd hd   hd   hd   hd   hd   hd"
+    "sd sd sd sd main main main main main"
+    "ft ft ft ft   ft   ft   ft   ft   ft";
+}
+.flex-container {
+    position: center;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    font-family: fantasy;
+    font-size: 20px;
+}
+.flex-container > div {
+    background-color: #ffffff;
+    padding: 8px;
+    height: auto;
+}
+.flex-container > div:hover {
+    background-color: #bb0101;
+    color: black;
+}
+.flex-container_footer {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+}
+.flex-container_footer > div {
+}
+.center {
+    margin: auto;
+    width: 35%;
+    padding: 10px;
+}
+.social {
+}
+.contact {
+    border: #bb0101;
+}
+.social > a{
+    font-size:24px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border: solid #000000;
+    margin:0 8px;
+    color:inherit;
+    opacity:0.75;
+}
+.social > a:hover{
+    background-color: #bb0101;
+    color: black;
+}
+.form-submit-button {
+    background: #a4d0fc;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+}
+.form-submit-button:hover {
+    background-color: #bb0101;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+.form-email-button {
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+.copyright {
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#aaa;
+    margin-bottom:0;
+}
+figcaption {
+    width: 100px;
+    height: 40px;
+    font-size: .65em;
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    .row, .navbar, .footer, .wrapper{
+        flex-direction: row;
+    }
+}
+@media screen and (max-width: 768px) {
+    .row, .navbar, .footer, .wrapper{
+        flex-direction: column;
+    }
+}
+
+.logo_wbc {
+    background-size: contain!important;
+    width: 65px;
+    background: url(/src/wbc-logo.png) no-repeat;
+    height: 65px;
+    float: left;
+}
+
+.logo_wba {
+    background-size: contain!important;
+    width: 65px;
+    background: url(/src/wba-logo.png) no-repeat;
+    height: 65px;
+    float: left;
+}
+
+.logo_wbo {
+    background-size: contain!important;
+    width: 65px;
+    background: url(/src/wbo-logo.png) no-repeat 0 10px;
+    height: 65px;
+    float: left;
+}
+
+.logo_ibf {
+    background-size: contain!important;
+    width: 65px;
+    background: url(/src/ibf-logo.png) no-repeat;
+    height: 65px;
+    float: left;
+}
+
+.logo_the_ring {
+    background-size: contain!important;
+    width: 65px;
+    background: url(/src/ring-logo.png) no-repeat;
+    height: 65px;
+    float: left;
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html">
+        <div class="logo"></div>
+    </a>
+</div>
+
+<div class="navbar">
+    <a href="#mayweather">
+        <div class="fantasy_text">
+            Mayweather is the face of boxing
+        </div>
+    </a>
+    <a href="#p4p">
+        <div class="fantasy_text">
+            Top P4P fighters
+        </div>
+    </a>
+    <a href="#box_org">
+        <div class="fantasy_text">
+            World boxing organizations
+        </div>
+    </a>
+    <a href="#contact_me">
+        <div class="fantasy_text">
+            Contact me
+        </div>
+    </a>
+</div>
+
+<section class="banner" id="mayweather" style="background-image: url({%  static 'src/may.png' %});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="banner-caption">
+                    <h2>
+                        <p class="fantasy_text">
+                            "Boxing is a dangerous sport in which fighters
+                            can lose their lives and destroy the lives of
+                            their families."
+                            <br>
+                            Floyd Mayweather
+                        </p>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ul class="flex-container-p4p" id="p4p">
+    <li class="flex-item">
+        <div class="container">
+            <img src="{%  static 'src/usyk.jpg' %}" class="image" alt="Usyk">
+            <div class="middle">
+                <div class="text">
+                    <p>
+                        Oleksandr Usyk
+                    </p>
+                    <p>
+                        IBF World Heavy
+                        <br>
+                        IBO World Heavy
+                        <br>
+                        WBA Super World Heavy
+                        <br>
+                        WBO World Heavy
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="flex-item">
+        <div class="container">
+            <img src="{%  static 'src/alvarez.jpg' %}" class="image" alt="Alvarez">
+            <div class="middle">
+                <div class="text">
+                    <p>
+                        Saul Alvarez
+                    </p>
+                    <p>
+                        IBF World Super Middle
+                        <br>
+                        WBA Super World Super Middle
+                        <br>
+                        WBC World Super Middle
+                        <br>
+                        WBO World Super Middle
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="flex-item">
+        <div class="container">
+            <img src="{%  static 'src/crawford.jpg' %}" class="image" alt="Crawford">
+            <div class="middle">
+                <div class="text">
+                    <p>
+                        Terence Crawford
+                    </p>
+                    <p>
+                        WBO World Welter
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="flex-item">
+        <div class="container">
+            <img src="{%  static 'src/spence.jpeg' %}" class="image" alt="Spence">
+            <div class="middle">
+                <div class="text">
+                    <p>
+                        Errol Spence Jr
+                    </p>
+                    <p>
+                        IBF World Welter
+                        <br>
+                        WBA Super World Welter
+                        <br>
+                        WBC World Welter
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="flex-item">
+        <div class="container">
+            <img src="{%  static 'src/haney.jpg' %}" class="image" alt="Haney">
+            <div class="middle">
+                <div class="text">
+                    <p>
+                        Devin Haney
+                    </p>
+                    <p>
+                        IBF World Light
+                        <br>
+                        WBA Super World Light
+                        <br>
+                        WBC World Light
+                        <br>
+                        WBO World Light
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<div class="wrapper">
+    <div class="header" id="box_org">
+        <div class="navbar">
+            <a href="https://www.wbaboxing.com/">
+                <div class="logo_wba"></div>
+            </a>
+            <a href="https://wbcboxing.com/en/wbc/">
+                <div class="logo_wbc"></div>
+            </a>
+            <a href="https://www.ibf-usba-boxing.com/">
+                <div class="logo_ibf"></div>
+            </a>
+            <a href="https://wboboxing.com/">
+                <div class="logo_wbo"></div>
+            </a>
+            <a href="https://www.ringtv.com/">
+                <div class="logo_the_ring"></div>
+            </a>
+        </div>
+    </div>
+    <div class="sidebar">
+        <a href="index.html">
+            <div class="logo"></div>
+        </a>
+        <br>
+        <br>
+        <p> BoxRec is the official record keeper of the sport of boxing.
+            It is a platform dedicated to providing updated data and records of professional boxers,
+            both male and female. BoxRec also provides information about other combat sports such
+            as amateur boxing, muay thai boxing, kickboxing and bare knuckle boxing.
+        </p>
+    </div>
+    <div class="content">
+        <div class="flex-container">
+            <div>
+                <a href="https://boxrec.com/en/box-pro/659772">
+                    <img src="{%  static 'src/usyk.jpg' %}" alt="Usyk" height="100" width="100">
+                </a>
+                <figcaption>
+                    Oleksandr Usyk
+                </figcaption>
+            </div>
+            <div>
+                <a href="https://boxrec.com/en/box-pro/348759">
+                    <img src="{%  static 'src/alvarez.jpg' %}" alt="alvarez" height="100" width="100">
+                </a>
+                <figcaption>
+                    Saul Alvarez
+                </figcaption>
+            </div>
+            <div>
+                <a href="https://boxrec.com/en/box-pro/447121">
+                    <img src="{%  static 'src/crawford.jpg' %}" alt="crawford" height="100" width="100">
+                </a>
+                <figcaption>
+                    Terence Crawford
+                </figcaption>
+            </div>
+            <div>
+                <a href="https://boxrec.com/en/box-pro/790719">
+                    <img src="{%  static 'src/stevenson.jpeg' %}" alt="stevenson" height="100" width="100">
+                </a>
+                <figcaption>
+                    Shakur Stevenson
+                </figcaption>
+            </div>
+            <div>
+                <a href="https://boxrec.com/en/box-pro/628407">
+                    <img src="{%  static 'src/inoue.jpeg' %}" alt="inoue" height="100" width="100">
+                </a>
+                <figcaption>
+                    Naoya Inoue
+                </figcaption>
+            </div>
+            <div>
+                <a href="https://boxrec.com/en/box-pro/700183">
+                    <img src="{%  static 'src/fulton.jpg' %}" alt="fulton" height="100" width="100">
+                </a>
+                <figcaption>
+                    Stephen Fulton
+                </figcaption>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="contact_me">
+            <footer>
+                <div class="flex-container_footer">
+                    <div class="social">
+                        <a href="https://www.instagram.com/"><i class="icon ion-social-instagram"></i></a>
+                        <a href="https://www.snapchat.com/ru-RU"><i class="icon ion-social-snapchat"></i></a>
+                        <a href="https://twitter.com/"><i class="icon ion-social-twitter"></i></a>
+                        <a href="https://www.facebook.com/"><i class="icon ion-social-facebook"></i></a>
+                    </div>
+                    <div class="center">
+                        <div class="contact">
+                            <p><i class="fa fa-location-arrow"></i> 3799 S Las Vegas Blvd Las Vegas, NV 89109</p>
+                            <p><i class="fa fa-phone"></i><a href="tel:123-456-7890"> 123-456-7890</a></p>
+                            <p><i class="fa fa fa-envelope"></i><a href="mailto:boxrec@gamil.com"> boxrec@gamil.com</a></p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <form>
+                            <label>
+                                <p class="paragraph">Subscribe to the newsletter</p>
+                                <div class="input-group">
+                                    <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required="">
+                                    <div class="input-group-append">
+                                        <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+                <p class="copyright">BoxRec © 1992</p>
+            </footer>
+    </div>
+</div>
+</body>
+</html>
