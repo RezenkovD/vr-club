@@ -164,6 +164,7 @@ jobs:
                 git pull
                 pip3 install -r requirements.txt
                 python manage.py migrate
+                rm -r static
                 python manage.py collectstatic --no-input
                 gunicorn vr_club.wsgi:application --bind $ALLOWED_HOSTS:8000 --pid /tmp/gunicorn.pid --daemon
                 kill -HUP $(cat /tmp/gunicorn.pid)
