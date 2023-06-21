@@ -80,7 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "vr_club.wsgi.application"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
