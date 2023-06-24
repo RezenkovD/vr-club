@@ -8,7 +8,7 @@ from .utils import create_shortened_url
 class Shortener(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     times_followed = models.PositiveIntegerField(default=0)
-    long_url = models.URLField(unique=True)
+    long_url = models.URLField()
     short_url = models.CharField(max_length=15, unique=True, blank=True)
 
     def __str__(self):
