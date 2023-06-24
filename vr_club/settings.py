@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "users",
     "phonenumber_field",
     "vr_club_app",
+    "url_shortener",
 ]
 
 MIDDLEWARE = [
