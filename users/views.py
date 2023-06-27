@@ -30,7 +30,7 @@ def sign_up(request):
                 profile.save()
                 login(request, user)
                 messages.success(request, "Registration successful.")
-                return redirect("users:homepage")
+                return redirect("site:home")
         else:
             if not profile_form.is_valid():
                 messages.error(request, "The number is already registered or invalid.")
@@ -66,7 +66,7 @@ def sign_in(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {user.username}.")
-                return redirect("users:homepage")
+                return redirect("site:home")
             else:
                 messages.error(request, "Wrong phone number or password.")
         else:
@@ -80,4 +80,4 @@ def sign_in(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
-    return redirect("users:homepage")
+    return redirect("site:home")

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRCLUB</title>
+    <link rel="stylesheet" href="{% static 'site/static_files/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+
+            <div class="background">
+                <nav>
+                    <div class="logo">VRCLUB</div>
+                    <ul>
+                        <!-- Start of desktop navigation menu -->
+                        <li>
+                            <a href="#">Ігри та пристрої</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Ціни</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Фотогалерея</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Правила</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Контакти</a>
+                        </li>
+                        <!-- End of desktop navigation menu -->
+                    </ul>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'users:logout' %}" class="btn-transparent">Вийти</a>
+                    {% else %}
+                        <a href="{% url 'users:sign-up' %}" class="btn-transparent">Зареєструватись</a>
+                    {% endif %}
+                </nav>
+                <!-- Start of desktop main section -->
+                <div class="main-section">
+                    <h1>
+                        Нова реальність <br />
+                        разом з VRClub
+                    </h1>
+                    <p>
+                        Поринь в світ віртуальної реальності разом<br />
+                        з друзями
+                    </p>
+{#                    <a href="{% url 'site:booking' %}" class="btn-blue">забронювати</a>#}
+{#                    <button class="btn-blue">забронювати</button>#}
+                    <button class="btn-blue" onclick="redirectToBooking()">забронювати</button>
+                    <!-- End of desktop main section -->
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
+<script>
+    function redirectToBooking() {
+        window.location.href = "{% url 'site:booking' %}";
+    }
+</script>
+</html>

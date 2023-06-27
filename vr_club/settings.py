@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "phonenumber_field",
     "vr_club_app",
     "url_shortener",
+    "vr_club_site",
+    # "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
@@ -141,7 +143,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "vr_club_app/templates/")]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "vr_club_app/templates/"),
+    os.path.join(BASE_DIR, "vr_club_site/templates/"),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

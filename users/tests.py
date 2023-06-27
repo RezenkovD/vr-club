@@ -34,7 +34,7 @@ class LogoutViewTest(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message, "You have successfully logged out.")
-        self.assertRedirects(response, reverse("users:homepage"))
+        self.assertRedirects(response, reverse("site:home"))
 
 
 class SignUpTests(TestCase):
@@ -56,7 +56,7 @@ class SignUpTests(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse("users:homepage"))
+        self.assertRedirects(response, reverse("site:home"))
         self.assertTrue(User.objects.filter(username=self.username).exists())
         self.assertTrue(Profile.objects.filter(phone_number=self.phone_number).exists())
         self.assertTrue(Profile.objects.filter(role=self.role).exists())
@@ -165,7 +165,7 @@ class SignInTestCase(TestCase):
             {"phone_number": self.phone_number, "password": self.password},
         )
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse("users:homepage"))
+        self.assertRedirects(response, reverse("site:home"))
         self.assertTrue("_auth_user_id" in self.client.session)
 
     def test_sign_in_invalid_credentials(self):

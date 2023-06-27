@@ -68,6 +68,7 @@ jobs:
 
       - name: Test with Pytest
         run: |
+          python manage.py collectstatic --no-input
           coverage run --source='.' manage.py test
           coverage xml
         env:

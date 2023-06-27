@@ -1753,7 +1753,7 @@ ew.prototype.clone=function(){var a=new ew,b;for(b in this)if(this.hasOwnPropert
 function hw(a){var b=iw(a),c=document.getElementById(b),d=c&&Iu(c,"loaded");d||c&&!d||(c=jw(a,b,function(){if(!Iu(c,"loaded")){Gu(c);vq(b);var e=Xa(wq,b);ll(e,0)}}))}
 function jw(a,b,c){var d=document.createElement("link");d.id=b;d.onload=function(){c&&setTimeout(c,0)};
 a=nk(a);mc(d,a);(document.getElementsByTagName("head")[0]||document.body).appendChild(d);return d}
-function iw(a){var b=rf("A");lc(b,new Kb(a,Pb));a=b.href.replace(/^[a-zA-Z]+:\/\//,"//");return"css-"+qc(a)}
+function iw(a){var b=rf("A");lc(b,new Kb(a,Pb));a=b.href.replace(/^[a-zA-Z]+:\/\//,"//");return"static_files-"+qc(a)}
 ;function kw(){M.call(this);this.i=[]}
 w(kw,M);kw.prototype.K=function(){for(;this.i.length;){var a=this.i.pop();a.target.removeEventListener(a.name,a.callback,void 0)}M.prototype.K.call(this)};function lw(){kw.apply(this,arguments)}
 w(lw,kw);function mw(a,b,c,d,e){M.call(this);var f=this;this.A=b;this.webPlayerContextConfig=d;this.Tb=e;this.Ia=!1;this.api={};this.Da=this.s=null;this.X=new N;this.i={};this.ba=this.oa=this.elementId=this.qb=this.config=null;this.aa=!1;this.l=this.M=null;this.ya={};this.pc=["onReady"];this.lastError=null;this.Ib=NaN;this.W={};this.qc=new lw(this);this.ea=0;this.j=this.m=a;De(this,this.X);nw(this);ow(this);De(this,this.qc);c?this.ea=ll(function(){f.loadNewVideoConfig(c)},0):d&&(pw(this),qw(this))}
