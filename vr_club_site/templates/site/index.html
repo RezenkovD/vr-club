@@ -58,11 +58,18 @@
                         Поринь в світ віртуальної реальності разом<br />
                         з друзями
                     </p>
-                    <button class="btn-blue">забронювати</button>
+{#                    <a href="{% url 'site:booking' %}" class="btn-blue">забронювати</a>#}
+{#                    <button class="btn-blue">забронювати</button>#}
+                    <button class="btn-blue" onclick="redirectToBooking()">забронювати</button>
                     <!-- End of desktop main section -->
                 </div>
             </div>
         </div>
     </header>
 </body>
+<script>
+    function redirectToBooking() {
+        window.location.href = "{% url 'site:booking' %}";
+    }
+</script>
 </html>
