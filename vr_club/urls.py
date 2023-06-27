@@ -22,4 +22,5 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("intro/", include("vr_club_app.urls")),
     path("", include("url_shortener.urls")),
+    path("site/", include("vr_club_site.urls")),
 ]

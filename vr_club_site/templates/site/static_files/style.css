@@ -1,0 +1,153 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: " Montserrat", sans-serif;
+}
+
+header {
+    background: #010103;
+    width: 1440px;
+    height: 1080px;
+    margin: 0 auto
+}
+
+.wrapper {
+    width: 1420px;
+    height: 860px;
+    flex-shrink: 0;
+    margin: 0 auto;
+    background: #010103 url("man-experiencing-virtual-reality-close-up.png") no-repeat -53px 64px;
+}
+
+.btn-transparent {
+    margin-right: 100px;
+    margin-top: 16px;
+
+    width: 228px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+    padding: 12px 25px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.btn-blue {
+    width: 290px;
+    height: 56px;
+    border-radius: 100px;
+    background: #4FB4FE;
+    padding: 16px 32px;
+
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 0 10px 0 #4FB4FE;
+}
+
+nav {
+    height: 64px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+nav .logo {
+    margin-left: 100px;
+    margin-top: 26px;
+    width: 107px;
+    height: 29px;
+    color: #FFF;
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+nav ul {
+    margin-top: 30px;
+    width: auto;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+    list-style: none;
+}
+
+nav ul li:first-child {
+    margin-left: 64px;
+}
+
+
+nav ul li:last-child {
+    margin-right: 101px;
+}
+
+
+nav ul li a {
+    color: #FFF;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+.main-section h1 {
+    text-align: center;
+    margin-left: 126px;
+    margin-right: 127px;
+    width: 1187px;
+    height: 223px;
+    color: #FFF;
+    font-size: 88px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+}
+
+.main-section p {
+    margin-left: 439px;
+    margin-right: 439px;
+    width: 562px;
+    height: 61px;
+    color: #FFF;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+
+.main-section button {
+    margin-left: 575px;
+    margin-right: 575px;
+}
+
+h1,
+p,
+button {
+    margin-bottom: 31px;
+}
