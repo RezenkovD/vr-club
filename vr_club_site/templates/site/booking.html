@@ -8,6 +8,13 @@
 <body>
     <div class="container">
         <h2>Booking Form</h2>
+        {% if messages %}
+            <div class="alert alert-danger">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
         <form method="POST">
            {% csrf_token %}
             <div class="form-group">
@@ -15,16 +22,16 @@
                 {{ form.comment }}
             </div>
             <div class="form-group">
-            <label for="id_slots">Slots:</label><br>
-            {% for slot, av_slot in form.slots|zip:available_slots %}
-                <div class="form-check">
-                    {% if av_slot > 0 %}
-                        <label class="form-check-label" for="id_slots_{{ forloop.counter0 }}">{{ slot }}</label> ({{ av_slot }} вільних місць)
-                    {% else %}
-                        <label class="form-check-label" for="id_slots_{{ forloop.counter0 }}" disabled style="opacity: 0.5; pointer-events: none;">{{ slot }}</label> - Місць немає
-                    {% endif %}
-                </div>
-            {% endfor %}
+                <label for="id_slots">Slots:</label><br>
+                {% for slot, av_slot in form.slots|zip:available_slots %}
+                    <div class="form-check">
+                        {% if av_slot > 0 %}
+                            <label class="form-check-label" for="id_slots_{{ forloop.counter0 }}">{{ slot }}</label> ({{ av_slot }} вільних місць)
+                        {% else %}
+                            <label class="form-check-label" for="id_slots_{{ forloop.counter0 }}" disabled style="opacity: 0.5; pointer-events: none;">{{ slot }}</label> - Місць немає
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
