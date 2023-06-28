@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 
 from .forms import BookingForm
@@ -26,6 +27,24 @@ def booking_view(request):
                 booking_time.save()
                 booking.time.add(booking_time)
             return redirect("site:home")
-    else:
-        form = BookingForm()
-    return render(request, "site/booking.html", {"form": form})
+    form = BookingForm()
+    user = request.user
+    available_slots = []
+    for x in BookingTime.TIME_CHOICES:
+        try:
+            slot = (
+                BookingTime.objects.filter(status=ACTUAL, time=x[0])
+                .exclude(booking__user=user)
+                .aggregate(count=Count("id"))["count"]
+            )
+        except BookingTime.DoesNotExist:
+            slot = 0
+        available_slots.append(4 - slot)
+    return render(
+        request,
+        "site/booking.html",
+        {
+            "form": form,
+            "available_slots": available_slots,
+        },
+    )

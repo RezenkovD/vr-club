@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "vr_club_app",
     "url_shortener",
     "vr_club_site",
+    "vr_club_site.templatetags.custom_filters"
     # "whitenoise.runserver_nostatic",
 ]
 
