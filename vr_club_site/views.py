@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import BookingForm
 from .models import Booking, BookingTime, ACTUAL
+from .utils import available__slots
 
 # Create your views here.
 
@@ -15,46 +16,37 @@ def home(request):
 
 @login_required(login_url="users:sign-in")
 def booking_view(request):
-    user = request.user
-    available_slots = []
-    for x in BookingTime.TIME_CHOICES:
-        try:
-            slot = (
-                BookingTime.objects.filter(status=ACTUAL, time=x[0])
-                .exclude(booking__user=user)
-                .aggregate(count=Count("id"))["count"]
-            )
-        except BookingTime.DoesNotExist:
-            slot = 0
-        available_slots.append(4 - slot)
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
-            comment = form.cleaned_data["comment"]
-            user = request.user
-            booking = Booking(user=user, comment=comment)
-            booking.save()
+            available_slots = available__slots(request)
+            slot_av_slots = {
+                y[0]: x for y, x in zip(BookingTime.TIME_CHOICES, available_slots)
+            }
+            unavailable_slots = []
             slots = form.cleaned_data["slots"]
             for slot in slots:
-                booking_time = BookingTime(time=slot, status=ACTUAL)
-                booking_time.save()
-                booking.time.add(booking_time)
-            return redirect("site:home")
+                if slot_av_slots[slot] <= 0:
+                    unavailable_slots.append(slot)
+            if not unavailable_slots:
+                comment = form.cleaned_data["comment"]
+                user = request.user
+                booking = Booking(user=user, comment=comment)
+                booking.save()
+                for slot in slots:
+                    booking_time = BookingTime(time=slot, status=ACTUAL)
+                    booking_time.save()
+                    booking.time.add(booking_time)
+                return redirect("site:home")
+            else:
+                for x in range(len(unavailable_slots)):
+                    messages.error(
+                        request, f"Місць для {unavailable_slots[x]} вже немає!"
+                    )
         else:
             messages.error(request, "Будь ласка, оберіть слот, перед відправкою!")
     form = BookingForm()
-    user = request.user
-    available_slots = []
-    for x in BookingTime.TIME_CHOICES:
-        try:
-            slot = (
-                BookingTime.objects.filter(status=ACTUAL, time=x[0])
-                .exclude(booking__user=user)
-                .aggregate(count=Count("id"))["count"]
-            )
-        except BookingTime.DoesNotExist:
-            slot = 0
-        available_slots.append(4 - slot)
+    available_slots = available__slots(request)
     return render(
         request,
         "site/booking.html",
