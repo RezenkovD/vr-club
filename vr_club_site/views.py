@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.db.models import Count
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .forms import BookingForm
@@ -14,6 +15,18 @@ def home(request):
 
 @login_required(login_url="users:sign-in")
 def booking_view(request):
+    user = request.user
+    available_slots = []
+    for x in BookingTime.TIME_CHOICES:
+        try:
+            slot = (
+                BookingTime.objects.filter(status=ACTUAL, time=x[0])
+                .exclude(booking__user=user)
+                .aggregate(count=Count("id"))["count"]
+            )
+        except BookingTime.DoesNotExist:
+            slot = 0
+        available_slots.append(4 - slot)
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -27,6 +40,8 @@ def booking_view(request):
                 booking_time.save()
                 booking.time.add(booking_time)
             return redirect("site:home")
+        else:
+            messages.error(request, "Будь ласка, оберіть слот, перед відправкою!")
     form = BookingForm()
     user = request.user
     available_slots = []
