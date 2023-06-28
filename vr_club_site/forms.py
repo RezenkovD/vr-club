@@ -9,4 +9,5 @@ class BookingForm(forms.Form):
     slots = forms.MultipleChoiceField(
         choices=BookingTime.TIME_CHOICES,
         widget=forms.CheckboxSelectMultiple(),
+        required=True,
     )
