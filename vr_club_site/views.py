@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .forms import BookingForm
-from .models import Booking, BookingTime, ACTUAL
+from .models import Booking, BookingTime, ACTUAL, OUTDATED
 from .utils import available__slots
 
 # Create your views here.
@@ -33,6 +33,10 @@ def booking_view(request):
                 user = request.user
                 booking = Booking(user=user, comment=comment)
                 booking.save()
+                booking_slots = booking.time.all()
+                for booking_slot in booking_slots:
+                    booking_slot.status = OUTDATED
+                    booking_slot.save()
                 for slot in slots:
                     booking_time = BookingTime(time=slot, status=ACTUAL)
                     booking_time.save()
