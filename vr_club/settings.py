@@ -39,6 +39,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 # Application definition
 
 INSTALLED_APPS = [
+    # "whitenoise.runserver_nostatic",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,7 +52,6 @@ INSTALLED_APPS = [
     "url_shortener",
     "vr_club_site",
     "vr_club_site.templatetags.custom_filters"
-    # "whitenoise.runserver_nostatic",
 ]
 
 MIDDLEWARE = [
