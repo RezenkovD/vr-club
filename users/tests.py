@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from users.views import logout_request
 
-from .forms import ProfileForm, SignUpForm
+from .forms import SignUpForm
 from .models import Profile
 from .views import sign_up
 
@@ -97,52 +97,47 @@ class SignUpTests(TestCase):
         self.assertFalse(User.objects.filter(email=self.email).exists())
 
 
-# class SignInTestCase(TestCase):
-#     def setUp(self):
-#         self.client = Client()
-#         self.username = "testuser"
-#         self.password = "testpassword"
-#         self.user = User.objects.create_user(
-#             username=self.username, password=self.password
-#         )
-#         self.phone_number = "+380980437157"
-#         self.role = "VI"
-#         self.profile = Profile.objects.create(
-#             user=self.user, phone_number=self.phone_number, role=self.role
-#         )
-#
-#     def test_sign_in_valid_credentials(self):
-#         response = self.client.post(
-#             reverse("users:sign-in"),
-#             {"phone_number": self.phone_number, "password": self.password},
-#         )
-#         self.assertEqual(response.status_code, 302)
-#         self.assertRedirects(response, reverse("site:home"))
-#         self.assertTrue("_auth_user_id" in self.client.session)
-#
-#     def test_sign_in_invalid_credentials(self):
-#         response = self.client.post(
-#             reverse("users:sign-in"),
-#             {"phone_number": self.phone_number, "password": "wrongpassword"},
-#         )
-#         self.assertEqual(response.status_code, 200)
-#         self.assertContains(response, "Wrong phone number or password.")
-#         self.assertFalse("_auth_user_id" in self.client.session)
-#
-#     def test_sign_in_unregistered_number(self):
-#         response = self.client.post(
-#             reverse("users:sign-in"),
-#             {"phone_number": "+380980437152", "password": "wrongpassword"},
-#         )
-#         self.assertEqual(response.status_code, 200)
-#         self.assertContains(response, "The phone number is not registered.")
-#         self.assertFalse("_auth_user_id" in self.client.session)
-#
-#     def test_sign_in_invalid_form(self):
-#         response = self.client.post(
-#             reverse("users:sign-in"),
-#             {"phone_number": "0980437152", "password": "wrongpassword"},
-#         )
-#         self.assertEqual(response.status_code, 200)
-#         self.assertContains(response, "Invalid phone number or password.")
-#         self.assertFalse("_auth_user_id" in self.client.session)
+class SignInTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.email = "testuser@example.com"
+        self.password = "testpassword"
+        self.user = User.objects.create_user(
+            username=self.email, password=self.password
+        )
+
+    def test_sign_in_valid_credentials(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"email": self.email, "password": self.password},
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse("site:home"))
+        self.assertTrue("_auth_user_id" in self.client.session)
+
+    def test_sign_in_invalid_credentials(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"email": self.email, "password": "wrongpassword"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Wrong email or password.")
+        self.assertFalse("_auth_user_id" in self.client.session)
+
+    def test_sign_in_unregistered_email(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"email": "unregistered@example.com", "password": "wrongpassword"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Wrong email or password.")
+        self.assertFalse("_auth_user_id" in self.client.session)
+
+    def test_sign_in_invalid_form(self):
+        response = self.client.post(
+            reverse("users:sign-in"),
+            {"email": "invalidemail", "password": "wrongpassword"},
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Enter a valid email address.")
+        self.assertFalse("_auth_user_id" in self.client.session)
