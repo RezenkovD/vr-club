@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from .forms import ProfileForm, SignInForm, UserForm
+from .forms import ProfileForm, SignInForm, SignUpForm
 from .models import VISITOR, Profile
 
 
@@ -15,7 +15,7 @@ def home(request):
 
 def sign_up(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             user_email = form.cleaned_data.get("email")
             if User.objects.filter(username=user_email).exists():
@@ -30,7 +30,7 @@ def sign_up(request):
                 messages.success(request, "Registration successful.")
                 return redirect("site:home")
     else:
-        form = UserForm()
+        form = SignUpForm()
     return render(
         request=request,
         template_name="sign_up.html",

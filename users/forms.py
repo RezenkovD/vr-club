@@ -7,7 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from .models import Profile
 
 
-class UserForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=32,
         required=True,
@@ -67,7 +67,7 @@ class UserForm(UserCreationForm):
         fields = ("first_name", "last_name", "email", "password1", "password2")
 
     def save(self, commit=True):
-        user = super(UserForm, self).save(commit=False)
+        user = super(SignUpForm, self).save(commit=False)
         if commit:
             user.save()
         return user

@@ -7,7 +7,7 @@ from django.urls import reverse
 
 from users.views import logout_request
 
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, SignUpForm
 from .models import Profile
 from .views import sign_up
 
