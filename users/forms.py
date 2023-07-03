@@ -8,12 +8,31 @@ from .models import Profile
 
 
 class UserForm(UserCreationForm):
-    username = forms.CharField(
+    first_name = forms.CharField(
         max_length=32,
         required=True,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Username",
+                "placeholder": "First Name",
+                "class": "form-control",
+            }
+        ),
+    )
+    last_name = forms.CharField(
+        max_length=32,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last Name",
+                "class": "form-control",
+            }
+        ),
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Email",
                 "class": "form-control",
             }
         ),
@@ -45,7 +64,7 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "password1", "password2")
+        fields = ("first_name", "last_name", "email", "password1", "password2")
 
     def save(self, commit=True):
         user = super(UserForm, self).save(commit=False)
