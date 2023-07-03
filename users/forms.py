@@ -73,14 +73,30 @@ class SignUpForm(UserCreationForm):
         return user
 
 
-class ProfileForm(forms.ModelForm):
-    phone_number = PhoneNumberField(null=False, blank=False, unique=True)
+class SignInForm(forms.Form):
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control",
+            }
+        ),
+    )
+    password = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "form-control",
+                "data-toggle": "password",
+                "id": "password",
+                "name": "password",
+            }
+        ),
+    )
 
     class Meta:
-        model = Profile
-        fields = ("phone_number",)
-
-
-class SignInForm(forms.Form):
-    phone_number = PhoneNumberFormField(widget=forms.TextInput(), required=False)
-    password = forms.CharField(max_length=32)
+        model = User
+        fields = ("email", "password")

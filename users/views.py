@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
-from .forms import ProfileForm, SignInForm, SignUpForm
+from .forms import SignInForm, SignUpForm
 from .models import VISITOR, Profile
 
 
@@ -40,34 +40,21 @@ def sign_up(request):
 
 def sign_in(request):
     if request.method == "POST":
-        sign_in = SignInForm(request.POST)
-        if sign_in.is_valid():
-            phone_number = sign_in.cleaned_data.get("phone_number")
-            password = sign_in.cleaned_data.get("password")
-            try:
-                profile = Profile.objects.get(phone_number=phone_number)
-            except Profile.DoesNotExist:
-                messages.error(request, "The phone number is not registered.")
-                sign_in = SignInForm()
-                return render(
-                    request=request,
-                    template_name="sign_in.html",
-                    context={"sign_in": sign_in},
-                )
-            user = User.objects.get(id=profile.user_id)
-            user = authenticate(username=user.username, password=password)
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            user_email = form.cleaned_data.get("email")
+            user_password = form.cleaned_data.get("password")
+            user = authenticate(username=user_email, password=user_password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {user.username}.")
+                messages.info(request, f"You are now logged in as {user.email}.")
                 return redirect("site:home")
             else:
-                messages.error(request, "Wrong phone number or password.")
+                messages.error(request, "Wrong email or password.")
         else:
-            messages.error(request, "Invalid phone number or password.")
-    sign_in = SignInForm()
-    return render(
-        request=request, template_name="sign_in.html", context={"sign_in": sign_in}
-    )
+            messages.error(request, "Enter a valid email address.")
+    form = SignInForm()
+    return render(request=request, template_name="sign_in.html", context={"form": form})
 
 
 def logout_request(request):
