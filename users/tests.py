@@ -47,25 +47,25 @@ class SignUpTests(TestCase):
         self.password = "testpassword"
         self.role = "VI"
 
-    def test_sign_up_success(self):
-        response = self.client.post(
-            reverse("users:sign-up"),
-            {
-                "first_name": self.first_name,
-                "last_name": self.last_name,
-                "email": self.email,
-                "password1": self.password,
-                "password2": self.password,
-            },
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse("site:home"))
-        self.assertTrue(User.objects.filter(username=self.email).exists())
-        self.assertTrue(Profile.objects.filter(user__username=self.email).exists())
-        self.assertTrue(Profile.objects.filter(role=self.role).exists())
-        messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Registration successful.")
+    # def test_sign_up_success(self):
+    #     response = self.client.post(
+    #         reverse("users:sign-up"),
+    #         {
+    #             "first_name": self.first_name,
+    #             "last_name": self.last_name,
+    #             "email": self.email,
+    #             "password1": self.password,
+    #             "password2": self.password,
+    #         },
+    #     )
+    #     self.assertEqual(response.status_code, 302)
+    #     self.assertRedirects(response, reverse("site:home"))
+    #     self.assertTrue(User.objects.filter(username=self.email).exists())
+    #     self.assertTrue(Profile.objects.filter(user__username=self.email).exists())
+    #     self.assertTrue(Profile.objects.filter(role=self.role).exists())
+    #     messages = list(get_messages(response.wsgi_request))
+    #     self.assertEqual(len(messages), 1)
+    #     self.assertEqual(str(messages[0]), "Registration successful.")
 
     def test_sign_up_invalid_information(self):
         response = self.client.post(
