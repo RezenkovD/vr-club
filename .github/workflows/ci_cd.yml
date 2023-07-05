@@ -81,6 +81,11 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
           DEBUG: ${{ secrets.DEBUG }}
+          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
+
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v2
@@ -160,6 +165,10 @@ jobs:
                 export ALLOWED_HOSTS='${{ secrets.ALLOWED_HOSTS }}'
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
                 export DEBUG='${{ secrets.DEBUG }}'
+                export EMAIL_HOST_USER='${{ secrets.EMAIL_HOST_USER }}'
+                export EMAIL_HOST_PASSWORD='${{ secrets.EMAIL_HOST_PASSWORD }}'
+                export GOOGLE_CLIENT_ID='${{ secrets.GOOGLE_CLIENT_ID }}'
+                export GOOGLE_SECRET='${{ secrets.GOOGLE_SECRET }}'
             
                 cd vr-club
                 git pull
@@ -187,6 +196,10 @@ jobs:
                 export ALLOWED_HOSTS='${{ secrets.ALLOWED_HOSTS }}'
                 export SECRET_KEY='${{ secrets.SECRET_KEY }}'
                 export DEBUG='${{ secrets.DEBUG }}'
+                export EMAIL_HOST_USER='${{ secrets.EMAIL_HOST_USER }}'
+                export EMAIL_HOST_PASSWORD='${{ secrets.EMAIL_HOST_PASSWORD }}'
+                export GOOGLE_CLIENT_ID='${{ secrets.GOOGLE_CLIENT_ID }}'
+                export GOOGLE_SECRET='${{ secrets.GOOGLE_SECRET }}'
             
                 sudo apt-get install -y libpq-dev python3-dev
                 sudo apt-get install -y build-essential

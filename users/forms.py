@@ -7,13 +7,32 @@ from phonenumber_field.modelfields import PhoneNumberField
 from .models import Profile
 
 
-class UserForm(UserCreationForm):
-    username = forms.CharField(
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(
         max_length=32,
         required=True,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Username",
+                "placeholder": "First Name",
+                "class": "form-control",
+            }
+        ),
+    )
+    last_name = forms.CharField(
+        max_length=32,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last Name",
+                "class": "form-control",
+            }
+        ),
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Email",
                 "class": "form-control",
             }
         ),
@@ -45,23 +64,39 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "password1", "password2")
+        fields = ("first_name", "last_name", "email", "password1", "password2")
 
     def save(self, commit=True):
-        user = super(UserForm, self).save(commit=False)
+        user = super(SignUpForm, self).save(commit=False)
         if commit:
             user.save()
         return user
 
 
-class ProfileForm(forms.ModelForm):
-    phone_number = PhoneNumberField(null=False, blank=False, unique=True)
+class SignInForm(forms.Form):
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Email",
+                "class": "form-control",
+            }
+        ),
+    )
+    password = forms.CharField(
+        max_length=50,
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Password",
+                "class": "form-control",
+                "data-toggle": "password",
+                "id": "password",
+                "name": "password",
+            }
+        ),
+    )
 
     class Meta:
-        model = Profile
-        fields = ("phone_number",)
-
-
-class SignInForm(forms.Form):
-    phone_number = PhoneNumberFormField(widget=forms.TextInput(), required=False)
-    password = forms.CharField(max_length=32)
+        model = User
+        fields = ("email", "password")
