@@ -238,10 +238,10 @@ jobs:
                 
                   location / {
                     proxy_pass http://www.vr-club.one:8000;
-                    proxy_set_header Host $host;
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto $scheme;
+                    proxy_set_header Host \$host;
+                    proxy_set_header X-Real-IP \$remote_addr;
+                    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto \$scheme;
                   }
                 location /static/ {
                   alias /var/www/vr-club/static/;
@@ -260,10 +260,10 @@ jobs:
                   error_log    /var/log/nginx/nginx.vhost.error.log;
                   location / {
                     proxy_pass http://www.vr-club.one:8000;
-                    proxy_set_header Host $host;
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto $scheme;
+                    proxy_set_header Host \$host;
+                    proxy_set_header X-Real-IP \$remote_addr;
+                    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto \'$scheme';
                   }
                   location /static/ {
                     alias /var/www/vr-club/static/;
@@ -273,7 +273,4 @@ jobs:
                 sudo ln -s /etc/nginx/sites-available/vr-club /etc/nginx/sites-enabled
                 sudo nginx -t
                 sudo service nginx restart
-                echo $SUB_DOMAIN
-                echo CSRF_TRUSTED_ORIGINS
-                echo ALLOWED_HOSTS
             fi
