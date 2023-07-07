@@ -241,7 +241,7 @@ jobs:
                     proxy_set_header Host \$host;
                     proxy_set_header X-Real-IP \$remote_addr;
                     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto ${{ secrets.SCHEME }};
+                    proxy_set_header X-Forwarded-Proto $'${{ secrets.SCHEME }}';
                   }
                 location /static/ {
                   alias /var/www/vr-club/static/;
@@ -263,7 +263,7 @@ jobs:
                     proxy_set_header Host \$host;
                     proxy_set_header X-Real-IP \$remote_addr;
                     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto ${{ secrets.SCHEME }};
+                    proxy_set_header X-Forwarded-Proto $'${{ secrets.SCHEME }}';
                   }
                   location /static/ {
                     alias /var/www/vr-club/static/;
