@@ -171,7 +171,7 @@ jobs:
                 export GOOGLE_SECRET='${{ secrets.GOOGLE_SECRET }}'
                 export SUB_DOMAIN='${{ secrets.SUB_DOMAIN }}'
                 export CSRF_TRUSTED_ORIGINS='${{ secrets.CSRF_TRUSTED_ORIGINS }}'
-                export USE_X_FORWARDED_HOST='${{ USE_X_FORWARDED_HOST }}'
+                export USE_X_FORWARDED_HOST='${{ secrets.USE_X_FORWARDED_HOST }}'
                 cd vr-club
                 git pull
                 pip3 install -r requirements.txt
