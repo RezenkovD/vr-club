@@ -35,9 +35,9 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
-CSRF_TRUSTED_ORIGINS = ["https://vr-club.one", "https://www.vr-club.one"]
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS")
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_HOST = env("USE_X_FORWARDED_HOST")
 # Application definition
 
 INSTALLED_APPS = [
