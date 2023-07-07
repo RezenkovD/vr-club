@@ -153,8 +153,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.DROPLET_PASSWORD }}
           script: |
-            directory="vr-club"
+            directory="/var/www/vr-club"
             if [ -d "$directory" ]; then
+                cd /var/www/
                 cd vr-club
                 source venv/bin/activate
             
@@ -171,9 +172,9 @@ jobs:
                 export GOOGLE_CLIENT_ID='${{ secrets.GOOGLE_CLIENT_ID }}'
                 export GOOGLE_SECRET='${{ secrets.GOOGLE_SECRET }}'
                 export SUB_DOMAIN='${{ secrets.SUB_DOMAIN }}'
-                export CSRF_TRUSTED_ORIGINS='${{ secrets.CSRF_TRUSTED_ORIGINS }}'
+                export CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }}
                 export USE_X_FORWARDED_HOST='${{ secrets.USE_X_FORWARDED_HOST }}'
-                cd vr-club
+      
                 git pull
                 pip3 install -r requirements.txt
                 python manage.py migrate
@@ -181,11 +182,13 @@ jobs:
                 python manage.py collectstatic --no-input
                 gunicorn vr_club.wsgi:application --bind $SUB_DOMAIN:8000 --workers 3 --threads 2 --pid /tmp/gunicorn.pid --daemon
                 kill -HUP $(cat /tmp/gunicorn.pid)
+                sudo nginx -t
+                sudo service nginx restart
             else
                 sudo apt-get update -y
-        
+                sudo apt install nginx
+                cd /var/www/
                 git clone https://github.com/RezenkovD/vr-club.git
-        
                 cd vr-club
                 sudo apt-get install -y python3.11-venv
                 python3.11 -m venv venv
@@ -204,7 +207,7 @@ jobs:
                 export GOOGLE_CLIENT_ID='${{ secrets.GOOGLE_CLIENT_ID }}'
                 export GOOGLE_SECRET='${{ secrets.GOOGLE_SECRET }}'
                 export SUB_DOMAIN='${{ secrets.SUB_DOMAIN }}'
-                export CSRF_TRUSTED_ORIGINS='${{ secrets.CSRF_TRUSTED_ORIGINS }}'
+                export CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }}
                 export USE_X_FORWARDED_HOST='${{ secrets.USE_X_FORWARDED_HOST }}'
             
                 sudo apt-get install -y libpq-dev python3-dev
@@ -226,4 +229,51 @@ jobs:
                 yes | pip3 install gunicorn
                 cd vr-club
                 gunicorn vr_club.wsgi:application --bind $SUB_DOMAIN:8000 --workers 3 --threads 2 --pid /tmp/gunicorn.pid --daemon
+#               setup nginx
+                echo "server {
+                  listen 80;
+                  server_name vr-club.one www.vr-club.one;
+                
+                  location = /favicon.ico { access_log off; log_not_found off; }
+                
+                  location / {
+                    proxy_pass http://www.vr-club.one:8000;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+                  }
+                location /static/ {
+                  alias /var/www/vr-club/static/;
+                 }
+                }
+                  
+                server {
+                  listen 443;
+                  server_name vr-club.one www.vr-club.one;
+                  
+                  ssl                  on;
+                  ssl_certificate      /var/www/certificate.crt;
+                  ssl_certificate_key  /var/www/private.key;
+                  
+                  access_log   /var/log/nginx/nginx.vhost.access.log;
+                  error_log    /var/log/nginx/nginx.vhost.error.log;
+                  location / {
+                    proxy_pass http://www.vr-club.one:8000;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+                  }
+                  location /static/ {
+                    alias /var/www/vr-club/static/;
+                  }
+                }" > /etc/nginx/sites-available/vr-club
+                    
+                sudo ln -s /etc/nginx/sites-available/vr-club /etc/nginx/sites-enabled
+                sudo nginx -t
+                sudo service nginx restart
+                echo $SUB_DOMAIN
+                echo CSRF_TRUSTED_ORIGINS
+                echo ALLOWED_HOSTS
             fi
