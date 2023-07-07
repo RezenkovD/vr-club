@@ -145,7 +145,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to digital ocean
+    -   name: Deploy to digital ocean
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{secrets.SSH_HOST}}
@@ -229,7 +229,7 @@ jobs:
                 yes | pip3 install gunicorn
                 cd vr-club
                 gunicorn vr_club.wsgi:application --bind $SUB_DOMAIN:8000 --workers 3 --threads 2 --pid /tmp/gunicorn.pid --daemon
-#               setup nginx
+
                 echo "server {
                   listen 80;
                   server_name vr-club.one www.vr-club.one;
