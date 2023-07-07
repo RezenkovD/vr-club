@@ -85,7 +85,8 @@ jobs:
           EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
-
+          CSRF_TRUSTED_ORIGINS: ${{ secrets.CSRF_TRUSTED_ORIGINS }}
+          USE_X_FORWARDED_HOST: ${{ secrets.USE_X_FORWARDED_HOST }}
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v2
