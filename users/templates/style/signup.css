@@ -634,3 +634,19 @@ a {
     font: 500 14px/170% "Montserrat", sans-serif;
     position: relative;
 }
+
+.transparent-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    margin-right: -24px;
+    margin-left: -36px;
+}
+
+.password-input {
+    display: flex;
+    align-items: center;
+}
