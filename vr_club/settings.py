@@ -121,7 +121,7 @@ ROOT_URLCONF = "vr_club.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -198,6 +198,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "vr_club_app/templates/"),
     os.path.join(BASE_DIR, "vr_club_site/templates/"),
+    os.path.join(BASE_DIR, "users/templates/"),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
