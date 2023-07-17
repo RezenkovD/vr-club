@@ -371,20 +371,43 @@
                 {% csrf_token %}
                 {# #}
                 <div class="flex-container">
-{# Помилки                  {{ form.errors }} #}
                     <div class="column">
-                        <div class="input-container">
-{#                            {{ form.login.errors }}#}
-                            <label for="{{ form.login.id_for_label }}">
-                                <div class="frame-23">
-                                    <span class="e1">Електронна пошта</span>
-                                    <span class="e2">*</span>
-                                </div>
+                        {% if form.errors %}
+                            <div class="error-container">
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-error" style="margin-top: 12px">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-error"  style="margin-top: 12px">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="input-container" style="margin-bottom: 16px; margin-top: 12px">
+                                <label for="{{ form.login.id_for_label }}">
+                                    <div class="frame-23">
+                                        <span class="e1">Електронна пошта</span>
+                                        <span class="e2">*</span>
+                                    </div>
+                                </label>
+                                {{ form.login }}
+                            </div>
+                            {% else %}
+                            <div class="input-container" style="margin-bottom: 28px; margin-top: 60px">
+                                <label for="{{ form.login.id_for_label }}">
+                                    <div class="frame-23">
+                                        <span class="e1">Електронна пошта</span>
+                                        <span class="e2">*</span>
+                                    </div>
                             </label>
                             {{ form.login }}
                         </div>
+                        {% endif %}
                         <div class="input-container">
-{#                            {{ form.password.errors }}#}
                             <label for="{{ form.password.id_for_label }}">
                                 <span class="e1">Пароль</span>
                                 <span class="e2">*</span>

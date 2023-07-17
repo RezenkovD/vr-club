@@ -489,6 +489,7 @@ a {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 28px;
 }
 
 .btn-blue {
@@ -557,12 +558,10 @@ a {
 
 .flex-container {
     display: flex;
-    width: 779px;
-    margin-top: 60px;
-    margin: 60px auto 0;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .column {
     display: flex;
@@ -574,7 +573,10 @@ a {
     margin-left: 119px;
 }
 .input-container {
-    margin-bottom: 28px
+    /*margin-bottom: 28px*/
+    width: 330px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .input-container label {
@@ -674,4 +676,19 @@ a {
   color: #4fb4fe;
   font: 500 20px/170% "Montserrat", sans-serif;
   text-decoration: underline;
+}
+
+.error-container {
+  color: #ff4242;
+  text-align: center;
+  font: 500 14px/170% "Montserrat", sans-serif;
+  position: relative;
+  font-style: normal;
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-message {
+  box-sizing: border-box;
 }
