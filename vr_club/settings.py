@@ -102,7 +102,10 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 LOGIN_REDIRECT_URL = "/users/"
 LOGOUT_REDIRECT_URL = "/users/"
-ACCOUNT_FORMS = {"signup": "users.forms.CustomSignupForm"}
+ACCOUNT_FORMS = {
+    "signup": "users.forms.CustomSignupForm",
+    "login": "users.forms.CustomLoginForm",
+}
 
 
 MIDDLEWARE = [
