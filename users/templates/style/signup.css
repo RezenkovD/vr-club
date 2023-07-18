@@ -45,7 +45,7 @@ a {
     margin-right: 12px;
 }
 
-.item a {
+.item:not(:nth-child(8)):not(:nth-child(9)) a {
     color: #FFF;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
