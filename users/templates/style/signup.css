@@ -554,14 +554,21 @@ a {
   box-sizing: border-box;
 }
 .oga {
-  color: #4fb4fe;
   text-align: center;
   font: 500 20px/170% "Montserrat", sans-serif;
-  text-decoration: underline;
   position: relative;
-  max-width: 634px;
-  width: 100%;
+  width: 634px;
 }
+.oga .span {
+  color: #ffffff;
+  font: 500 20px/170% "Montserrat", sans-serif;
+}
+.oga .span2 {
+  color: #4fb4fe;
+  font: 500 20px/170% "Montserrat", sans-serif;
+  text-decoration: underline;
+}
+
 
 .frame-23,
 .frame-23 * {

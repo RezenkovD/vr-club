@@ -452,9 +452,12 @@
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <div class="sub-flex-container">
-                    <a href="{{ login_url }}">
-                        <div class="oga">Вже маю обліковий запис. Увійти!</div>
-                    </a>
+                    <div class="oga">
+                      <span>
+                          <span class="span">Вже маю обліковий запис. </span>
+                          <a href="{{ login_url }}"><span class="span2">Увійти!</span></a>
+                      </span>
+                    </div>
                     <button class="btn-blue" type="submit">Зареєструватись</button>
                     <div class="or">АБО ЗАРЕЄСТРУВАТИСЬ ЧЕРЕЗ</div>
                     <div class="frame-99">
