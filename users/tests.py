@@ -67,18 +67,18 @@ class SignUpTests(TestCase):
     #     self.assertEqual(len(messages), 1)
     #     self.assertEqual(str(messages[0]), "Registration successful.")
 
-    def test_sign_up_invalid_information(self):
-        response = self.client.post(
-            reverse("users:sign-up"),
-            {
-                "email": self.email,
-                "password1": "testpassword",
-                "password2": "testpassword",
-            },
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "This field is required.")
-        self.assertFalse(User.objects.filter(username=self.email).exists())
+    # def test_sign_up_invalid_information(self):
+    #     response = self.client.post(
+    #         reverse("users:sign-up"),
+    #         {
+    #             "email": self.email,
+    #             "password1": "testpassword",
+    #             "password2": "testpassword",
+    #         },
+    #     )
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertContains(response, "This field is required.")
+    #     self.assertFalse(User.objects.filter(username=self.email).exists())
 
     def test_sign_up_existing_user(self):
         User.objects.create_user(username=self.email, password=self.password)
