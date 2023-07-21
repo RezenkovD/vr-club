@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Count
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 from .forms import BookingForm
 from .models import Booking, BookingTime, ACTUAL, OUTDATED
@@ -11,10 +12,14 @@ from .utils import available__slots
 
 
 def home(request):
-    return render(request, "site/index.html")
+    signup_url = reverse("account_signup")
+    login_url = reverse("account_login")
+    return render(
+        request, "site/index.html", {"signup_url": signup_url, "login_url": login_url}
+    )
 
 
-@login_required(login_url="users:sign-in")
+@login_required(login_url="/users/login/")
 def booking_view(request):
     if request.method == "POST":
         form = BookingForm(request.POST)

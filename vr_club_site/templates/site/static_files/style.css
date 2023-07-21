@@ -1,38 +1,94 @@
-*,
-*::after,
-*::before {
-    box-sizing: border-box;
-}
-
 body {
+    background: #010103;
+    height: 100%;
     margin: 0;
+    padding: 0;
     font-family: " Montserrat", sans-serif;
 }
 
-header {
-    background: #010103;
-    width: 1440px;
-    height: 1080px;
-    margin: 0 auto
+a {
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.wrapper {
-    width: 1420px;
-    height: 860px;
-    flex-shrink: 0;
-    margin: 0 auto;
-    background: #010103 url("man-experiencing-virtual-reality-close-up.png") no-repeat -53px 64px;
-}
-
-.btn-transparent {
-    margin-right: 100px;
-    margin-top: 16px;
-
-    width: 228px;
+.header-container {
+    width: 100%;
+    max-width: 1240px;
     height: 48px;
+    flex-shrink: 0;
+    position: sticky;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item {
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.item:first-child {
+    margin-right: 40px;
+}
+
+.item:not(:first-child):not(:nth-child(7)):not(:last-child) {
+    margin-right: 56px;
+}
+
+.item:nth-child(7) {
+    margin-right: 56px;
+}
+
+.item:not(:first-child):not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:nth-child(5)):not(:nth-child(6)):not(:nth-child(7)) {
+    margin-right: 12px;
+}
+
+.item:not(:nth-child(8)):not(:nth-child(9)) a {
+    color: #FFF;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.logo {
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.logo-span {
+    color: #4fb4fe;
+    font: 700 24px "Montserrat", sans-serif;
+}
+
+.logo-span2 {
+    color: #ffffff;
+    font: 700 24px "Montserrat", sans-serif;
+}
+
+.btn-sign-up,
+.btn-sign-up * {
+    box-sizing: border-box;
+}
+
+.btn-sign-up {
     border-radius: 100px;
-    border: 1px solid #FFF;
-    padding: 12px 25px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    width: 198px;
+    height: 48px;
+    position: relative;
+
+    padding: 11px;
 
     color: #FFF;
     text-align: center;
@@ -42,11 +98,271 @@ header {
     line-height: 150.521%;
     text-transform: uppercase;
     text-decoration: none;
-
     cursor: pointer;
 }
 
-.btn-blue {
+
+.btn-sign-in,
+.btn-sign-in * {
+    box-sizing: border-box;
+}
+
+.btn-sign-in {
+    width: 122px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+
+    padding: 12px 32px 12px 31px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.footer-container {
+    width: 100%;
+    max-width: 1241px;
+    height: 139px;
+
+    position: sticky;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 44px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.footer-container .first-item {
+    width: 203px;
+    height: 139px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.frame-112,
+.frame-112 * {
+    box-sizing: border-box;
+}
+
+.frame-112 {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.text {
+    color: #ffffff;
+    text-align: left;
+    font: 700 24px "Montserrat", sans-serif;
+    position: relative;
+    width: 107px;
+    height: 29px;
+}
+
+.phone-number {
+    color: #ffffff;
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    position: relative;
+    width: 203px;
+    height: 26px;
+}
+
+.frame-111,
+.frame-111 * {
+    box-sizing: border-box;
+}
+
+.frame-111 {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+    width: 140px;
+    height: 36px;
+}
+
+.footer-container .second-item {
+    width: 413px;
+    height: 100px;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 160px;
+    position: absolute;
+    left: 389px;
+    bottom: 39px;
+}
+
+.frame-114,
+.frame-114 * {
+    box-sizing: border-box;
+}
+
+.frame-114 {
+    display: flex;
+    flex-direction: row;
+    gap: 160px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.frame-108 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.o1 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 141px;
+    height: 20px;
+}
+
+.o2 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 86px;
+    height: 20px;
+}
+
+.o3 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 113px;
+    height: 20px;
+}
+
+.frame-109 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.o4 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 112px;
+    height: 20px;
+}
+
+.o5 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 76px;
+    height: 20px;
+}
+
+.o6 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 81px;
+    height: 20px;
+}
+
+.footer-container .third-item {
+    width: 295px;
+    height: 103px;
+    display: inline-flex;
+    align-items: flex-start;
+    position: absolute;
+    left: 946px;
+    bottom: 36px;
+    flex-direction: column;
+}
+
+
+._32,
+._32 * {
+    box-sizing: border-box;
+}
+
+._32 {
+    color: #ffffff;
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    position: relative;
+    width: 295px;
+    height: 29px;
+    margin-bottom: 16px;
+}
+
+
+._33,
+._33 * {
+    box-sizing: border-box;
+}
+
+._33 {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: left;
+    font: 500 16px "Montserrat", sans-serif;
+    position: relative;
+    width: 255px;
+    height: 20px;
+    margin-bottom: 12px;
+}
+
+._34,
+._34 * {
+    box-sizing: border-box;
+}
+
+._34 {
+    color: #ffffff;
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    position: relative;
+    width: 270px;
+    height: 26px;
+}
+
+.main-btn-blue {
+    margin-top: 36px;
     width: 290px;
     height: 56px;
     border-radius: 100px;
@@ -62,92 +378,809 @@ header {
     text-transform: uppercase;
 
     text-decoration: none;
-
+    position: absolute;
     border: none;
     cursor: pointer;
-
+    z-index: 1;
     box-shadow: 0 0 10px 0 #4FB4FE;
 }
 
-nav {
-    height: 64px;
-    display: flex;
-    justify-content: flex-start;
+
+.photo-back {
+    margin-top: 13px;
+    margin-left: 435px;
+    width: 1352px;
+    height: 851px;
+    background-image: url(man-experiencing-virtual-reality-close-up.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
 }
 
-nav .logo {
-    margin-left: 100px;
-    margin-top: 26px;
-    width: 107px;
-    height: 29px;
-    color: #FFF;
-    font-size: 24px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
+.content {
+    position: absolute;
+    margin-left: -95px;
+    margin-top: 107px;
 }
 
-nav ul {
-    margin-top: 30px;
-    width: auto;
-    height: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 64px;
-    list-style: none;
+.blur-32,
+.blur-32 * {
+    box-sizing: border-box;
 }
 
-nav ul li:first-child {
-    margin-left: 64px;
-}
-
-
-nav ul li:last-child {
-    margin-right: 101px;
+.blur-32 {
+    background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 85%);
+    width: 1920px;
+    height: 497px;
+    position: sticky;
+    margin-top: 503px;
+    z-index: 0;
 }
 
 
-nav ul li a {
-    color: #FFF;
-    font-size: 16px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500;
-    text-decoration: none;
+.vr-club,
+.vr-club * {
+    box-sizing: border-box;
 }
 
-
-.main-section h1 {
-    text-align: center;
-    margin-left: 126px;
-    margin-right: 127px;
+.vr-club {
+    color: #ffffff;
+    text-align: left;
+    font: 800 88px "Montserrat", sans-serif;
+    position: relative;
     width: 1187px;
     height: 223px;
-    color: #FFF;
-    font-size: 88px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
 }
 
-.main-section p {
-    margin-left: 439px;
-    margin-right: 439px;
+.sub-vr-club,
+.sub-vr-club * {
+    box-sizing: border-box;
+}
+
+.sub-vr-club {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: left;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
     width: 562px;
     height: 61px;
+}
+
+.booking {
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    text-align: center;
+    font: 700 48px "Montserrat", sans-serif;
+    position: relative;
+    width: 1187px;
+    height: 65px;
+}
+
+
+/* START CALENDAR */
+.calendar {
+    width: 738px;
+}
+
+.month {
+    color: #ffffff;
+    text-align: center;
+    font: 600 24px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: 33px;
+}
+
+.weekdays {
+    margin-top: 46px;
+    opacity: 0.5;
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.weekdays div {
+    color: #ffffff;
+    text-align: center;
+    font: 500 18px/150% "Montserrat", sans-serif;
+    position: relative;
+    width: 33px;
+    height: 31px;
+}
+
+/*  */
+.days {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.month-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 738px;
+}
+
+/*  */
+.item1 {
+    cursor: pointer;
+}
+
+.item3 {
+    cursor: pointer;
+}
+
+.button-m,
+.button-m * {
+    box-sizing: border-box;
+}
+
+.button-m {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.name-month {
+    color: #4fb4fe;
+    text-align: left;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: 33px;
+}
+
+.caret-right {
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+    bottom: 1px;
+}
+
+.caret-left {
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+    bottom: 1px;
+}
+
+/* Calendar */
+.wrap,
+.wrap * {
+    box-sizing: border-box;
+}
+
+.wrap {
+    width: 102px;
+    height: 102px;
+    position: static;
+}
+
+.transparent-wrap,
+.transparent-wrap * {
+    box-sizing: border-box;
+}
+
+.transparent-wrap {
+    width: 102px;
+    height: 102px;
+    position: static;
+    opacity: 0;
+}
+
+.no-change {
+    background: rgba(79, 180, 254, 0.2);
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.us-background {
+    background: rgba(79, 180, 254, 0.2);
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.blue-background {
+    background: #4fb4fe;
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.old-day {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+    font: 500 24px/150% "Montserrat", sans-serif;
+    position: relative;
+    padding-top: 8px;
+    padding-left: 12px;
+    cursor: default;
+}
+
+.base-day {
+    color: #4FB4FE;
+    font: 500 24px/150% "Montserrat", sans-serif;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 12px;
+    cursor: default;
+}
+
+.today {
+    color: #001729;
+    font: 500 24px/150% "Montserrat", sans-serif;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 12px;
+    cursor: default;
+}
+
+.wrap:hover .blue-background {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.wrap:hover .us-background {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.wrap:hover .today {
+    color: #001729;
+}
+
+.wrap:hover .base-day {
+    color: #001729;
+}
+
+.count_place,
+.count_place * {
+    box-sizing: border-box;
+}
+
+.count_place {
+    color: #001729;
+    text-align: left;
+    font: 500 18px/150% "Montserrat", sans-serif;
+    position: relative;
+    height: 25px;
+    padding-left: 12px;
+    padding-top: 54px;
+}
+
+.flex-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* END CALENDAR */
+
+/* START GAME */
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+.wrapper {
+    max-width: 1595px;
+    width: 100%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 46px;
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc(100% / 5);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    /* gap: 24px; */
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel :where(.card, .img) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    height: 366px;
+    width: 299px;
+    list-style: none;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1550px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 4) - 9px);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 3) - 9px);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+}
+
+.carousel {
+    scroll-behavior: smooth;
+    transition: scroll 0.4s ease-in-out;
+}
+
+.carousel.no-transition {
+    transition: none;
+}
+
+/* Game */
+.game-card,
+.game-card * {
+    box-sizing: border-box;
+}
+
+.game-card {
+    flex-shrink: 0;
+    width: 299px;
+    height: 366px;
+    position: relative;
+}
+
+.group-1 {
+    width: 299px;
+    height: 366px;
+    position: relative;
+}
+
+.game-image {
+    border-radius: 24px;
+    border-style: solid;
+    border-color: var(--white, #f1f1f1);
+    border-width: 1px;
+    width: 299px;
+    height: 366px;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+.overlay {
+    background: linear-gradient(0.31deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 83.64582061767578%);
+    border-radius: 24px;
+    border-style: solid;
+    border-color: var(--white, #f1f1f1);
+    border-width: 1px;
+    width: 299px;
+    height: 366px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.game-title {
+    color: var(--white, #f1f1f1);
+    text-align: left;
+    font: 600 20px "Montserrat", sans-serif;
+    position: absolute;
+    left: 15.98px;
+    top: 318px;
+    width: auto;
+}
+
+.age-group {
+    width: 43.96px;
+    height: 44px;
+    position: static;
+}
+
+.age-badge {
+    border-radius: 100px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    width: 43.96px;
+    height: 44px;
+    position: absolute;
+    left: 239.76px;
+    top: 16px;
+    color: var(--white, #f1f1f1);
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    line-height: 44px;
+    padding-left: 5px;
+}
+
+.player-count {
+    width: auto;
+    height: 24px;
+    position: static;
+}
+
+.player-badge-one {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    width: 84px;
+    height: 24px;
+    position: absolute;
+    left: 16px;
+    top: 282px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 14px "Montserrat", sans-serif;
+    line-height: 24px;
+}
+
+.player-badge-two {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    width: 105px;
+    height: 24px;
+    position: absolute;
+    left: 16px;
+    top: 282px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 14px "Montserrat", sans-serif;
+    line-height: 24px;
+}
+
+.rectangle-12,
+.rectangle-12 * {
+    box-sizing: border-box;
+}
+
+.rectangle-12 {
+    background: rgba(1, 1, 3, 0.7);
+    border-radius: 24px;
+    border-style: solid;
+    border-color: var(--white, #f1f1f1);
+    border-width: 1px;
+    width: 299.3px;
+    height: 366px;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0;
+}
+
+/* Details */
+.game-card:hover .rectangle-12 {
+    opacity: 1;
+    /* Показати затемнення при наведенні */
+}
+
+/* Додайте анімацію переходу для елементів, які будуть змінюватися при наведенні */
+.game-title,
+.player-badge-one,
+.descriptions,
+.btn-blue,
+.btn-play {
+    transition: transform 0.3s ease-in-out;
+}
+
+.game-title,
+.player-badge-two,
+.descriptions,
+.btn-blue,
+.btn-play {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Змініть позиціонування елементів при наведенні */
+.game-card:hover .game-title {
+    transform: translateY(-262px);
+    /* Підняти заголовок вгору при наведенні */
+}
+
+.game-card:hover .player-badge-one {
+    transform: translateY(-262px);
+    /* Підняти кількість гравців вгору при наведенні */
+}
+
+.game-card:hover .player-badge-two {
+    transform: translateY(-262px);
+    /* Підняти кількість гравців вгору при наведенні */
+}
+
+.descriptions,
+.descriptions * {
+    box-sizing: border-box;
+}
+
+.descriptions {
+    color: var(--white, #f1f1f1);
+    text-align: left;
+    font: 500 14px "Montserrat", sans-serif;
+    position: relative;
+    width: 268px;
+    height: 157px;
+    padding-left: 15.3px;
+    opacity: 0;
+}
+
+.game-card:hover .descriptions {
+    opacity: 1;
+    transform: translateY(-274px);
+}
+
+/* Button */
+.btn-blue {
+    margin-left: 15.3px;
+    opacity: 0;
+
+    width: 212px;
+    height: 44px;
+    border-radius: 100px;
+    background: #4FB4FE;
     color: #FFF;
     text-align: center;
-    font-size: 24px;
+    font-size: 16px;
     font-family: "Montserrat", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.game-card:hover .btn-blue {
+    opacity: 1;
+    transform: translateY(-224px);
+}
+
+/* Last */
+
+.btn-play,
+.btn-play * {
+    box-sizing: border-box;
+}
+
+.btn-play {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    margin-left: 239.3px;
+    /* bottom: 268px; */
+}
+
+.rectangle-32 {
+    border-radius: 100px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+}
+
+.rectangle-33 {
+    background: #4fb4fe;
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: 7px;
+}
+
+.ph-play-fill {
+    position: absolute;
+    overflow: visible;
+    margin: 13px;
+}
+
+.game-card:hover .btn-play {
+    opacity: 1;
+    transform: translateY(-268px);
+}
+
+/* END GAME */
+
+.games,
+.games * {
+    box-sizing: border-box;
+}
+
+.games {
+    color: #ffffff;
+    text-align: center;
+    font: 700 48px "Montserrat", sans-serif;
+    position: relative;
+    width: 1187px;
+    height: 65px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main-view-more {
+    margin-top: 46px;
+    position: relative;
+    width: 290px;
+    height: 56px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.view-more,
+.view-more * {
+    box-sizing: border-box;
+}
+
+.view-more {
+    width: 122px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+
+    padding: 12px 32px 12px 31px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* START Background */
+
+.intro_bg_block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-x: clip;
+}
+
+.ellipse-1,
+.ellipse-1 * {
+    box-sizing: border-box;
+}
+
+.ellipse-1 {
+    background: #ef7d1e;
+    border-radius: 50%;
+    width: 354px;
+    height: 354px;
+    position: absolute;
+    filter: blur(175px);
+    top: 88px;
+    left: -92px;
 }
 
 
-.main-section button {
-    margin-left: 575px;
-    margin-right: 575px;
+.ellipse-3,
+.ellipse-3 * {
+    box-sizing: border-box;
 }
 
-h1,
-p,
-button {
-    margin-bottom: 31px;
+.ellipse-3 {
+    background: #00a3ff;
+    border-radius: 50%;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(175px);
+    top: 382px;
+    left: 1601px;
+    z-index: 1;
 }
+
+.ellipse-4,
+.ellipse-4 * {
+    box-sizing: border-box;
+}
+
+.ellipse-4 {
+    background: #00a3ff;
+    border-radius: 50%;
+    opacity: 0.699999988079071;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(200px);
+    top: 1291px;
+    left: -198px;
+}
+
+.ellipse-5,
+.ellipse-5 * {
+    box-sizing: border-box;
+}
+
+.ellipse-5 {
+    background: #ef7d1e;
+    border-radius: 50%;
+    width: 299px;
+    height: 299px;
+    position: relative;
+    filter: blur(175px);
+    top: 1611px;
+    left: 1688px;
+}
+
+.first-object {
+    position: absolute;
+    transform: translate(-149.9px, -1029px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+.second-object {
+    position: relative;
+    transform: translate(-433.9px, 266.93px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+    z-index: 0;
+}
+
+.third-object {
+    position: absolute;
+    transform: translate(-643px, 558px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+
+/* END Background */
