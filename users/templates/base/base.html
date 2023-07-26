@@ -5,58 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VRCLUB</title>
-    <link rel="stylesheet" href="{% static 'style/signup.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'base/base.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
 </head>
 <body>
     <header>
         <div class="header-container">
-            <div class="item">
+            <div class="head-item">
                 <div class="logo">
-                    <a href="#"><span><span class="logo-span">VR</span><span class="logo-span2">CLUB</span></span></a>
+                    <a href="{% url 'site:home' %}"><span><span class="logo-span1">VR</span><span class="logo-span2">CLUB</span></span></a>
                 </div>
             </div>
-            <div class="item">
+            <div class="head-item">
                 <a href="#">Ігри</a>
             </div>
-            <div class="item">
+            <div class="head-item">
                 <a href="#">Пристрої</a>
             </div>
-            <div class="item">
+            <div class="head-item">
                 <a href="#">Ціни</a>
             </div>
-            <div class="item">
+            <div class="head-item">
                 <a href="#">Фотогалерея</a>
             </div>
-            <div class="item">
+            <div class="head-item">
                 <a href="#">Правила</a>
             </div>
-            <div class="item">
+            <div class="head-item">
                 <a href="#">Контакти</a>
             </div>
-            <div class="item">
-                <div class="btn-sign-up">Зареєструватись</div>
+            <div class="head-item">
+                <a href="{{ signup_url }}" class="btn-sign-up">Зареєструватись</a>
             </div>
-            <div class="item">
-                <div class="btn-sign-in">Увійти</div>
+            <div class="head-item">
+                <a href="{{ login_url }}" class="btn-sign-in">Увійти</a>
             </div>
         </div>
     </header>
-    <div class="other">
-        {% block other %}{% endblock %}
-    </div>
+    {% block main %}{% endblock %}
     <footer>
         <div class="footer-container">
-            <div class="first-item">
-                <div class="frame-112">
-                    <a href="#">
-                        <div class="text">VRCLUB</div>
+            <div class="foot-first">
+                <div class="foot-first-half">
+                    <a href="{% url 'site:home' %}">
+                        <div class="foot-first-half-logo">VRCLUB</div>
                     </a>
                     <a href="tel:+38 (098) 888 88 88" class="phone-number">+38 (098) 888 88 88</a>
                 </div>
-                <div class="frame-111">
+                <div class="social-networks">
                     <a href="#" class="svg-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
                             <circle cx="18" cy="18" r="18" fill="white" />
@@ -106,30 +105,25 @@
                     </a>
                 </div>
             </div>
-            <div class="second-item">
-                <div class="frame-114">
-                    <div class="frame-108">
-                        <a href="#" class="o1">Ігри</a>
-
-                        <a href="#" class="o2">Пристрої</a>
-
-                        <a href="#" class="o3">Ціни</a>
-                    </div>
-                    <div class="frame-109">
-                        <a href="#" class="o4">Фотогалерея</a>
-
-                        <a href="#" class="o5">Правила</a>
-
-                        <a href="#" class="o6">Контакти</a>
-                    </div>
+            <div class="foot-second">
+                <div class="foot-second-1">
+                    <a href="#" class="foot-item">Ігри</a>
+                    <a href="#" class="foot-item">Пристрої</a>
+                    <a href="#" class="foot-item">Ціни</a>
+                </div>
+                <div class="foot-second-2">
+                    <a href="#" class="foot-item">Фотогалерея</a>
+                    <a href="#" class="foot-item">Правила</a>
+                    <a href="#" class="foot-item">Контакти</a>
                 </div>
             </div>
-            <div class="third-item">
-                <div class="_32">м. Славута, вул. Бла-бла, 32</div>
-                <div class="_33">Для співпраці та пропозицій:</div>
-                <a href="mailto:slavuta.vrclub@gmail.com" class="_34">slavuta.vrclub@gmail.com</a>
+            <div class="foot-third">
+                <div class="place_">м. Славута, вул. Бла-бла, 32</div>
+                <div class="offer_">Для співпраці та пропозицій:</div>
+                <a href="mailto:slavuta.vrclub@gmail.com" class="mail_">slavuta.vrclub@gmail.com</a>
             </div>
         </div>
     </footer>
 </body>
+{% block script %}{% endblock %}
 </html>

@@ -3,10 +3,18 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, reverse
 
 from .forms import SignInForm, SignUpForm
 from .models import VISITOR, Profile
+
+
+def base(request):
+    signup_url = reverse("account_signup")
+    login_url = reverse("account_login")
+    return render(
+        request, "base/base.html", {"signup_url": signup_url, "login_url": login_url}
+    )
 
 
 def home(request):
