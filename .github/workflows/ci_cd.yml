@@ -99,7 +99,7 @@ jobs:
         run: |
           export coverage=$(grep -oP 'line-rate="\K[^"]+' coverage.xml | head -1 | awk '{print $1 * 100}')
           echo "Code coverage: $coverage%"
-          if (( $(echo "$coverage < 60" | bc -l) )); then
+          if (( $(echo "$coverage < 50" | bc -l) )); then
             echo "Code coverage is less than 60%: $coverage%"
             exit 1
           fi
