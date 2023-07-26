@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "users",
     "phonenumber_field",
-    "vr_club_app",
     "url_shortener",
     "vr_club_site",
     "vr_club_site.templatetags.custom_filters",
@@ -202,7 +201,6 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "vr_club_app/templates/"),
     os.path.join(BASE_DIR, "vr_club_site/templates/"),
     os.path.join(BASE_DIR, "users/templates/"),
 ]
