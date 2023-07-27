@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    "games",
+    "django_cleanup",
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -140,6 +142,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "vr_club.wsgi.application"
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
