@@ -1,0 +1,644 @@
+.game-panel {
+    display: flex;
+    width: 987px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    row-gap: 20px;
+    column-gap: 44px;
+}
+
+.game-card,
+.game-card * {
+    box-sizing: border-box;
+}
+
+.game-card {
+    flex-shrink: 0;
+    width: 299px;
+    height: 366px;
+    position: relative;
+}
+
+.group-1 {
+    width: 299px;
+    height: 366px;
+    position: relative;
+}
+
+.game-image {
+    border-radius: 24px;
+    border-style: solid;
+    border-color: var(--white, #f1f1f1);
+    border-width: 1px;
+    width: 299px;
+    height: 366px;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.overlay {
+    background: linear-gradient(0.31deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 83.64582061767578%);
+    border-radius: 24px;
+    border-style: solid;
+    border-color: var(--white, #f1f1f1);
+    border-width: 1px;
+    width: 299px;
+    height: 366px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.game-title {
+    color: var(--white, #f1f1f1);
+    text-align: left;
+    font: 600 20px "Montserrat", sans-serif;
+    position: absolute;
+    left: 15.98px;
+    top: 318px;
+    width: auto;
+}
+
+.age-group {
+    width: 43.96px;
+    height: 44px;
+    position: static;
+}
+
+.age-badge {
+    border-radius: 100px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    width: 43.96px;
+    height: 44px;
+    position: absolute;
+    left: 239.76px;
+    top: 16px;
+    color: var(--white, #f1f1f1);
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    line-height: 44px;
+    padding-left: 5px;
+}
+
+.player-count {
+    width: auto;
+    height: 24px;
+    position: static;
+}
+
+
+.player-badge {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    position: absolute;
+    left: 16px;
+    top: 282px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 14px "Montserrat", sans-serif;
+    line-height: 24px;
+    padding: 3px 8px;
+}
+
+.rectangle-12,
+.rectangle-12 * {
+    box-sizing: border-box;
+}
+
+.rectangle-12 {
+    background: rgba(1, 1, 3, 0.7);
+    border-radius: 24px;
+    border-style: solid;
+    border-color: var(--white, #f1f1f1);
+    border-width: 1px;
+    width: 299.3px;
+    height: 366px;
+    position: absolute;
+    bottom: 0px;
+    opacity: 0;
+}
+
+.game-card:hover .rectangle-12 {
+    opacity: 1;
+}
+/*.game-title,*/
+/*.player-badge,*/
+/*.descriptions,*/
+/*.btn-blue,*/
+/*.btn-play {*/
+/*    transition: transform 0.3s ease-in-out;*/
+/*}*/
+
+.game-card:hover .game-title {
+    transform: translateY(-262px);
+}
+
+.game-card:hover .player-badge {
+    transform: translateY(-262px);
+}
+
+.descriptions,
+.descriptions * {
+    box-sizing: border-box;
+}
+
+.descriptions {
+    color: var(--white, #f1f1f1);
+    text-align: left;
+    font: 500 14px "Montserrat", sans-serif;
+    position: relative;
+    width: 268px;
+    height: 157px;
+    padding-left: 15.3px;
+    opacity: 0;
+}
+
+.game-card:hover .descriptions {
+    opacity: 1;
+    transform: translateY(-274px);
+}
+
+.btn-blue {
+    margin-left: 15.3px;
+    opacity: 0;
+
+    width: 212px;
+    height: 44px;
+    border-radius: 100px;
+    background: #4FB4FE;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.game-card:hover .btn-blue {
+    opacity: 1;
+    transform: translateY(-224px);
+}
+
+.btn-play,
+.btn-play * {
+    box-sizing: border-box;
+}
+
+.btn-play {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    margin-left: 239.3px;
+    opacity: 0;
+}
+
+.rectangle-32 {
+    border-radius: 100px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 1px;
+    width: 44px;
+    height: 44px;
+    position: absolute;
+}
+
+.rectangle-33 {
+    background: #4fb4fe;
+    border-radius: 100px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin: 7px;
+}
+
+.ph-play-fill {
+    position: absolute;
+    overflow: visible;
+    margin: 13px;
+}
+
+.game-card:hover .btn-play {
+    opacity: 1;
+    transform: translateY(-268px);
+}
+
+.games,
+.games * {
+    box-sizing: border-box;
+}
+
+.games {
+    text-align: center;
+    font: 700 48px "Montserrat", sans-serif;
+    position: relative;
+    width: 1187px;
+    height: 65px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.span {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.span2 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.span3 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.calendar {
+    width: 738px;
+}
+
+.month {
+    color: #ffffff;
+    text-align: center;
+    font: 600 24px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: 33px;
+}
+
+.weekdays {
+    margin-top: 46px;
+    opacity: 0.5;
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.weekdays div {
+    color: #ffffff;
+    text-align: center;
+    font: 500 18px/150% "Montserrat", sans-serif;
+    position: relative;
+    width: 33px;
+    height: 31px;
+}
+
+.days {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.month-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 738px;
+}
+
+.item1 {
+    cursor: pointer;
+}
+
+.item3 {
+    cursor: pointer;
+}
+
+.button-m,
+.button-m * {
+    box-sizing: border-box;
+}
+
+.button-m {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.name-month {
+    color: #4fb4fe;
+    text-align: left;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: 33px;
+}
+
+.caret-right {
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+    bottom: 1px;
+}
+
+.caret-left {
+    flex-shrink: 0;
+    position: relative;
+    overflow: visible;
+    bottom: 1px;
+}
+
+.wrap,
+.wrap * {
+    box-sizing: border-box;
+}
+
+.wrap {
+    width: 102px;
+    height: 102px;
+    position: static;
+}
+
+.transparent-wrap,
+.transparent-wrap * {
+    box-sizing: border-box;
+}
+
+.transparent-wrap {
+    width: 102px;
+    height: 102px;
+    position: static;
+    opacity: 0;
+}
+
+.no-change {
+    background: rgba(79, 180, 254, 0.2);
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.us-background {
+    background: rgba(79, 180, 254, 0.2);
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.blue-background {
+    background: #4fb4fe;
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.old-day {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: left;
+    font: 500 24px/150% "Montserrat", sans-serif;
+    position: relative;
+    padding-top: 8px;
+    padding-left: 12px;
+    cursor: default;
+}
+
+.base-day {
+    color: #4FB4FE;
+    font: 500 24px/150% "Montserrat", sans-serif;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 12px;
+    cursor: default;
+}
+
+.today {
+    color: #001729;
+    font: 500 24px/150% "Montserrat", sans-serif;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 12px;
+    cursor: default;
+}
+
+.wrap:hover .blue-background {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.wrap:hover .us-background {
+    background: #ffffff;
+    border-radius: 12px;
+    width: 102px;
+    height: 102px;
+    position: absolute;
+}
+
+.wrap:hover .today {
+    color: #001729;
+}
+
+.wrap:hover .base-day {
+    color: #001729;
+}
+
+.count_place,
+.count_place * {
+    box-sizing: border-box;
+}
+
+.count_place {
+    color: #001729;
+    text-align: left;
+    font: 500 18px/150% "Montserrat", sans-serif;
+    position: relative;
+    height: 25px;
+    padding-left: 12px;
+    padding-top: 54px;
+}
+
+.flex-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-game,
+.all-game * {
+    box-sizing: border-box;
+}
+
+.all-game {
+    width: 200px;
+    height: 48px;
+    border-radius: 100px;
+    background: #4FB4FE;
+    padding: 13px 46px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 680px;
+    height: 48px;
+    gap: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fil-game,
+.fil-game * {
+    box-sizing: border-box;
+}
+
+.fil-game {
+    width: 200px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+    color: #FFF;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.intro_bg_block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-x: clip;
+}
+
+.ellipse-1,
+.ellipse-1 * {
+  box-sizing: border-box;
+}
+.ellipse-1 {
+    background: #ef7d1e;
+    border-radius: 50%;
+    width: 310px;
+    height: 310px;
+    position: absolute;
+    filter: blur(200px);
+    top: 744px;
+    left: 1765px;
+}
+
+.ellipse-2,
+.ellipse-2 * {
+  box-sizing: border-box;
+}
+.ellipse-2 {
+    border-radius: 50%;
+    width: 516px;
+    height: 516px;
+    position: absolute;
+    filter: blur(175px);
+    top: 326px;
+    left: 1205px;
+}
+
+.ellipse-3,
+.ellipse-3 * {
+  box-sizing: border-box;
+}
+.ellipse-3 {
+    background: #00a3ff;
+    border-radius: 50%;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(200px);
+    top: 335px;
+    right: 1705px;
+
+}
+
+.ellipse-4,
+.ellipse-4 * {
+  box-sizing: border-box;
+}
+.ellipse-4 {
+    background: #00a3ff;
+    border-radius: 50%;
+    width: 371px;
+    height: 371px;
+    position: fixed;
+    filter: blur(200px);
+    top: 2152px;
+    left: 1634px;
+}
+
+.group1,
+.group1 * {
+  box-sizing: border-box;
+}
+.group1 {
+    position: absolute;
+    transform: translate(-157.71px, -329.27px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+.group2,
+.group2 * {
+  box-sizing: border-box;
+}
+.group2 {
+    position: absolute;
+    transform: translate(1184px, 139.46px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+.group3,
+.group3 * {
+  box-sizing: border-box;
+}
+.group3 {
+    position: absolute;
+    transform: translate(-913px, 133.99px);
+    opacity: 0.11999999731779099;
+    overflow: visible;
+}
+
+.group4,
+.group4 * {
+  box-sizing: border-box;
+}
+.group4 {
+    position: fixed;
+    transform: translate(1024.91px, 826px);
+    opacity: 0.11999999731779099;
+    overflow: visible;
+}
