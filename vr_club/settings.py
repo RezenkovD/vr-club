@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    "games",
+    "django_cleanup",
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -133,6 +135,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -140,6 +143,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "vr_club.wsgi.application"
 STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -205,6 +211,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "vr_club_site/templates/"),
     os.path.join(BASE_DIR, "users/templates/"),
+    os.path.join(BASE_DIR, "games/templates/"),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

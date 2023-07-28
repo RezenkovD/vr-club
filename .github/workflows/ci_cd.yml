@@ -268,6 +268,9 @@ jobs:
                   location /static/ {
                     alias /var/www/vr-club/static/;
                   }
+                  location /media/ {
+                    alias /var/www/vr-club/media/;
+                  }
                 }" > /etc/nginx/sites-available/vr-club
                     
                 sudo ln -s /etc/nginx/sites-available/vr-club /etc/nginx/sites-enabled
