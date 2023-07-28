@@ -471,12 +471,12 @@
     align-items: center;
 }
 
-.all-game,
-.all-game * {
+.all-games,
+.all-games * {
     box-sizing: border-box;
 }
 
-.all-game {
+.all-games {
     width: 200px;
     height: 48px;
     border-radius: 100px;
@@ -508,12 +508,12 @@
     margin-right: auto;
 }
 
-.fil-game,
-.fil-game * {
+.fil-games,
+.fil-games * {
     box-sizing: border-box;
 }
 
-.fil-game {
+.fil-games {
     width: 200px;
     height: 48px;
     border-radius: 100px;
@@ -528,6 +528,7 @@
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+    z-index: 1;
 }
 
 .intro_bg_block {

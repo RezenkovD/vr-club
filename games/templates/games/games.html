@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'style/games.css' %}">
 {% endblock %}
 {% block main %}
-<div class="intro_bg_block">
+<div class="intro_bg_block">0
 <div class="ellipse-1"></div>
 <div class="ellipse-2"></div>
 <div class="ellipse-3"></div>
@@ -583,9 +583,9 @@
         </span>
     </div>
     <div class="filter" style="margin-top: 44px">
-        <button class="all-game" onclick="redirectToBooking()">Усі ігри</button>
-        <div class="fil-game" onclick="redirectToBooking()">Мультиплеєр</div>
-        <div class="fil-game" onclick="redirectToBooking()">Для ОДНОГО</div>
+        <button class="all-games" id="both">Усі ігри</button>
+        <div class="fil-games" id="multiplayer">Мультиплеєр</div>
+        <div class="fil-games" id="single">Для ОДНОГО</div>
     </div>
     <div class="game-panel" style="margin-top: 44px">
         {% for game in games %}
@@ -654,6 +654,60 @@
     </section>
 {% endblock %}
 {% block script %}
+<script>
+  function getFilteredGames(gameMode) {
+    fetch(`{% url 'api/games:filter_games' %}?game_mode=${gameMode}`, {
+      method: "GET",
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const gamePanel = document.querySelector(".game-panel");
+        gamePanel.innerHTML = '';
+
+        for (const game of data.context) {
+          const gameCardHTML = `
+                  <div class="game-card">
+                  <div class="group-1">
+                  <img class="game-image" src="/media/${game.image}" />
+                  <div class="overlay"></div>
+                  <div class="rectangle-12"></div>
+                  </div>
+                  <div class="game-title">${game.title}</div>
+                  <div class="age-badge">${game.age_category}</div>
+                  <div class="player-badge">Гравців:${game.players}</div>
+                  <div class="descriptions">
+                  ${game.description}
+                  </div>
+                  <button class="btn-blue" type="submit">Забронювати</button>
+                  <div class="btn-play">
+                  <div class="rectangle-32"></div>
+                  <div class="rectangle-33"></div>
+                  <svg class="ph-play-fill" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                  d="M16.875 8.99998C16.8755 9.19097 16.8265 9.37883 16.7329 9.54529C16.6392 9.71174 16.5041 9.85114 16.3406 9.94991L6.21 16.1472C6.0392 16.2518 5.84358 16.3089 5.64334 16.3126C5.44309 16.3163 5.24549 16.2665 5.07094 16.1683C4.89805 16.0717 4.75402 15.9307 4.65368 15.7599C4.55333 15.5891 4.50029 15.3947 4.5 15.1966V2.80334C4.50029 2.60526 4.55333 2.41083 4.65368 2.24005C4.75402 2.06927 4.89805 1.92829 5.07094 1.83163C5.24549 1.73343 5.44309 1.68362 5.64334 1.68733C5.84358 1.69103 6.0392 1.74813 6.21 1.85272L16.3406 8.05006C16.5041 8.14883 16.6392 8.28822 16.7329 8.45468C16.8265 8.62114 16.8755 8.809 16.875 8.99998Z"
+                  fill="#0E0E11"></path>
+                  </svg>
+                  </div>
+                  </div>
+              `;
+          gamePanel.insertAdjacentHTML('beforeend', gameCardHTML);
+        }
+      });
+  }
+  document.getElementById("both").addEventListener("click", function () {
+    getFilteredGames("both");
+  });
+  document.getElementById("multiplayer").addEventListener("click", function () {
+    getFilteredGames("multiplayer");
+  });
+  document.getElementById("single").addEventListener("click", function () {
+    getFilteredGames("single");
+  });
+  getFilteredGames("both");
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const monthDiv = document.getElementById("month");

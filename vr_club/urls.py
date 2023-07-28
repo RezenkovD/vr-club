@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("url_shortener.urls")),
     path("site/", include("vr_club_site.urls")),
     path("users/", include("allauth.urls")),
+    path("api/games/", include("games.urls")),
 ]
 
 if settings.DEBUG:
