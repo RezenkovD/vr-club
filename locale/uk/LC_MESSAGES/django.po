@@ -23,7 +23,7 @@ msgstr ""
 #: account/adapter.py:47
 msgid "Username can not be used. Please use other username."
 msgstr ""
-"Ім'я користувача не може бути використаним. Будь ласка, оберіть інше ім'я "
+"Ім'я користувача не може бути використане. Будь ласка, оберіть інше ім'я "
 "користувача."
 
 #: account/adapter.py:53
@@ -376,7 +376,7 @@ msgstr "Зареєструватись"
 
 #: templates/account/email.html:5 templates/account/email.html:8
 msgid "E-mail Addresses"
-msgstr "E-mail адреса"
+msgstr "E-mail адреси"
 
 #: templates/account/email.html:10
 msgid "The following e-mail addresses are associated with your account:"
@@ -593,7 +593,7 @@ msgstr "Ви впевнені, що бажаєте вийти?"
 #: templates/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
 msgid "You cannot remove your primary e-mail address (%(email)s)."
-msgstr "Ви можете видалити Вашу основну e-mail адресу (%(email)s)."
+msgstr "Ви не можете видалити Вашу основну e-mail адресу (%(email)s)."
 
 #: templates/account/messages/email_confirmation_sent.txt:2
 #, python-format
@@ -625,11 +625,11 @@ msgstr "Пароль успішно змінено."
 
 #: templates/account/messages/password_set.txt:2
 msgid "Password successfully set."
-msgstr "Пароль успішно введено."
+msgstr "Пароль успішно встановлено."
 
 #: templates/account/messages/primary_email_set.txt:2
 msgid "Primary e-mail address set."
-msgstr "Основну e-mail адресу введено."
+msgstr "Основну e-mail адресу встановлено."
 
 #: templates/account/messages/unverified_primary_email.txt:2
 msgid "Your primary e-mail address must be verified."
@@ -668,7 +668,7 @@ msgstr "Відновити мій пароль"
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr ""
 "Будь ласка, зв'яжіться з нами, якщо у Вас виникли проблеми по відновленню "
-"паролю."
+"пароля."
 
 #: templates/account/password_reset_done.html:15
 #, fuzzy
@@ -763,7 +763,7 @@ msgid ""
 "receive the verification e-mail within a few minutes."
 msgstr ""
 "Ми надіслали Вам e-mail для підтвердження. Перейдіть за посиланням для "
-"звершення процесу реєстрації. Будь ласка, зв'яжіться з нами, якщо Ви не "
+"завершення процесу реєстрації. Будь ласка, зв'яжіться з нами, якщо Ви не "
 "отримаєте повідомлення впродовж декількох хвилин."
 
 #: templates/account/verified_email_required.html:12
