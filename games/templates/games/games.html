@@ -583,7 +583,7 @@
         </span>
     </div>
     <div class="filter" style="margin-top: 44px">
-        <button class="all-games" id="both">Усі ігри</button>
+        <div class="fil-games" id="both">Усі ігри</div>
         <div class="fil-games" id="multiplayer">Мультиплеєр</div>
         <div class="fil-games" id="single">Для ОДНОГО</div>
     </div>
@@ -677,7 +677,7 @@
                   </div>
                   <div class="game-title">${game.title}</div>
                   <div class="age-badge">${game.age_category}</div>
-                  <div class="player-badge">Гравців:${game.players}</div>
+                  <div class="player-badge">Гравців: ${game.players}</div>
                   <div class="descriptions">
                   ${game.description}
                   </div>
@@ -697,15 +697,25 @@
         }
       });
   }
+  const divs = document.querySelectorAll('.filter div');
+
   document.getElementById("both").addEventListener("click", function () {
     getFilteredGames("both");
+    divs.forEach(div => div.classList.remove("all-games"));
+    this.classList.add("all-games")
   });
   document.getElementById("multiplayer").addEventListener("click", function () {
     getFilteredGames("multiplayer");
+    divs.forEach(div => div.classList.remove("all-games"));
+    this.classList.add("all-games")
   });
   document.getElementById("single").addEventListener("click", function () {
     getFilteredGames("single");
+    divs.forEach(div => div.classList.remove("all-games"));
+    this.classList.add("all-games")
   });
+  const div = document.getElementById("both")
+  div.classList.add("all-games")
   getFilteredGames("both");
 </script>
 <script>
