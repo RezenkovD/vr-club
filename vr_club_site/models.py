@@ -47,3 +47,10 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.email + " " + str(self.price)
+
+
+class SessionSeats(models.Model):
+    number = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return "Сесійних місць: " + str(self.number)
