@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.models import User
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
@@ -20,6 +22,7 @@ class BookingTime(models.Model):
     status = models.CharField(
         max_length=2, choices=STATUS_CHOICES, null=False, default=ACTUAL
     )
+    date = models.DateField(default=date.today)
 
     def __str__(self):
         return "{0} | {1}".format(self.time, self.status)
