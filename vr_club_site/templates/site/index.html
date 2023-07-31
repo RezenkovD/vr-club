@@ -328,7 +328,7 @@
         <div class="blur-32"></div>
     </div>
 </section>
-<section style="height: auto; margin-top: 127px;">
+<section id="booking_" style="height: auto; margin-top: 127px;">
     <div class="booking">Забронюй час гри прямо зараз!</div>
     <div class="flex-calendar" style="margin-top: 44px;">
         <div class="month-nav">
@@ -537,10 +537,15 @@
         popup.style.display = 'none';
         body.style.overflow = 'auto';
     }
+
+    const buttons = document.querySelectorAll('.btn-blue');
+    buttons.forEach(button => {
+        button.addEventListener('click', openPopup);
+    });
 </script>
 <script>
     function redirectToBooking() {
-        window.location.href = "#";
+        window.location.href = "#booking_";
     }
     /* START CALENDAR */
     document.addEventListener("DOMContentLoaded", function () {
@@ -589,13 +594,13 @@
                 }
                 if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                     today = i;
-                    days += `<div class="wrap" onclick="openPopup()"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
+                    days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
                 } else {
                     if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                         days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
                     }
                     else {
-                        days += `<div class="wrap" onclick="openPopup()"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
+                        days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
                     }
                 }
             }

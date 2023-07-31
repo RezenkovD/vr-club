@@ -21,9 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("url_shortener.urls")),
-    path("site/", include("vr_club_site.urls")),
-    path("users/", include("allauth.urls")),
+    path("s/", include("url_shortener.urls")),
+    path("", include("vr_club_site.urls")),
+    path("", include("allauth.urls")),
     path("api/games/", include("games.urls")),
 ]
 
