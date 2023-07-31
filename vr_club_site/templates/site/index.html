@@ -328,7 +328,7 @@
         <div class="blur-32"></div>
     </div>
 </section>
-<section id="booking_" style="height: auto; margin-top: 127px;">
+<section id="booking" style="height: auto; margin-top: 127px;">
     <div class="booking">Забронюй час гри прямо зараз!</div>
     <div class="flex-calendar" style="margin-top: 44px;">
         <div class="month-nav">
@@ -365,7 +365,7 @@
     </div>
    {% include 'site/booking.html' %}
 </section>
-<section style="height: auto; margin-top: 149px;">
+<section id="games" style="height: auto; margin-top: 149px;">
     <div class="games">В що пограти?</div>
     <div class="wrapper">
         <ul class="carousel">
@@ -537,16 +537,21 @@
         popup.style.display = 'none';
         body.style.overflow = 'auto';
     }
-
-    const buttons = document.querySelectorAll('.btn-blue');
-    buttons.forEach(button => {
-        button.addEventListener('click', openPopup);
-    });
 </script>
 <script>
+    const buttons = document.querySelectorAll('.btn-blue');
+    buttons.forEach(button => {
+        button.addEventListener('click', redirectToBooking);
+     });
     function redirectToBooking() {
-        window.location.href = "#booking_";
+        window.location.href = "#booking";
     }
+    {# Delete #booking from url #}
+    window.onload = function() {
+        if (window.location.hash === "#booking") {
+            history.replaceState({}, document.title, window.location.pathname);
+        }
+    };
     /* START CALENDAR */
     document.addEventListener("DOMContentLoaded", function () {
         const monthDiv = document.getElementById("month");
@@ -659,8 +664,8 @@
         prevMonthBtn.addEventListener("click", prevMonth);
         nextMonthBtn.addEventListener("click", nextMonth);
     });
-
     /* END CALENDAR */
+
     /* START GAME */
     const wrapper = document.querySelector(".wrapper");
     const carousel = document.querySelector(".carousel");
