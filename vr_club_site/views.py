@@ -22,6 +22,8 @@ def home(request):
 
 @login_required(login_url="/users/login/")
 def booking_view(request):
+    signup_url = reverse("account_signup")
+    login_url = reverse("account_login")
     if request.method == "POST":
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -39,10 +41,12 @@ def booking_view(request):
                 available_slots = available__slots()
                 return render(
                     request,
-                    "site/booking.html",
+                    "site/index.html",
                     {
                         "form": form,
                         "available_slots": available_slots,
+                        "signup_url": signup_url,
+                        "login_url": login_url,
                     },
                 )
             if len(slots) == 2:
@@ -55,10 +59,12 @@ def booking_view(request):
                     available_slots = available__slots()
                     return render(
                         request,
-                        "site/booking.html",
+                        "site/index.html",
                         {
                             "form": form,
                             "available_slots": available_slots,
+                            "signup_url": signup_url,
+                            "login_url": login_url,
                         },
                     )
             invalid_slots = []
@@ -95,8 +101,6 @@ def booking_view(request):
             messages.error(request, "Будь ласка, оберіть слот, перед відправкою!")
     form = BookingForm()
     available_slots = available__slots()
-    signup_url = reverse("account_signup")
-    login_url = reverse("account_login")
     return render(
         request,
         "site/index.html",
