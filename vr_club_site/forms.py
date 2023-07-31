@@ -14,6 +14,13 @@ class BookingForm(forms.Form):
             }
         ),
     )
+    date = forms.DateField(
+        required=True,
+        input_formats=['%d-%m-%Y'],
+        widget=forms.DateInput(format='%d-%m-%Y', attrs={
+            "class": "form-control",
+        }),
+    )
     email = forms.EmailField(
         required=True,
         max_length=64,

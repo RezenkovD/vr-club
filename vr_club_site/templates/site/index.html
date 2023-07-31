@@ -524,7 +524,16 @@
 {% endblock %}
 {% block script %}
 <script>
-    function openPopup() {
+    function openPopup(day, month, year) {
+        // Передати гарну дату в popup
+        const dateDiv = document.querySelector('.booking-date');
+        // 01-01-2023 зробити 1 січня 2023. 31-07-2023 зробити 31 липня 2023
+        dateDiv.textContent = `${day}-${month}-${year}`;
+
+        // Передати дату в форму popup
+        const dateInput = document.getElementById('id_date');
+        dateInput.textContent = `${day}-${month}-${year}`;
+
         const popup = document.getElementById('popup');
         const body = document.querySelector('body');
         popup.style.display = 'block';

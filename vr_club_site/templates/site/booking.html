@@ -16,28 +16,22 @@
         <div class="title-popup" style="margin-top: 28px;">
             <div class="half-1">Оберіть зручний час для гри в клубі:</div>
             <div class="half-2" style="margin-top: 8px;">м. Славута, вул. Бла-бла, 32</div>
-            <div class="booking-date" style="margin-top: 20px;">
-                28 червня 2023
-            </div>
+            <div class="booking-date" style="margin-top: 20px;">01-01-2023</div>
             <form id="bookingForm" method="post" style="margin-top: 24px;">
                 {% csrf_token %}
                 <div class="form-group">
                     {% for slot, av_slot in form.slots|zip:available_slots %}
-                        {% if av_slot > 0 %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    {{ slot }}
-                                </label>
-                                <label class="av_slots" style="margin-left: 12px">{{ av_slot }} місця </label>
-                            </div>
-                        {% else %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    {{ slot }}
-                                </label>
-                                <label class="av_slots" style="margin-left: 12px"></label>
-                            </div>
-                        {% endif %}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                {{ slot }}
+                            </label>
+                            <label class="av_slots" style="margin-left: 12px">
+                                {% if av_slot > 0 %}
+                                {{ av_slot }} місця
+                                {% else %}
+                                {% endif %}
+                            </label>
+                        </div>
                     {% endfor %}
                 </div>
                 <div class="count-people-price" style="margin-top: 24px">
@@ -62,6 +56,18 @@
                             </div>
                         </label>
                         {{ form.name }}
+                    </div>
+                    <div class="input-container" style="margin-top: 21px;">
+                        <label for="{{ form.name.id_for_label }}" style="display: none;">
+                            <div class="frame-23">
+                                <span class="e1">Ваше ім’я</span>
+                                <span class="e2">*</span>
+                            </div>
+                        </label>
+                        {{ form.name }}
+                        <div style="display: none;">
+                            {{ form.date }}
+                        </div>
                     </div>
                     <div class="input-container" style="margin-top: 8px">
                         <label for="{{ form.email.id_for_label }}">
