@@ -20,7 +20,6 @@ def home(request):
     )
 
 
-@login_required(login_url="/users/login/")
 def booking_view(request):
     signup_url = reverse("account_signup")
     login_url = reverse("account_login")
