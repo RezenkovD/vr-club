@@ -6,12 +6,14 @@ from .models import Booking, BookingTime, ACTUAL
 from .models import SessionSeats
 
 
-def available__slots():
-    available_slots = []
+def get_available_slots():
+    _available_slots = []
+
     try:
         session_seats = SessionSeats.objects.latest("id").number
     except SessionSeats.DoesNotExist:
         session_seats = 1
+
     for x in BookingTime.TIME_CHOICES:
         try:
             slot = (
@@ -22,5 +24,5 @@ def available__slots():
             )
         except BookingTime.DoesNotExist:
             slot = 0
-        available_slots.append(session_seats - slot)
-    return tuple(available_slots)
+        _available_slots.append(session_seats - slot)
+    return tuple(_available_slots)

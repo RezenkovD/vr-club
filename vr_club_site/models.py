@@ -18,6 +18,7 @@ class BookingTime(models.Model):
     TIME_CHOICES = [
         (f"{hour}-{hour + 1}", f"{hour}.00-{hour + 1}.00") for hour in range(12, 22)
     ]
+
     time = models.CharField(max_length=5, choices=TIME_CHOICES, null=False)
     status = models.CharField(
         max_length=2, choices=STATUS_CHOICES, null=False, default=ACTUAL
@@ -49,7 +50,7 @@ class Booking(models.Model):
         return self.email + " " + str(self.price)
 
 
-class SessionSeats(models.Model):
+class SessionSeats(models.Model):  # TODO: Переформатувати таблицю в Settings table
     number = models.PositiveIntegerField(default=0)
 
     def __str__(self):

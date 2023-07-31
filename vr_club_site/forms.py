@@ -16,8 +16,8 @@ class BookingForm(forms.Form):
     )
     date = forms.DateField(
         required=True,
-        input_formats=['%d-%m-%Y'],
-        widget=forms.DateInput(format='%d-%m-%Y', attrs={
+        input_formats=["%d-%m-%Y"],
+        widget=forms.DateInput(format="%d-%m-%Y", attrs={
             "class": "form-control",
         }),
     )
