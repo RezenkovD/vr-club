@@ -821,3 +821,7 @@
 
 
 /* END Background */
+
+html {
+  scroll-behavior: smooth;
+}
