@@ -11,13 +11,13 @@ from .utils import get_available_slots, SessionSeats
 
 COST_SESSION = 200
 MAX_SESSION = 2
+SIGNUP_URL = reverse("account_signup")
+LOGIN_URL = reverse("account_login")
 
 
 def home(request):
-    signup_url = reverse("account_signup")
-    login_url = reverse("account_login")
     return render(
-        request, "site/index.html", {"signup_url": signup_url, "login_url": login_url}
+        request, "site/index.html", {"signup_url": SIGNUP_URL, "login_url": LOGIN_URL}
     )
 
 
@@ -47,7 +47,7 @@ def booking_view(request):
                 messages.error(request, "Сеанси мають бути суміжними")
                 return render_main_page()
 
-        people_count = form.cleaned_data["number_of_people"]
+        people_count = form.cleaned_data["number_of_people"]  # TODO: rename to people_count
         _has_invalid_slots = has_invalid_slots(request, people_count, slot_av_slots, slots)
 
         if not _has_invalid_slots:
@@ -78,9 +78,6 @@ def has_invalid_slots(request, people_count, slot_av_slots, slots):
 
 
 def render_main_page():
-    signup_url = reverse("account_signup")
-    login_url = reverse("account_login")
-
     form = BookingForm()
     _available_slots = get_available_slots()
     return render(
@@ -89,8 +86,8 @@ def render_main_page():
         {
             "form": form,
             "available_slots": _available_slots,
-            "signup_url": signup_url,
-            "login_url": login_url,
+            "signup_url": SIGNUP_URL,
+            "login_url": LOGIN_URL,
         },
     )
 
@@ -100,9 +97,9 @@ def book_session(slots, data_to_save):
         name=data_to_save["name"],
         email=data_to_save["email"],
         phone_number=data_to_save["phone_number"],
-        number_of_people=data_to_save["number_of_people"],
+        number_of_people=data_to_save["number_of_people"],  # TODO: rename to people_count
         comment=data_to_save["comment"],
-        price=COST_SESSION * data_to_save["number_of_people"] * len(slots),
+        price=COST_SESSION * data_to_save["number_of_people"] * len(slots),  # TODO: rename to people_count
     )
     booking.save()
 
