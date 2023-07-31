@@ -37,12 +37,15 @@
             <div class="head-item">
                 <a href="#">Контакти</a>
             </div>
+            {% if user.is_authenticated %}
+            {% else %}
             <div class="head-item">
                 <a href="{{ signup_url }}" class="btn-sign-up">Зареєструватись</a>
             </div>
             <div class="head-item">
                 <a href="{{ login_url }}" class="btn-sign-in">Увійти</a>
             </div>
+            {% endif %}
         </div>
     </header>
     {% block main %}{% endblock %}
