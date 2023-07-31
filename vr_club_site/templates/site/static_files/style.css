@@ -18,7 +18,7 @@
     position: absolute;
     border: none;
     cursor: pointer;
-    z-index: 1;
+    z-index: 0;
     box-shadow: 0 0 10px 0 #4FB4FE;
 }
 
