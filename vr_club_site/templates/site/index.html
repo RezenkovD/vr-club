@@ -589,13 +589,13 @@
                 }
                 if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                     today = i;
-                    days += `<div class="wrap" onclick="openPopup()"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
+                    days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
                 } else {
                     if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                         days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
                     }
                     else {
-                        days += `<div class="wrap" onclick="openPopup()"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
+                        days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
                     }
                 }
             }
