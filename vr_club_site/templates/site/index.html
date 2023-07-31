@@ -537,6 +537,11 @@
         popup.style.display = 'none';
         body.style.overflow = 'auto';
     }
+
+    const buttons = document.querySelectorAll('.btn-blue');
+    buttons.forEach(button => {
+        button.addEventListener('click', openPopup);
+    });
 </script>
 <script>
     function redirectToBooking() {
