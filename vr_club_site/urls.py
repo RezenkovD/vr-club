@@ -7,7 +7,7 @@ from games.views import games
 app_name = "site"
 
 urlpatterns = [
-    path("", home, name="home"),
-    path("booking/", booking_view, name="booking"),
+    # path("", home, name="home"),
+    path("", booking_view, name="home"),
     path("games/", games, name="games"),
 ]

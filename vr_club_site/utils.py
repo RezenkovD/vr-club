@@ -1,19 +1,26 @@
 from django.db.models import Count
+from django.db.models import Sum
+
 from .forms import BookingForm
 from .models import Booking, BookingTime, ACTUAL
+from .models import SessionSeats
 
 
-def available__slots(request):
-    user = request.user
+def available__slots():
     available_slots = []
+    try:
+        session_seats = SessionSeats.objects.latest("id").number
+    except SessionSeats.DoesNotExist:
+        session_seats = 1
     for x in BookingTime.TIME_CHOICES:
         try:
             slot = (
-                BookingTime.objects.filter(status=ACTUAL, time=x[0])
-                .exclude(booking__user=user)
-                .aggregate(count=Count("id"))["count"]
+                Booking.objects.filter(time__status=ACTUAL, time__time=x[0]).aggregate(
+                    total_people=Sum("number_of_people")
+                )["total_people"]
+                or 0
             )
         except BookingTime.DoesNotExist:
             slot = 0
-        available_slots.append(4 - slot)
+        available_slots.append(session_seats - slot)
     return tuple(available_slots)
