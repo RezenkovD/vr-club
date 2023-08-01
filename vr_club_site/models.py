@@ -25,7 +25,7 @@ class BookingTime(models.Model):
     date = models.DateField(default=date.today)
 
     def __str__(self):
-        return "{0} | {1}".format(self.time, self.status)
+        return "{0} | {1} | {2}".format(self.date, self.time, self.status)
 
 
 class Booking(models.Model):
@@ -48,7 +48,7 @@ class Booking(models.Model):
     time = models.ManyToManyField(BookingTime)
 
     def __str__(self):
-        return self.email + " " + str(self.price)
+        return "{0} | {1}".format(self.email, self.price)
 
 
 class SessionSeats(models.Model):  # TODO: Переформатувати таблицю в Settings table
