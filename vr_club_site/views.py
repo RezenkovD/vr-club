@@ -113,7 +113,7 @@ def book_session(slots, data_to_save):
     )
     booking.save()
     for slot in slots:
-        booking_time = BookingTime(time=slot, status=ACTUAL)
+        booking_time = BookingTime(time=slot, status=ACTUAL, date=data_to_save["date"])
         booking_time.save()
         # TODO: https://docs.djangoproject.com/en/3.0/ref/models/querysets/#bulk-create
         booking.time.add(booking_time)
