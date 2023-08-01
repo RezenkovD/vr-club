@@ -513,14 +513,26 @@
 {% block script %}
 <script>
     function openPopup(day, month, year) {
-        // Передати гарну дату в popup
         const dateDiv = document.querySelector('.booking-date');
-        // 01-01-2023 зробити 1 січня 2023. 31-07-2023 зробити 31 липня 2023
-        dateDiv.textContent = `${day}-${month}-${year}`;
+        const monthsNames = [
+            "січня",
+            "лютого",
+            "березня",
+            "квітня",
+            "травня",
+            "червня",
+            "липня",
+            "серпня",
+            "вересня",
+            "жовтня",
+            "листопада",
+            "грудня",
+        ];
 
-        // Передати дату в форму popup
+        dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
+
         const dateInput = document.getElementById('id_date');
-        dateInput.textContent = `${day}-${month}-${year}`;
+        dateInput.value = `${day}-${month}-${year}`;
 
         const popup = document.getElementById('popup');
         const body = document.querySelector('body');
@@ -592,17 +604,17 @@
             for (let i = 1; i <= daysInMonth; i++) {
                 number = i;
                 if (number < 10) {
-                    number = "0" + number
+                    number = "0" + number;
                 }
                 if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                     today = i;
-                    days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
+                    days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
                 } else {
                     if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                         days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
                     }
                     else {
-                        days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
+                        days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
                     }
                 }
             }
