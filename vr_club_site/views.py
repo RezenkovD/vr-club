@@ -26,8 +26,8 @@ def booking_view(request):
         if not form.is_valid():
             messages.error(request, "Будь ласка, оберіть слот, перед відправкою!")
             return render_main_page(request)
-
-        _available_slots = get_available_slots()
+        selected_date = form.cleaned_data["date"]
+        _available_slots = get_available_slots(selected_date)
         slot_av_slots = {
             y[0]: x for y, x in zip(BookingTime.TIME_CHOICES, _available_slots)
         }

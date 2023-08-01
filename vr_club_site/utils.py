@@ -4,7 +4,7 @@ from .models import Booking, BookingTime, ACTUAL
 from .models import SessionSeats
 
 
-def get_available_slots():
+def get_available_slots(selected_date=None):
     _available_slots = []
 
     try:
@@ -15,9 +15,9 @@ def get_available_slots():
     for x in BookingTime.TIME_CHOICES:
         try:
             slot = (
-                Booking.objects.filter(time__status=ACTUAL, time__time=x[0]).aggregate(
-                    total_people=Sum("number_of_people")
-                )["total_people"]
+                Booking.objects.filter(
+                    time__status=ACTUAL, time__time=x[0], time__date=selected_date
+                ).aggregate(total_people=Sum("number_of_people"))["total_people"]
                 or 0
             )
         except BookingTime.DoesNotExist:
