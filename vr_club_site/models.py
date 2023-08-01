@@ -48,8 +48,17 @@ class Booking(models.Model):
         return "{0} | {1}".format(self.email, self.price)
 
 
-class SessionSeats(models.Model):  # TODO: Переформатувати таблицю в Settings table
-    number = models.PositiveIntegerField(default=0)
+class Settings(models.Model):
+    VARIABLE_TYPES = (
+        ('str', 'String'),
+        ('int', 'Integer'),
+        ('decimal', 'Decimal'),
+        ('bool', 'Boolean'),
+    )
+
+    name = models.CharField(max_length=100, unique=True)
+    variable_type = models.CharField(max_length=10, choices=VARIABLE_TYPES)
+    value = models.TextField()
 
     def __str__(self):
-        return "Сесійних місць: " + str(self.number)
+        return f"{self.name}:{self.variable_type} = {self.value}"
