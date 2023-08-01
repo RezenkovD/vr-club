@@ -40,12 +40,12 @@
     z-index: 1;
 }
 
-.title-popap,
-.title-popap * {
+.title-popup,
+.title-popup * {
     box-sizing: border-box;
 }
 
-.title-popap {
+.title-popup {
     display: flex;
     flex-direction: column;
     align-items: center;

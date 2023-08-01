@@ -366,7 +366,7 @@
    {% include 'site/booking.html' %}
 </section>
 <section id="games" style="height: auto; margin-top: 149px;">
-    <div class="games">В що пограти?</div>
+    <div class="games">У що пограти?</div>
     <div class="wrapper">
         <ul class="carousel">
             <li class="card">
@@ -380,10 +380,7 @@
                     <div class="age-badge">10+</div>
                     <div class="player-badge-two">Гравців: 1 - 2</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Beat saber so cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -438,10 +435,7 @@
                     <div class="age-badge">13+</div>
                     <div class="player-badge-two">Гравців: 1 - 4</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Arizona Sunshine cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -467,10 +461,7 @@
                     <div class="age-badge">12+</div>
                     <div class="player-badge-one">Гравців: 1</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Fruit Ninja VR cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -496,10 +487,7 @@
                     <div class="age-badge">12+</div>
                     <div class="player-badge-one">Гравців: 1</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Job simulator cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -524,7 +512,16 @@
 {% endblock %}
 {% block script %}
 <script>
-    function openPopup() {
+    function openPopup(day, month, year) {
+        // Передати гарну дату в popup
+        const dateDiv = document.querySelector('.booking-date');
+        // 01-01-2023 зробити 1 січня 2023. 31-07-2023 зробити 31 липня 2023
+        dateDiv.textContent = `${day}-${month}-${year}`;
+
+        // Передати дату в форму popup
+        const dateInput = document.getElementById('id_date');
+        dateInput.textContent = `${day}-${month}-${year}`;
+
         const popup = document.getElementById('popup');
         const body = document.querySelector('body');
         popup.style.display = 'block';

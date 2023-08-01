@@ -1,97 +1,103 @@
-    <div id="popup" class="popup">
-        {% load static %}
-        {% load custom_filters %}
-        <link rel="stylesheet" href="{% static 'site/static_files/popap.css' %}">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <div class="popup-container">
-            <svg onclick="closePopup()" id="closePopup" class="close" width="32" height="32" viewBox="0 0 32 32" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M8.53317 25.3334L6.6665 23.4667L14.1332 16L6.6665 8.53335L8.53317 6.66669L15.9998 14.1334L23.4665 6.66669L25.3332 8.53335L17.8665 16L25.3332 23.4667L23.4665 25.3334L15.9998 17.8667L8.53317 25.3334Z"
-                    fill="black"></path>
-            </svg>
-            <div class="title-popap" style="margin-top: 28px;">
-                <div class="half-1">Оберіть зручний час для гри в клубі:</div>
-                <div class="half-2" style="margin-top: 8px;">м. Славута, вул. Бла-бла, 32</div>
-                <div class="booking-date" style="margin-top: 20px;">
-                    28 червня 2023
-                </div>
-                <form id="bookingForm" method="post" style="margin-top: 24px;">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {% for slot, av_slot in form.slots|zip:available_slots %}
-                            {% if av_slot > 0 %}
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        {{ slot }}
-                                    </label>
-                                    <label class="av_slots" style="margin-left: 12px">{{ av_slot }} місця </label>
-                                </div>
-                            {% else %}
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        {{ slot }}
-                                    </label>
-                                    <label class="av_slots" style="margin-left: 12px"></label>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="count-people-price" style="margin-top: 24px">
-                        <div class="number_of_people">Кількість осіб:</div>
-                        <div class="number-input" style="margin-left: 24px">
-                            <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                style="margin-left:16px"></div>
-                            <input class="quantity" min="1" name="number_of_people" value="1" type="number" required
-                                id="id_number_of_people">
-                            <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                class="Two plus" style="margin-right:16px"></div>
-                        </div>
-                        <span class="total_cost" id="total_cost" style="margin-left: auto">0.00 грн</span>
-                    </div>
-                    <div class="info-form">
-                        <div class="column">
-                        <div class="input-container" style="margin-top: 21px;">
-                            <label for="{{ form.name.id_for_label }}">
-                                <div class="frame-23">
-                                    <span class="e1">Ваше ім’я</span>
-                                    <span class="e2">*</span>
-                                </div>
+<div id="popup" class="popup">
+    {% load static %}
+    {% load custom_filters %}
+    <link rel="stylesheet" href="{% static 'site/static_files/popup.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <div class="popup-container">
+        <svg onclick="closePopup()" id="closePopup" class="close" width="32" height="32" viewBox="0 0 32 32" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M8.53317 25.3334L6.6665 23.4667L14.1332 16L6.6665 8.53335L8.53317 6.66669L15.9998 14.1334L23.4665 6.66669L25.3332 8.53335L17.8665 16L25.3332 23.4667L23.4665 25.3334L15.9998 17.8667L8.53317 25.3334Z"
+                fill="black"></path>
+        </svg>
+        <div class="title-popup" style="margin-top: 28px;">
+            <div class="half-1">Оберіть зручний час для гри в клубі:</div>
+            <div class="half-2" style="margin-top: 8px;">м. Славута, вул. Бла-бла, 32</div>
+            <div class="booking-date" style="margin-top: 20px;">01-01-2023</div>
+            <form id="bookingForm" method="post" style="margin-top: 24px;">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% for slot, av_slot in form.slots|zip:available_slots %}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                {{ slot }}
                             </label>
-                            {{ form.name }}
+                            <label class="av_slots" style="margin-left: 12px">
+                                {% if av_slot > 0 %}
+                                {{ av_slot }} місця
+                                {% else %}
+                                {% endif %}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="count-people-price" style="margin-top: 24px">
+                    <div class="number_of_people">Кількість осіб:</div>
+                    <div class="number-input" style="margin-left: 24px">
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                            style="margin-left:16px"></div>
+                        <input class="quantity" min="1" name="number_of_people" value="1" type="number" required
+                            id="id_number_of_people">
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                            class="Two plus" style="margin-right:16px"></div>
+                    </div>
+                    <span class="total_cost" id="total_cost" style="margin-left: auto">0.00 грн</span>
+                </div>
+                <div class="info-form">
+                    <div class="column">
+                    <div class="input-container" style="margin-top: 21px;">
+                        <label for="{{ form.name.id_for_label }}">
+                            <div class="frame-23">
+                                <span class="e1">Ваше ім’я</span>
+                                <span class="e2">*</span>
+                            </div>
+                        </label>
+                        {{ form.name }}
+                    </div>
+                    <div class="input-container" style="margin-top: 21px;">
+                        <label for="{{ form.name.id_for_label }}" style="display: none;">
+                            <div class="frame-23">
+                                <span class="e1">Ваше ім’я</span>
+                                <span class="e2">*</span>
+                            </div>
+                        </label>
+                        {{ form.name }}
+                        <div style="display: none;">
+                            {{ form.date }}
+                        </div>
+                    </div>
+                    <div class="input-container" style="margin-top: 8px">
+                        <label for="{{ form.email.id_for_label }}">
+                            <span class="e1">Електронна адреса</span>
+                            <span class="e2">*</span>
+                        </label>
+                        {{ form.email }}
+                    </div>
+                    </div>
+                    <div class="column">
+                        <div class="input-container" style="margin-top: 21px">
+                            <label for="{{ form.phone_number.id_for_label }}">
+                                <span class="e1">Номер телефону</span>
+                            </label>
+                            {{ form.phone_number }}
                         </div>
                         <div class="input-container" style="margin-top: 8px">
-                            <label for="{{ form.email.id_for_label }}">
-                                <span class="e1">Електронна адреса</span>
-                                <span class="e2">*</span>
+                            <label for="{{ form.comment.id_for_label }}">
+                                <span class="e1">Коментар</span>
                             </label>
-                            {{ form.email }}
-                        </div>
-                        </div>
-                        <div class="column">
-                            <div class="input-container" style="margin-top: 21px">
-                                <label for="{{ form.phone_number.id_for_label }}">
-                                    <span class="e1">Номер телефону</span>
-                                </label>
-                                {{ form.phone_number }}
-                            </div>
-                            <div class="input-container" style="margin-top: 8px">
-                                <label for="{{ form.comment.id_for_label }}">
-                                    <span class="e1">Коментар</span>
-                                </label>
-                                {{ form.comment }}
-                            </div>
+                            {{ form.comment }}
                         </div>
                     </div>
-                    <div style="margin-left: 214px; margin-top: 32px">
-                        <button class="main-btn-blue-pop">забронювати</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div style="margin-left: 214px; margin-top: 32px">
+                    <button class="main-btn-blue-pop">забронювати</button>
+                </div>
+            </form>
         </div>
+    </div>
 <script>
     document.getElementById('bookingForm').addEventListener('submit', function (event) {
         const numberOfPeopleInput = document.getElementById('id_number_of_people');
@@ -250,5 +256,4 @@
         calculateTotalCost();
     });
 </script>
-
-    </div>
+</div>
