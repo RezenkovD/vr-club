@@ -19,6 +19,9 @@
             <div class="booking-date" style="margin-top: 20px;">01-01-2023</div>
             <form id="bookingForm" method="post" style="margin-top: 24px;">
                 {% csrf_token %}
+                <div style="display: none;">
+                    {{ form.date }}
+                </div>
                 <div class="form-group">
                     {% for slot, av_slot in form.slots|zip:available_slots %}
                         <div class="form-check">
@@ -56,18 +59,6 @@
                             </div>
                         </label>
                         {{ form.name }}
-                    </div>
-                    <div class="input-container" style="margin-top: 21px;">
-                        <label for="{{ form.name.id_for_label }}" style="display: none;">
-                            <div class="frame-23">
-                                <span class="e1">Ваше ім’я</span>
-                                <span class="e2">*</span>
-                            </div>
-                        </label>
-                        {{ form.name }}
-                        <div style="display: none;">
-                            {{ form.date }}
-                        </div>
                     </div>
                     <div class="input-container" style="margin-top: 8px">
                         <label for="{{ form.email.id_for_label }}">
