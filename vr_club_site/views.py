@@ -112,12 +112,6 @@ def book_session(slots, data_to_save):
         * len(slots),  # TODO: rename to people_count
     )
     booking.save()
-
-    booking_slots = booking.time.all()  # TODO: Коли може бути?
-    for booking_slot in booking_slots:
-        booking_slot.status = OUTDATED
-        booking_slot.save()
-
     for slot in slots:
         booking_time = BookingTime(time=slot, status=ACTUAL)
         booking_time.save()
