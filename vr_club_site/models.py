@@ -42,7 +42,9 @@ class Booking(models.Model):
         null=True, blank=True, unique=False, default="+380000000000"
     )
     comment = models.CharField(max_length=256, null=True)
-    number_of_people = models.PositiveIntegerField(default=0)  # TODO: rename to people_count
+    number_of_people = models.PositiveIntegerField(
+        default=0
+    )  # TODO: rename to people_count
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     time = models.ManyToManyField(BookingTime)
 
