@@ -512,6 +512,29 @@
 {% endblock %}
 {% block script %}
 <script>
+    function getFilteredGames(date) {
+        fetch(`{% url 'site:get_available_slots' %}?date=${date}`, {
+            method: "GET",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                const avSlotsLabels = document.getElementsByClassName('av_slots');
+                for (let i = 0; i < avSlotsLabels.length; i++) {
+                    const avSlotElement = avSlotsLabels[i];
+                    const newAvSlotValue = data.available_slots[i];
+                    if (newAvSlotValue > 0) {
+                        avSlotElement.textContent = `${newAvSlotValue} місця`;
+                    } else {
+                        avSlotElement.textContent = "";
+                    }
+                }
+            });
+    }
+</script>
+<script>
     function openPopup(day, month, year) {
         const dateDiv = document.querySelector('.booking-date');
         const monthsNames = [
@@ -530,6 +553,8 @@
         ];
 
         dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
+
+        getFilteredGames(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
 
         const dateInput = document.getElementById('id_date');
         dateInput.value = `${day}-${month}-${year}`;

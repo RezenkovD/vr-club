@@ -2,6 +2,7 @@ from django.db import IntegrityError, transaction
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.urls import reverse
+from django.http import JsonResponse
 
 from .forms import BookingForm
 from .models import Booking, BookingTime, ACTUAL, OUTDATED
@@ -10,6 +11,13 @@ from .utils import get_available_slots
 
 COST_SESSION = 200
 MAX_SESSION = 2
+
+
+def get_available_slots_view(request):
+    if request.method == "GET":
+        selected_date = request.GET.get("date")
+        available_slots = get_available_slots(selected_date)
+        return JsonResponse({"available_slots": available_slots})
 
 
 def home(request):
