@@ -186,7 +186,7 @@ jobs:
                 sudo service nginx restart
             else
                 sudo apt-get update -y
-                sudo apt install nginx
+                sudo apt install -y nginx
                 cd /var/www/
                 git clone https://github.com/RezenkovD/vr-club.git
                 cd vr-club
@@ -232,25 +232,28 @@ jobs:
 
                 echo "server {
                   listen 80;
-                  server_name vr-club.one www.vr-club.one;
+                  server_name $ALLOWED_HOSTS;
                 
                   location = /favicon.ico { access_log off; log_not_found off; }
                 
                   location / {
-                    proxy_pass http://www.vr-club.one:8000;
+                    proxy_pass http://$SUB_DOMAIN:8000;
                     proxy_set_header Host \$host;
                     proxy_set_header X-Real-IP \$remote_addr;
                     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
                     proxy_set_header X-Forwarded-Proto \$scheme;
                   }
-                location /static/ {
-                  alias /var/www/vr-club/static/;
-                 }
+                  location /static/ {
+                    alias /var/www/vr-club/static/;
+                   }
+                  location /media/ {
+                      alias /var/www/vr-club/media/;
+                    }
                 }
                   
                 server {
                   listen 443;
-                  server_name vr-club.one www.vr-club.one;
+                  server_name $ALLOWED_HOSTS;
                   
                   ssl                  on;
                   ssl_certificate      /var/www/certificate.crt;
@@ -259,7 +262,7 @@ jobs:
                   access_log   /var/log/nginx/nginx.vhost.access.log;
                   error_log    /var/log/nginx/nginx.vhost.error.log;
                   location / {
-                    proxy_pass http://www.vr-club.one:8000;
+                    proxy_pass http://$SUB_DOMAIN:8000;
                     proxy_set_header Host \$host;
                     proxy_set_header X-Real-IP \$remote_addr;
                     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
