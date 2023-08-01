@@ -107,19 +107,19 @@
 </script>
 {# Недоступність слотів, якщо вільного сеансу немає #}
 <script>
-    const maxSlotsAllowed = 2;
     function updateSlotAvailability() {
         const form = document.querySelector('form');
         const numberOfPeopleInput = form.querySelector('#id_number_of_people');
-        const slotsLabels = form.querySelectorAll('.form-check-label');
+        const slotsFormCheck = form.querySelectorAll('.form-check');
         const numberOfPeople = parseInt(numberOfPeopleInput.value);
 
+        slotsFormCheck.forEach(formCheck => {
+            const labels = formCheck.querySelectorAll('label');
+            const label = labels[0];
+            const avSlotLabel = labels[2];
+            const avSlot = avSlotLabel.innerText.trim().split(' ')[0]; // Отримуємо кількість місць
+            const checkbox = formCheck.querySelector('input[type="checkbox"]');
 
-        slotsLabels.forEach(label => {
-            const checkbox = label.querySelector('input[type="checkbox"]');
-            const slotName = label.innerText;
-            const avSlotLabel = label.nextElementSibling;
-            const avSlot = parseInt(label.nextElementSibling.innerText.split(' ')[0]); // Отримуємо кількість місць з наступного елемента
             if (avSlot > 0 && numberOfPeople <= avSlot) {
                 label.removeAttribute('disabled');
                 checkbox.style.border = '1px solid #4FB4FE';
