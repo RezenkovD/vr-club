@@ -56,7 +56,7 @@ def booking_view(request):
         )
 
         if not _has_invalid_slots:
-            book_session(slots, form.cleaned_data)
+            book_session(request, slots, form.cleaned_data)
             return redirect("site:home")
 
     return render_main_page(request)
@@ -99,7 +99,7 @@ def render_main_page(request):
     )
 
 
-def book_session(slots, data_to_save):
+def book_session(request, slots, data_to_save):
     booking = Booking(
         name=data_to_save["name"],
         email=data_to_save["email"],
