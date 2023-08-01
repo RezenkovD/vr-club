@@ -1,7 +1,5 @@
-from django.db.models import Count
 from django.db.models import Sum
 
-from .forms import BookingForm
 from .models import Booking, BookingTime, ACTUAL
 from .models import SessionSeats
 

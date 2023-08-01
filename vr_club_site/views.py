@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-from django.db.models import Count
 from django.contrib import messages
 from django.urls import reverse
 
@@ -10,13 +9,13 @@ from .utils import get_available_slots
 
 COST_SESSION = 200
 MAX_SESSION = 2
-SIGNUP_URL = reverse("account_signup")
-LOGIN_URL = reverse("account_login")
 
 
 def home(request):
+    signup_url = reverse("account_signup")
+    login_url = reverse("account_login")
     return render(
-        request, "site/index.html", {"signup_url": SIGNUP_URL, "login_url": LOGIN_URL}
+        request, "site/index.html", {"signup_url": signup_url, "login_url": login_url}
     )
 
 
@@ -83,6 +82,8 @@ def has_invalid_slots(request, people_count, slot_av_slots, slots):
 
 
 def render_main_page(request):
+    signup_url = reverse("account_signup")
+    login_url = reverse("account_login")
     form = BookingForm()
     _available_slots = get_available_slots()
     return render(
@@ -91,8 +92,8 @@ def render_main_page(request):
         {
             "form": form,
             "available_slots": _available_slots,
-            "signup_url": SIGNUP_URL,
-            "login_url": LOGIN_URL,
+            "signup_url": signup_url,
+            "login_url": login_url,
         },
     )
 
