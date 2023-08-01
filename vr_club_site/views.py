@@ -57,7 +57,7 @@ def booking_view(request):
                 return render_main_page(request)
 
         people_count = form.cleaned_data[
-            "number_of_people"
+            "people_count"
         ]  # TODO: rename to people_count
         _has_invalid_slots = has_invalid_slots(
             request, people_count, slot_av_slots, slots
@@ -112,12 +112,12 @@ def book_session(request, slots, data_to_save):
         name=data_to_save["name"],
         email=data_to_save["email"],
         phone_number=data_to_save["phone_number"],
-        number_of_people=data_to_save[
-            "number_of_people"
+        people_count=data_to_save[
+            "people_count"
         ],  # TODO: rename to people_count
         comment=data_to_save["comment"],
         price=COST_SESSION
-        * data_to_save["number_of_people"]
+        * data_to_save["people_count"]
         * len(slots),  # TODO: rename to people_count
     )
     booking.save()

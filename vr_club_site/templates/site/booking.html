@@ -37,13 +37,13 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div class="count-people-price" style="margin-top: 24px">
-                    <div class="number_of_people">Кількість осіб:</div>
+                <div class="people-count-price" style="margin-top: 24px">
+                    <div class="people-count">Кількість осіб:</div>
                     <div class="number-input" style="margin-left: 24px">
                         <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             style="margin-left:16px"></div>
-                        <input class="quantity" min="1" name="number_of_people" value="1" type="number" required
-                            id="id_number_of_people">
+                        <input class="quantity" min="1" name="people-count" value="1" type="number" required
+                            id="id_people_count">
                         <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                             class="Two plus" style="margin-right:16px"></div>
                     </div>
@@ -91,8 +91,8 @@
     </div>
 <script>
     document.getElementById('bookingForm').addEventListener('submit', function (event) {
-        const numberOfPeopleInput = document.getElementById('id_number_of_people');
-        const numberOfPeople = parseInt(numberOfPeopleInput.value);
+        const peopleCountInput = document.getElementById('id_people_count');
+        const peopleCount = parseInt(peopleCountInput.value);
         const checkboxes = document.getElementsByName('slots');
         let hasSelectedSlots = false;
         checkboxes.forEach(checkbox => {
@@ -100,7 +100,7 @@
                 hasSelectedSlots = true;
             }
         });
-        if (!hasSelectedSlots || numberOfPeople < 1) {
+        if (!hasSelectedSlots || peopleCount < 1) {
             event.preventDefault();
         }
     });
@@ -109,9 +109,9 @@
 <script>
     function updateSlotAvailability() {
         const form = document.querySelector('form');
-        const numberOfPeopleInput = form.querySelector('#id_number_of_people');
+        const peopleCountInput = form.querySelector('#id_people_count');
         const slotsFormCheck = form.querySelectorAll('.form-check');
-        const numberOfPeople = parseInt(numberOfPeopleInput.value);
+        const peopleCount = parseInt(peopleCountInput.value);
 
         slotsFormCheck.forEach(formCheck => {
             const labels = formCheck.querySelectorAll('label');
@@ -120,7 +120,7 @@
             const avSlot = avSlotLabel.innerText.trim().split(' ')[0]; // Отримуємо кількість місць
             const checkbox = formCheck.querySelector('input[type="checkbox"]');
 
-            if (avSlot > 0 && numberOfPeople <= avSlot) {
+            if (avSlot > 0 && peopleCount <= avSlot) {
                 label.removeAttribute('disabled');
                 checkbox.style.border = '1px solid #4FB4FE';
                 label.style.opacity = '1';
@@ -136,11 +136,11 @@
             }
         });
     }
-    const numberOfPeopleInput = document.querySelector('#id_number_of_people');
+    const peopleCountInput = document.querySelector('#id_people_count');
     const minusButton = document.querySelector('.number-input div[onclick*="stepDown"]');
     const plusButton = document.querySelector('.number-input div[onclick*="stepUp"]');
 
-    numberOfPeopleInput.addEventListener('input', updateSlotAvailability);
+    peopleCountInput.addEventListener('input', updateSlotAvailability);
     plusButton.addEventListener('click', updateSlotAvailability);
     minusButton.addEventListener('click', updateSlotAvailability);
 
@@ -202,8 +202,8 @@
 <script>
     function calculateTotalCost() {
         const slotCost = 200;
-        const numberOfPeopleInput1 = document.querySelector('#id_number_of_people');
-        const numberOfPeople1 = parseInt(numberOfPeopleInput1.value);
+        const peopleCountInput1 = document.querySelector('#id_people_count');
+        const peopleCount1 = parseInt(peopleCountInput1.value);
 
         const checkboxes1 = document.getElementsByName('slots');
         let selectedSlots = 0;
@@ -214,15 +214,15 @@
         });
 
         let totalCost = 0;
-        if (numberOfPeople1 > 0 && selectedSlots > 0) {
-            totalCost = slotCost * selectedSlots * numberOfPeople1;
+        if (peopleCount1 > 0 && selectedSlots > 0) {
+            totalCost = slotCost * selectedSlots * peopleCount1;
         }
 
         const totalCostElement = document.getElementById('total_cost');
         totalCostElement.textContent = totalCost.toFixed(2) + ' грн';
     }
-    const numberOfPeopleInput1 = document.querySelector('#id_number_of_people');
-    numberOfPeopleInput1.addEventListener('input', calculateTotalCost);
+    const peopleCountInput1 = document.querySelector('#id_people_count');
+    peopleCountInput1.addEventListener('input', calculateTotalCost);
     const checkboxes1 = document.getElementsByName('slots');
     checkboxes1.forEach(checkbox => {
         checkbox.addEventListener('click', function () {
@@ -233,17 +233,17 @@
 
     const btnMinus = document.querySelector('.number-input div[onclick*="stepDown"]');
     btnMinus.addEventListener('click', function () {
-        const numberOfPeopleInput = document.querySelector('#id_number_of_people');
-        const currentNumberOfPeople = parseInt(numberOfPeopleInput.value);
-        numberOfPeopleInput.value = currentNumberOfPeople;
+        const peopleCountInput = document.querySelector('#id_people_count');
+        const peopleCount = parseInt(peopleCountInput.value);
+        peopleCountInput.value = peopleCount;
         calculateTotalCost();
     });
 
     const btnPlus = document.querySelector('.number-input div[onclick*="stepUp"]');
     btnPlus.addEventListener('click', function () {
-        const numberOfPeopleInput = document.querySelector('#id_number_of_people');
-        const currentNumberOfPeople = parseInt(numberOfPeopleInput.value);
-        numberOfPeopleInput.value = currentNumberOfPeople;
+        const peopleCountInput = document.querySelector('#id_people_count');
+        const peopleCount = parseInt(peopleCountInput.value);
+        peopleCountInput.value = peopleCount;
         calculateTotalCost();
     });
 </script>

@@ -1,7 +1,6 @@
 from datetime import date
 
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
@@ -37,11 +36,9 @@ class Booking(models.Model):
     )
     name = models.CharField(max_length=32, null=False, default="vrclub")
     email = models.EmailField(max_length=64, null=False, default="vrclub@gmail.com")
-    phone_number = PhoneNumberField(
-        null=True, blank=True, unique=False, default="+380000000000"
-    )
+    phone_number = models.CharField(max_length=20, null=True, blank=True, default="+380000000000")
     comment = models.CharField(max_length=256, null=True)
-    number_of_people = models.PositiveIntegerField(
+    people_count = models.PositiveIntegerField(
         default=0
     )  # TODO: rename to people_count
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)

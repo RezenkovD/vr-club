@@ -17,7 +17,7 @@ def get_available_slots(selected_date=None):
             slot = (
                 Booking.objects.filter(
                     time__status=ACTUAL, time__time=x[0], time__date=selected_date
-                ).aggregate(total_people=Sum("number_of_people"))["total_people"]
+                ).aggregate(total_people=Sum("people_count"))["total_people"]
                 or 0
             )
         except BookingTime.DoesNotExist:

@@ -1,5 +1,4 @@
 from django import forms
-from phonenumber_field.formfields import PhoneNumberField as PhoneNumberFormField
 
 from .models import BookingTime
 
@@ -33,10 +32,16 @@ class BookingForm(forms.Form):
             }
         ),
     )
-    phone_number = PhoneNumberFormField(
-        widget=forms.TextInput(attrs={"class": "form-control"}), required=False
+    phone_number = forms.CharField(
+        max_length=20,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+            }
+        ),
     )
-    number_of_people = forms.IntegerField(min_value=1)  # TODO: rename to people_count
+    people_count = forms.IntegerField(min_value=1)  # TODO: rename to people_count
     comment = forms.CharField(
         max_length=256,
         widget=forms.TextInput(attrs={"class": "form-control"}),
