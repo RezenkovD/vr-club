@@ -1,3 +1,4 @@
+from django.db import IntegrityError, transaction
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.urls import reverse
@@ -112,8 +113,15 @@ def book_session(slots, data_to_save):
         * len(slots),  # TODO: rename to people_count
     )
     booking.save()
-    for slot in slots:
-        booking_time = BookingTime(time=slot, status=ACTUAL, date=data_to_save["date"])
-        booking_time.save()
-        # TODO: https://docs.djangoproject.com/en/3.0/ref/models/querysets/#bulk-create
-        booking.time.add(booking_time)
+    booking_times_to_create = [
+        BookingTime(time=slot, status=ACTUAL, date=data_to_save["date"])
+        for slot in slots
+    ]
+    try:
+        with transaction.atomic():
+            BookingTime.objects.bulk_create(booking_times_to_create)
+
+            for booking_time in booking_times_to_create:
+                booking.time.add(booking_time)
+    except IntegrityError as e:
+        messages.error(request, f"Помилка бронювання: {e}")
