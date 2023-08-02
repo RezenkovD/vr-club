@@ -80,7 +80,7 @@
     margin-right: auto;
 }
 
-.number_of_people {
+.people-count {
     color: #202122;
     text-align: left;
     font: 500 24px/170% "Montserrat", sans-serif;
@@ -159,7 +159,7 @@
     margin-top: 7px;
 }
 
-.count-people-price {
+.people-count-price {
     justify-content: space-between;
     display: flex;
     width: 596px;
