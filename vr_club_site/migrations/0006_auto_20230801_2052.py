@@ -4,22 +4,40 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('vr_club_site', '0005_auto_20230801_2037'),
+        ("vr_club_site", "0005_auto_20230801_2037"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Settings',
+            name="Settings",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
-                ('variable_type', models.CharField(choices=[('str', 'String'), ('int', 'Integer'), ('decimal', 'Decimal'), ('bool', 'Boolean')], max_length=10)),
-                ('value', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                (
+                    "variable_type",
+                    models.CharField(
+                        choices=[
+                            ("str", "String"),
+                            ("int", "Integer"),
+                            ("decimal", "Decimal"),
+                            ("bool", "Boolean"),
+                        ],
+                        max_length=10,
+                    ),
+                ),
+                ("value", models.TextField()),
             ],
         ),
         migrations.DeleteModel(
-            name='SessionSeats',
+            name="SessionSeats",
         ),
     ]

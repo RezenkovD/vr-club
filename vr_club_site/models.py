@@ -36,7 +36,9 @@ class Booking(models.Model):
     )
     name = models.CharField(max_length=32, null=False, default="vrclub")
     email = models.EmailField(max_length=64, null=False, default="vrclub@gmail.com")
-    phone_number = models.CharField(max_length=20, null=True, blank=True, default="+380000000000")
+    phone_number = models.CharField(
+        max_length=20, null=True, blank=True, default="+380000000000"
+    )
     comment = models.CharField(max_length=256, null=True)
     people_count = models.PositiveIntegerField(
         default=0
@@ -50,10 +52,10 @@ class Booking(models.Model):
 
 class Settings(models.Model):
     VARIABLE_TYPES = (
-        ('str', 'String'),
-        ('int', 'Integer'),
-        ('decimal', 'Decimal'),
-        ('bool', 'Boolean'),
+        ("str", "String"),
+        ("int", "Integer"),
+        ("decimal", "Decimal"),
+        ("bool", "Boolean"),
     )
 
     name = models.CharField(max_length=100, unique=True)

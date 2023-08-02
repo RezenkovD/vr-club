@@ -4,20 +4,21 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('vr_club_site', '0004_sessionseats'),
+        ("vr_club_site", "0004_sessionseats"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='booking',
-            old_name='number_of_people',
-            new_name='people_count',
+            model_name="booking",
+            old_name="number_of_people",
+            new_name="people_count",
         ),
         migrations.AlterField(
-            model_name='booking',
-            name='phone_number',
-            field=models.CharField(blank=True, default='+380000000000', max_length=20, null=True),
+            model_name="booking",
+            name="phone_number",
+            field=models.CharField(
+                blank=True, default="+380000000000", max_length=20, null=True
+            ),
         ),
     ]

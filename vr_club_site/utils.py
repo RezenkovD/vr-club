@@ -7,7 +7,7 @@ def get_available_slots(selected_date=None):
     _available_slots = []
 
     try:
-        session_seats = Settings.objects.get(name='seats')
+        session_seats = Settings.objects.get(name="seats")
     except Settings.DoesNotExist:
         session_seats = 1
 
