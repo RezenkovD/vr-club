@@ -41,7 +41,7 @@ class BookingForm(forms.Form):
             }
         ),
     )
-    people_count = forms.IntegerField(min_value=1)  # TODO: rename to people_count
+    people_count = forms.IntegerField(min_value=1)
     comment = forms.CharField(
         max_length=256,
         widget=forms.TextInput(attrs={"class": "form-control"}),
