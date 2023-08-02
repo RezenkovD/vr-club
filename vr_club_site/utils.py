@@ -7,7 +7,16 @@ def get_available_slots(selected_date=None):
     _available_slots = []
 
     try:
-        session_seats = Settings.objects.get(name="seats")
+        setting = Settings.objects.get(name="seats")
+        setting_type = setting.variable_type
+        session_seats = setting.value
+        if setting_type == "int":
+            session_seats = int(session_seats)
+        elif setting_type == "str":
+            session_seats = str(session_seats)
+        elif setting_type == "decimal":
+            session_seats = decimal.Decimal(session_seats)
+
     except Settings.DoesNotExist:
         session_seats = 1
 
