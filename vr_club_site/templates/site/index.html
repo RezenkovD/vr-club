@@ -512,7 +512,7 @@
 {% endblock %}
 {% block script %}
 <script>
-    function getFilteredGames(date) {
+    function getAvailableSlots(date) {
         fetch(`{% url 'site:get_available_slots' %}?date=${date}`, {
             method: "GET",
             headers: {
@@ -531,6 +531,7 @@
                         avSlotElement.textContent = "";
                     }
                 }
+                 updateSlotAvailability();
             });
     }
 </script>
@@ -554,7 +555,7 @@
 
         dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
 
-        getFilteredGames(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
+        getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
 
         const dateInput = document.getElementById('id_date');
         dateInput.value = `${day}-${month}-${year}`;
