@@ -112,7 +112,7 @@
         const peopleCountInput = form.querySelector('#id_people_count');
         const slotsFormCheck = form.querySelectorAll('.form-check');
         const peopleCount = parseInt(peopleCountInput.value);
-
+        let max_av_slot = 0;
         let hasUnavailableSlot = false;
 
         slotsFormCheck.forEach(formCheck => {
@@ -121,6 +121,10 @@
             const avSlotLabel = labels[2];
             const avSlot = avSlotLabel.innerText.trim().split(' ')[0]; // Отримуємо кількість місць
             const checkbox = formCheck.querySelector('input[type="checkbox"]');
+
+            if (avSlot > max_av_slot){
+                max_av_slot = avSlot;
+            }
 
             if (avSlot > 0 && peopleCount <= avSlot) {
                 label.removeAttribute('disabled');
@@ -151,6 +155,12 @@
             bookingButton.style.opacity = '1';
             bookingButton.style.pointerEvents = 'auto';
             bookingButton.style.background = "#4FB4FE";
+        }
+        if (max_av_slot < peopleCount){
+            bookingButton.setAttribute('disabled', true);
+            bookingButton.style.opacity = '0.5';
+            bookingButton.style.pointerEvents = 'none';
+            bookingButton.style.background = "#9F9F9F";
         }
     }
     const peopleCountInput = document.querySelector('#id_people_count');
