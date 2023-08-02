@@ -1,3 +1,5 @@
+import decimal
+
 from django.db.models import Sum
 
 from .models import Booking, BookingTime, ACTUAL, Settings
