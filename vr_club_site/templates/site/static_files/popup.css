@@ -40,12 +40,12 @@
     z-index: 1;
 }
 
-.title-popap,
-.title-popap * {
+.title-popup,
+.title-popup * {
     box-sizing: border-box;
 }
 
-.title-popap {
+.title-popup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +80,7 @@
     margin-right: auto;
 }
 
-.number_of_people {
+.people-count {
     color: #202122;
     text-align: left;
     font: 500 24px/170% "Montserrat", sans-serif;
@@ -159,7 +159,7 @@
     margin-top: 7px;
 }
 
-.count-people-price {
+.people-count-price {
     justify-content: space-between;
     display: flex;
     width: 596px;
@@ -283,7 +283,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     font: 500 20px/170% "Montserrat", sans-serif;
     position: relative;
-    width: 15px;
+    width: 24px;
     height: 31px;
     background: #efefef;
 }

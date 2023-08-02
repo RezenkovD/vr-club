@@ -366,7 +366,7 @@
    {% include 'site/booking.html' %}
 </section>
 <section id="games" style="height: auto; margin-top: 149px;">
-    <div class="games">В що пограти?</div>
+    <div class="games">У що пограти?</div>
     <div class="wrapper">
         <ul class="carousel">
             <li class="card">
@@ -380,10 +380,7 @@
                     <div class="age-badge">10+</div>
                     <div class="player-badge-two">Гравців: 1 - 2</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Beat saber so cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -438,10 +435,7 @@
                     <div class="age-badge">13+</div>
                     <div class="player-badge-two">Гравців: 1 - 4</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Arizona Sunshine cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -467,10 +461,7 @@
                     <div class="age-badge">12+</div>
                     <div class="player-badge-one">Гравців: 1</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Fruit Ninja VR cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -496,10 +487,7 @@
                     <div class="age-badge">12+</div>
                     <div class="player-badge-one">Гравців: 1</div>
                     <div class="descriptions">
-                        <!-- Pavlov VR — багатокористувацький шутер у віртуальній реальності з великим
-                            акцентом на функціях спільноти. Реалістичні функції перезавантаження та
-                            швидкий бій як частина основного досвіду.<br />
-                            <br />Грайте в найпопулярніший VR-шутер №1 в нашому VR клубі. -->
+                        Job simulator cool game
                     </div>
                     <button class="btn-blue" type="submit">Забронювати</button>
                     <div class="btn-play">
@@ -524,7 +512,54 @@
 {% endblock %}
 {% block script %}
 <script>
-    function openPopup() {
+    function getAvailableSlots(date) {
+        fetch(`{% url 'site:get_available_slots' %}?date=${date}`, {
+            method: "GET",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                const avSlotsLabels = document.getElementsByClassName('av_slots');
+                for (let i = 0; i < avSlotsLabels.length; i++) {
+                    const avSlotElement = avSlotsLabels[i];
+                    const newAvSlotValue = data.available_slots[i];
+                    if (newAvSlotValue > 0) {
+                        avSlotElement.textContent = `${newAvSlotValue} місця`;
+                    } else {
+                        avSlotElement.textContent = "";
+                    }
+                }
+                 updateSlotAvailability();
+            });
+    }
+</script>
+<script>
+    function openPopup(day, month, year) {
+        const dateDiv = document.querySelector('.booking-date');
+        const monthsNames = [
+            "січня",
+            "лютого",
+            "березня",
+            "квітня",
+            "травня",
+            "червня",
+            "липня",
+            "серпня",
+            "вересня",
+            "жовтня",
+            "листопада",
+            "грудня",
+        ];
+
+        dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
+
+        getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
+
+        const dateInput = document.getElementById('id_date');
+        dateInput.value = `${day}-${month}-${year}`;
+
         const popup = document.getElementById('popup');
         const body = document.querySelector('body');
         popup.style.display = 'block';
@@ -595,17 +630,17 @@
             for (let i = 1; i <= daysInMonth; i++) {
                 number = i;
                 if (number < 10) {
-                    number = "0" + number
+                    number = "0" + number;
                 }
                 if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                     today = i;
-                    days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
+                    days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
                 } else {
                     if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                         days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
                     }
                     else {
-                        days += `<div class="wrap" onclick="openPopup()" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
+                        days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
                     }
                 }
             }

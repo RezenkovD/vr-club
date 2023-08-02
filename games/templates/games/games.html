@@ -655,7 +655,7 @@
 {% endblock %}
 {% block script %}
 <script>
-  function getFilteredGames(gameMode) {
+  function getFilteredGames (gameMode) {
     fetch(`{% url 'api/games:filter_games' %}?game_mode=${gameMode}`, {
       method: "GET",
       headers: {
@@ -700,23 +700,23 @@
   const divs = document.querySelectorAll('.filter div');
 
   document.getElementById("both").addEventListener("click", function () {
-    getFilteredGames("both");
+    getFilteredGames ("both");
     divs.forEach(div => div.classList.remove("all-games"));
     this.classList.add("all-games")
   });
   document.getElementById("multiplayer").addEventListener("click", function () {
-    getFilteredGames("multiplayer");
+    getFilteredGames ("multiplayer");
     divs.forEach(div => div.classList.remove("all-games"));
     this.classList.add("all-games")
   });
   document.getElementById("single").addEventListener("click", function () {
-    getFilteredGames("single");
+    getFilteredGames ("single");
     divs.forEach(div => div.classList.remove("all-games"));
     this.classList.add("all-games")
   });
   const div = document.getElementById("both")
   div.classList.add("all-games")
-  getFilteredGames("both");
+  getFilteredGames ("both");
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {

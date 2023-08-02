@@ -1,101 +1,98 @@
-    <div id="popup" class="popup">
-        {% load static %}
-        {% load custom_filters %}
-        <link rel="stylesheet" href="{% static 'site/static_files/popap.css' %}">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <div class="popup-container">
-            <svg onclick="closePopup()" id="closePopup" class="close" width="32" height="32" viewBox="0 0 32 32" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M8.53317 25.3334L6.6665 23.4667L14.1332 16L6.6665 8.53335L8.53317 6.66669L15.9998 14.1334L23.4665 6.66669L25.3332 8.53335L17.8665 16L25.3332 23.4667L23.4665 25.3334L15.9998 17.8667L8.53317 25.3334Z"
-                    fill="black"></path>
-            </svg>
-            <div class="title-popap" style="margin-top: 28px;">
-                <div class="half-1">Оберіть зручний час для гри в клубі:</div>
-                <div class="half-2" style="margin-top: 8px;">м. Славута, вул. Бла-бла, 32</div>
-                <div class="booking-date" style="margin-top: 20px;">
-                    28 червня 2023
+<div id="popup" class="popup">
+    {% load static %}
+    {% load custom_filters %}
+    <link rel="stylesheet" href="{% static 'site/static_files/popup.css' %}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <div class="popup-container">
+        <svg onclick="closePopup()" id="closePopup" class="close" width="32" height="32" viewBox="0 0 32 32" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M8.53317 25.3334L6.6665 23.4667L14.1332 16L6.6665 8.53335L8.53317 6.66669L15.9998 14.1334L23.4665 6.66669L25.3332 8.53335L17.8665 16L25.3332 23.4667L23.4665 25.3334L15.9998 17.8667L8.53317 25.3334Z"
+                fill="black"></path>
+        </svg>
+        <div class="title-popup" style="margin-top: 28px;">
+            <div class="half-1">Оберіть зручний час для гри в клубі:</div>
+            <div class="half-2" style="margin-top: 8px;">м. Славута, вул. Бла-бла, 32</div>
+            <div class="booking-date" style="margin-top: 20px;">01-01-2023</div>
+            <form id="bookingForm" method="post" style="margin-top: 24px;">
+                {% csrf_token %}
+                <div style="display: none;">
+                    {{ form.date }}
                 </div>
-                <form id="bookingForm" method="post" style="margin-top: 24px;">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {% for slot, av_slot in form.slots|zip:available_slots %}
-                            {% if av_slot > 0 %}
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        {{ slot }}
-                                    </label>
-                                    <label class="av_slots" style="margin-left: 12px">{{ av_slot }} місця </label>
-                                </div>
-                            {% else %}
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        {{ slot }}
-                                    </label>
-                                    <label class="av_slots" style="margin-left: 12px"></label>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <div class="count-people-price" style="margin-top: 24px">
-                        <div class="number_of_people">Кількість осіб:</div>
-                        <div class="number-input" style="margin-left: 24px">
-                            <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                style="margin-left:16px"></div>
-                            <input class="quantity" min="1" name="number_of_people" value="1" type="number" required
-                                id="id_number_of_people">
-                            <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                class="Two plus" style="margin-right:16px"></div>
-                        </div>
-                        <span class="total_cost" id="total_cost" style="margin-left: auto">0.00 грн</span>
-                    </div>
-                    <div class="info-form">
-                        <div class="column">
-                        <div class="input-container" style="margin-top: 21px;">
-                            <label for="{{ form.name.id_for_label }}">
-                                <div class="frame-23">
-                                    <span class="e1">Ваше ім’я</span>
-                                    <span class="e2">*</span>
-                                </div>
+                <div class="form-group">
+                    {% for slot, av_slot in form.slots|zip:available_slots %}
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                {{ slot }}
                             </label>
-                            {{ form.name }}
+                            <label class="av_slots" style="margin-left: 12px">
+                                {% if av_slot > 0 %}
+                                {{ av_slot }} місця
+                                {% else %}
+                                {% endif %}
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="people-count-price" style="margin-top: 24px">
+                    <div class="people-count">Кількість осіб:</div>
+                    <div class="number-input" style="margin-left: 24px">
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                            style="margin-left:16px"></div>
+                        <input class="quantity" min="1" name="people_count" value="1" type="number" required
+                            id="id_people_count">
+                        <div onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                            class="Two plus" style="margin-right:16px"></div>
+                    </div>
+                    <span class="total_cost" id="total_cost" style="margin-left: auto">0.00 грн</span>
+                </div>
+                <div class="info-form">
+                    <div class="column">
+                    <div class="input-container" style="margin-top: 21px;">
+                        <label for="{{ form.name.id_for_label }}">
+                            <div class="frame-23">
+                                <span class="e1">Ваше ім’я</span>
+                                <span class="e2">*</span>
+                            </div>
+                        </label>
+                        {{ form.name }}
+                    </div>
+                    <div class="input-container" style="margin-top: 8px">
+                        <label for="{{ form.email.id_for_label }}">
+                            <span class="e1">Електронна адреса</span>
+                            <span class="e2">*</span>
+                        </label>
+                        {{ form.email }}
+                    </div>
+                    </div>
+                    <div class="column">
+                        <div class="input-container" style="margin-top: 21px">
+                            <label for="{{ form.phone_number.id_for_label }}">
+                                <span class="e1">Номер телефону</span>
+                            </label>
+                            {{ form.phone_number }}
                         </div>
                         <div class="input-container" style="margin-top: 8px">
-                            <label for="{{ form.email.id_for_label }}">
-                                <span class="e1">Електронна адреса</span>
-                                <span class="e2">*</span>
+                            <label for="{{ form.comment.id_for_label }}">
+                                <span class="e1">Коментар</span>
                             </label>
-                            {{ form.email }}
-                        </div>
-                        </div>
-                        <div class="column">
-                            <div class="input-container" style="margin-top: 21px">
-                                <label for="{{ form.phone_number.id_for_label }}">
-                                    <span class="e1">Номер телефону</span>
-                                </label>
-                                {{ form.phone_number }}
-                            </div>
-                            <div class="input-container" style="margin-top: 8px">
-                                <label for="{{ form.comment.id_for_label }}">
-                                    <span class="e1">Коментар</span>
-                                </label>
-                                {{ form.comment }}
-                            </div>
+                            {{ form.comment }}
                         </div>
                     </div>
-                    <div style="margin-left: 214px; margin-top: 32px">
-                        <button class="main-btn-blue-pop">забронювати</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div style="margin-left: 214px; margin-top: 32px">
+                    <button  id="bookingButton" class="main-btn-blue-pop">забронювати</button>
+                </div>
+            </form>
         </div>
+    </div>
 <script>
     document.getElementById('bookingForm').addEventListener('submit', function (event) {
-        const numberOfPeopleInput = document.getElementById('id_number_of_people');
-        const numberOfPeople = parseInt(numberOfPeopleInput.value);
+        const peopleCountInput = document.getElementById('id_people_count');
+        const peopleCount = parseInt(peopleCountInput.value);
         const checkboxes = document.getElementsByName('slots');
         let hasSelectedSlots = false;
         checkboxes.forEach(checkbox => {
@@ -103,27 +100,33 @@
                 hasSelectedSlots = true;
             }
         });
-        if (!hasSelectedSlots || numberOfPeople < 1) {
+        if (!hasSelectedSlots || peopleCount < 1) {
             event.preventDefault();
         }
     });
 </script>
 {# Недоступність слотів, якщо вільного сеансу немає #}
 <script>
-    const maxSlotsAllowed = 2;
     function updateSlotAvailability() {
         const form = document.querySelector('form');
-        const numberOfPeopleInput = form.querySelector('#id_number_of_people');
-        const slotsLabels = form.querySelectorAll('.form-check-label');
-        const numberOfPeople = parseInt(numberOfPeopleInput.value);
+        const peopleCountInput = form.querySelector('#id_people_count');
+        const slotsFormCheck = form.querySelectorAll('.form-check');
+        const peopleCount = parseInt(peopleCountInput.value);
+        let max_av_slot = 0;
+        let hasUnavailableSlot = false;
 
+        slotsFormCheck.forEach(formCheck => {
+            const labels = formCheck.querySelectorAll('label');
+            const label = labels[0];
+            const avSlotLabel = labels[2];
+            const avSlot = avSlotLabel.innerText.trim().split(' ')[0]; // Отримуємо кількість місць
+            const checkbox = formCheck.querySelector('input[type="checkbox"]');
 
-        slotsLabels.forEach(label => {
-            const checkbox = label.querySelector('input[type="checkbox"]');
-            const slotName = label.innerText;
-            const avSlotLabel = label.nextElementSibling;
-            const avSlot = parseInt(label.nextElementSibling.innerText.split(' ')[0]); // Отримуємо кількість місць з наступного елемента
-            if (avSlot > 0 && numberOfPeople <= avSlot) {
+            if (avSlot > max_av_slot){
+                max_av_slot = avSlot;
+            }
+
+            if (avSlot > 0 && peopleCount <= avSlot) {
                 label.removeAttribute('disabled');
                 checkbox.style.border = '1px solid #4FB4FE';
                 label.style.opacity = '1';
@@ -135,15 +138,36 @@
                 checkbox.style.border = '1px solid #9F9F9F'; // Встановлюємо фон зі змінної --form-background, коли неактивний
                 label.style.opacity = '0.5';
                 label.style.pointerEvents = 'none';
-                avSlotLabel.style.color = "#9F9F9F"
+                avSlotLabel.style.color = "#9F9F9F";
+                if (checkbox.checked) {
+                    hasUnavailableSlot = true; // Перевіряємо, чи обраний слот має недостатньо місць
+                }
             }
         });
+        const bookingButton = document.getElementById('bookingButton');
+        if (hasUnavailableSlot || peopleCount < 1) {
+            bookingButton.setAttribute('disabled', true);
+            bookingButton.style.opacity = '0.5';
+            bookingButton.style.pointerEvents = 'none';
+            bookingButton.style.background = "#9F9F9F";
+        } else {
+            bookingButton.removeAttribute('disabled');
+            bookingButton.style.opacity = '1';
+            bookingButton.style.pointerEvents = 'auto';
+            bookingButton.style.background = "#4FB4FE";
+        }
+        if (max_av_slot < peopleCount){
+            bookingButton.setAttribute('disabled', true);
+            bookingButton.style.opacity = '0.5';
+            bookingButton.style.pointerEvents = 'none';
+            bookingButton.style.background = "#9F9F9F";
+        }
     }
-    const numberOfPeopleInput = document.querySelector('#id_number_of_people');
+    const peopleCountInput = document.querySelector('#id_people_count');
     const minusButton = document.querySelector('.number-input div[onclick*="stepDown"]');
     const plusButton = document.querySelector('.number-input div[onclick*="stepUp"]');
 
-    numberOfPeopleInput.addEventListener('input', updateSlotAvailability);
+    peopleCountInput.addEventListener('input', updateSlotAvailability);
     plusButton.addEventListener('click', updateSlotAvailability);
     minusButton.addEventListener('click', updateSlotAvailability);
 
@@ -193,6 +217,7 @@
                 checkboxes[i].checked = false;
             }
         }
+        updateSlotAvailability();
     }
     const checkboxes = document.getElementsByName('slots');
     checkboxes.forEach(checkbox => {
@@ -205,8 +230,8 @@
 <script>
     function calculateTotalCost() {
         const slotCost = 200;
-        const numberOfPeopleInput1 = document.querySelector('#id_number_of_people');
-        const numberOfPeople1 = parseInt(numberOfPeopleInput1.value);
+        const peopleCountInput1 = document.querySelector('#id_people_count');
+        const peopleCount1 = parseInt(peopleCountInput1.value);
 
         const checkboxes1 = document.getElementsByName('slots');
         let selectedSlots = 0;
@@ -217,15 +242,15 @@
         });
 
         let totalCost = 0;
-        if (numberOfPeople1 > 0 && selectedSlots > 0) {
-            totalCost = slotCost * selectedSlots * numberOfPeople1;
+        if (peopleCount1 > 0 && selectedSlots > 0) {
+            totalCost = slotCost * selectedSlots * peopleCount1;
         }
 
         const totalCostElement = document.getElementById('total_cost');
         totalCostElement.textContent = totalCost.toFixed(2) + ' грн';
     }
-    const numberOfPeopleInput1 = document.querySelector('#id_number_of_people');
-    numberOfPeopleInput1.addEventListener('input', calculateTotalCost);
+    const peopleCountInput1 = document.querySelector('#id_people_count');
+    peopleCountInput1.addEventListener('input', calculateTotalCost);
     const checkboxes1 = document.getElementsByName('slots');
     checkboxes1.forEach(checkbox => {
         checkbox.addEventListener('click', function () {
@@ -236,19 +261,18 @@
 
     const btnMinus = document.querySelector('.number-input div[onclick*="stepDown"]');
     btnMinus.addEventListener('click', function () {
-        const numberOfPeopleInput = document.querySelector('#id_number_of_people');
-        const currentNumberOfPeople = parseInt(numberOfPeopleInput.value);
-        numberOfPeopleInput.value = currentNumberOfPeople;
+        const peopleCountInput = document.querySelector('#id_people_count');
+        const peopleCount = parseInt(peopleCountInput.value);
+        peopleCountInput.value = peopleCount;
         calculateTotalCost();
     });
 
     const btnPlus = document.querySelector('.number-input div[onclick*="stepUp"]');
     btnPlus.addEventListener('click', function () {
-        const numberOfPeopleInput = document.querySelector('#id_number_of_people');
-        const currentNumberOfPeople = parseInt(numberOfPeopleInput.value);
-        numberOfPeopleInput.value = currentNumberOfPeople;
+        const peopleCountInput = document.querySelector('#id_people_count');
+        const peopleCount = parseInt(peopleCountInput.value);
+        peopleCountInput.value = peopleCount;
         calculateTotalCost();
     });
 </script>
-
-    </div>
+</div>
