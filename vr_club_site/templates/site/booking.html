@@ -84,7 +84,7 @@
                     </div>
                 </div>
                 <div style="margin-left: 214px; margin-top: 32px">
-                    <button class="main-btn-blue-pop">забронювати</button>
+                    <button  id="bookingButton" class="main-btn-blue-pop">забронювати</button>
                 </div>
             </form>
         </div>
@@ -113,6 +113,8 @@
         const slotsFormCheck = form.querySelectorAll('.form-check');
         const peopleCount = parseInt(peopleCountInput.value);
 
+        let hasUnavailableSlot = false;
+
         slotsFormCheck.forEach(formCheck => {
             const labels = formCheck.querySelectorAll('label');
             const label = labels[0];
@@ -132,9 +134,24 @@
                 checkbox.style.border = '1px solid #9F9F9F'; // Встановлюємо фон зі змінної --form-background, коли неактивний
                 label.style.opacity = '0.5';
                 label.style.pointerEvents = 'none';
-                avSlotLabel.style.color = "#9F9F9F"
+                avSlotLabel.style.color = "#9F9F9F";
+                if (checkbox.checked) {
+                    hasUnavailableSlot = true; // Перевіряємо, чи обраний слот має недостатньо місць
+                }
             }
         });
+        const bookingButton = document.getElementById('bookingButton');
+        if (hasUnavailableSlot || peopleCount < 1) {
+            bookingButton.setAttribute('disabled', true);
+            bookingButton.style.opacity = '0.5';
+            bookingButton.style.pointerEvents = 'none';
+            bookingButton.style.background = "#9F9F9F";
+        } else {
+            bookingButton.removeAttribute('disabled');
+            bookingButton.style.opacity = '1';
+            bookingButton.style.pointerEvents = 'auto';
+            bookingButton.style.background = "#4FB4FE";
+        }
     }
     const peopleCountInput = document.querySelector('#id_people_count');
     const minusButton = document.querySelector('.number-input div[onclick*="stepDown"]');
@@ -190,6 +207,7 @@
                 checkboxes[i].checked = false;
             }
         }
+        updateSlotAvailability();
     }
     const checkboxes = document.getElementsByName('slots');
     checkboxes.forEach(checkbox => {
