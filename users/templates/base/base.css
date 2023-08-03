@@ -442,7 +442,7 @@ li {
         float: none;
         padding: 0px;
         margin-right: 0px;
-        background: #000;
+        background: border-box;
         border-radius: 3px;
         transition: max-height 0.2s ease-out;
         max-height: 0;

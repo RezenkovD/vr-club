@@ -4,7 +4,7 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'style/login.css' %}">
 {% endblock %}
-{% block main %}
+{% block intro_bg_block %}
 <div class="intro_bg_block">
     <div class="ellipse-1"></div>
     <div class="ellipse-3"></div>
@@ -314,6 +314,8 @@
             fill="#A74C00" />
     </svg>
 </div>
+{% endblock %}
+{% block main %}
 <section>
     <div class="main">
         <div>
@@ -343,7 +345,7 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <div class="input-container-1" style="margin-top: 12px">
+                    <div class="input-container-1" style="margin-top: 16px">
                         <label for="{{ form.login.id_for_label }}">
                             <span class="e1">Електронна пошта</span>
                             <span class="e2">*</span>
