@@ -281,7 +281,7 @@ li {
     text-align: left;
     font: 500 20px "Montserrat", sans-serif;
     position: relative;
-    width: 295px;
+    width: auto;
     height: 29px;
     margin-bottom: 16px;
 }
@@ -513,6 +513,7 @@ li {
         justify-content: flex-start;
         flex-shrink: 0;
         position: relative;
+        width: 327px;
     }
 
     .footer-container .foot-second {
@@ -527,13 +528,13 @@ li {
         width: 295px;
         height: 103px;
         display: inline-flex;
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
     }
 
     .svg-link-f svg {
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
     }
 
     .social-networks {
