@@ -391,4 +391,39 @@
         font: 500 12px/170% "Montserrat", sans-serif;
         width: auto;
     }
+
+    .ellipse-1 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: -73px;
+        left: -37px;
+    }
+
+    .ellipse-3 {
+        background: #00a3ff;
+        border-radius: 50%;
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        top: 580px;
+        left: 235px;
+    }
+
+    .blue-object {
+        opacity: 0;
+    }
+
+    .yellow-object {
+        position: fixed;
+        overflow: visible;
+        transform: rotate(352deg);
+        top: -1008px;
+        left: -690px;
+        opacity: 0.11999999731779099;
+    }
 }

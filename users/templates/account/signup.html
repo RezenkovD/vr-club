@@ -5,7 +5,7 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'style/signup.css' %}">
 {% endblock %}
-{% block main %}
+{% block intro_bg_block %}
 <div class="intro_bg_block">
     <div class="ellipse-1"></div>
     <div class="ellipse-3"></div>
@@ -214,6 +214,9 @@
             fill="#A74C00" />
     </svg>
 </div>
+
+{% endblock %}
+{% block main %}
 <section>
     <div class="main">
         <div>
@@ -431,6 +434,7 @@
     function adjustColumnStyle() {
         var columnElements = document.querySelectorAll(".column");
         var secondColumn = document.querySelector(".column + .column");
+        var firstColumn = columnElements[0];
 
         var firstHasError = false;
         {% if form.password1.errors or form.first_name.errors %}
@@ -447,6 +451,7 @@
         columnElements.forEach(function (column) {
             column.style.marginBottom = hasError ? "auto" : "44px";
         });
+        firstColumn.style.marginBottom = hasError ? "0" : "12px";
     }
     document.addEventListener("DOMContentLoaded", adjustColumnStyle);
     document.querySelector("#id_password2").addEventListener("input", adjustColumnStyle);
