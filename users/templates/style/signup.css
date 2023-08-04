@@ -279,3 +279,113 @@
 .error-message {
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 768px) {
+    .main {
+        margin: 55.5px auto 98px;
+    }
+    .main-text {
+        width: auto;
+        text-align: center;
+        height: auto;
+        font: 700 28px "Montserrat", sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .span1 {
+        color: #ffffff;
+        font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .span2 {
+        color: #4fb4fe;
+        font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .span3 {
+        color: #ffffff;
+        font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .sub-main-text {
+        font: 500 16px/150% "Montserrat", sans-serif;
+        margin: 5px auto 0;
+    }
+
+    .sign-up-form {
+        display: flex;
+        width: 311px;
+        margin: 23px auto 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column+.column {
+        margin-left: 0;
+        gap: 12px;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 311px;
+        gap: 12px;
+    }
+
+    .input-container-1 {
+        width: 311px;
+        margin: 60px auto 12px;
+    }
+
+    .input-container {
+        width: 311px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .sub-flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+
+    .forgot-pswd {
+        font: 500 16px/170% "Montserrat", sans-serif;
+    }
+    .subtext {
+        font: 500 16px/170% "Montserrat", sans-serif;
+        width: 230px;
+    }
+    .subtext .span1 {
+        font: 500 16px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext .span2 {
+        font: 500 16px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext .span3 {
+        font: 500 16px/170% "Montserrat", sans-serif;
+    }
+
+    .btn-blue {
+        margin-top: 24px;
+        width: 311px;
+        height: 48px;
+        padding: 13.71px 55px;
+    }
+
+    .subtext-or {
+        font: 500 12px/170% "Montserrat", sans-serif;
+        margin: 24px auto 0;
+        width: auto;
+    }
+
+    .error-container {
+        font: 500 12px/170% "Montserrat", sans-serif;
+        width: auto;
+    }
+}
