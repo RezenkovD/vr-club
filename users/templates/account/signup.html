@@ -448,16 +448,27 @@
         {% if form.password2.errors or form.email.errors %}
         hasError = true;
         {% endif %}
-        columnElements.forEach(function (column) {
-            column.style.marginBottom = hasError ? "auto" : "44px";
-        });
-        firstColumn.style.marginBottom = hasError ? "0" : "12px";
+
+        if (window.innerWidth < 768) {
+            columnElements.forEach(function (column) {
+                column.style.marginBottom = hasError ? "auto" : "20px";
+            });
+            firstColumn.style.marginBottom = hasError ? "0" : "12px";
+        } else {
+            columnElements.forEach(function (column) {
+                column.style.marginBottom = hasError ? "auto" : "44px";
+            });
+            firstColumn.style.marginBottom = hasError ? "0" : "12px";
+        }
     }
+
     document.addEventListener("DOMContentLoaded", adjustColumnStyle);
     document.querySelector("#id_password2").addEventListener("input", adjustColumnStyle);
     document.querySelector("#id_email").addEventListener("input", adjustColumnStyle);
     document.querySelector("#id_first_name").addEventListener("input", adjustColumnStyle);
     document.querySelector("#id_password1").addEventListener("input", adjustColumnStyle);
+
+    window.addEventListener("resize", adjustColumnStyle);
 </script>
 
 
