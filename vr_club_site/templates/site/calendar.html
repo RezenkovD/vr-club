@@ -1,0 +1,62 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'site/style/calendar.css' %}">
+<section id="booking" style="height: auto; margin-top: 127px;">
+    <div class="booking">Забронюй час гри прямо зараз!</div>
+    <div class="flex-calendar" style="margin-top: 44px;">
+        <div class="month-nav">
+            <div class="button-m item1">
+                <svg class="caret-left" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 6L12 16L22 26" stroke="#4FB4FE" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                <div id="prevMonthBtn" class="name-month"></div>
+            </div>
+            <div class="month" id="month"></div>
+            <div class="button-m item3">
+                <div id="nextMonthBtn" class="name-month"></div>
+                <svg class="caret-right" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 6L22 16L12 26" stroke="#4FB4FE" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="weekdays">
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+            <div>Нд</div>
+        </div>
+        <div class="days" id="days"></div>
+    </div>
+   {% include 'site/booking.html' %}
+    <script src="{% static 'site/js/calendar.js' %}"></script>
+</section>
+<script>
+function getAvailableSlots(date) {
+    fetch(`{% url 'site:get_available_slots' %}?date=${date}`, {
+        method: "GET",
+        headers: {
+            "X-Requested-With": "XMLHttpRequest",
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            const avSlotsLabels = document.getElementsByClassName('av_slots');
+            for (let i = 0; i < avSlotsLabels.length; i++) {
+                const avSlotElement = avSlotsLabels[i];
+                const newAvSlotValue = data.available_slots[i];
+                if (newAvSlotValue > 0) {
+                    avSlotElement.textContent = `${newAvSlotValue} місця`;
+                } else {
+                    avSlotElement.textContent = "";
+                }
+            }
+             updateSlotAvailability();
+        });
+}
+</script>
