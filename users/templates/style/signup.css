@@ -209,10 +209,13 @@
     display: flex;
     flex-direction: column;
     width: 48%;
+    gap: 28px;
+    margin-bottom: 44px;
 }
 
 .column+.column {
     margin-left: 119px;
+    gap: 28px;
 }
 
 .input-container {

@@ -246,7 +246,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="input-container" style="margin-bottom: 28px">
+                    <div class="input-container">
                         <label for="{{ form.first_name.id_for_label }}">
                             <div class="frame-23">
                                 <span class="e1">Ваше ім’я</span>
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="input-container" style="margin-bottom: 44px">
+                    <div class="input-container">
                         <label for="{{ form.email.id_for_label }}">
                             <span class="e1">Електронна адреса</span>
                             <span class="e2">*</span>
@@ -316,7 +316,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="input-container" style="margin-bottom: 28px">
+                    <div class="input-container">
                         <label for="{{ form.password1.id_for_label }}">
                             <span class="e1">Пароль</span>
                             <span class="e2">*</span>
@@ -376,7 +376,7 @@
                         </div>
                     </div>
                     {% else %}
-                    <div class="input-container" style="margin-bottom: 44px">
+                    <div class="input-container">
                         <label for="{{ form.password2.id_for_label }}">
                             <span class="e1">Підтвердіть пароль</span>
                             <span class="e2">*</span>
@@ -427,6 +427,35 @@
 </section>
 {% endblock %}
 {% block script %}
+<script>
+    function adjustColumnStyle() {
+        var columnElements = document.querySelectorAll(".column");
+        var secondColumn = document.querySelector(".column + .column");
+
+        var firstHasError = false;
+        {% if form.password1.errors or form.first_name.errors %}
+        firstHasError = true;
+        {% endif %}
+        if (firstHasError){
+            secondColumn.style.gap= "0";
+        }
+
+        var hasError = false;
+        {% if form.password2.errors or form.email.errors %}
+        hasError = true;
+        {% endif %}
+        columnElements.forEach(function (column) {
+            column.style.marginBottom = hasError ? "auto" : "44px";
+        });
+    }
+    document.addEventListener("DOMContentLoaded", adjustColumnStyle);
+    document.querySelector("#id_password2").addEventListener("input", adjustColumnStyle);
+    document.querySelector("#id_email").addEventListener("input", adjustColumnStyle);
+    document.querySelector("#id_first_name").addEventListener("input", adjustColumnStyle);
+    document.querySelector("#id_password1").addEventListener("input", adjustColumnStyle);
+</script>
+
+
 <script>
     function togglePasswordVisibilityOne(fieldId) {
         var field = document.getElementById(fieldId);
