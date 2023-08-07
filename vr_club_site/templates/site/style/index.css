@@ -1,0 +1,189 @@
+.main-btn-blue {
+    margin-top: 36px;
+    width: 290px;
+    height: 56px;
+    border-radius: 100px;
+    background: #4FB4FE;
+    padding: 16px 32px;
+
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+
+    text-decoration: none;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    z-index: 0;
+    box-shadow: 0 0 10px 0 #4FB4FE;
+}
+
+
+.photo-back {
+    margin-top: 13px;
+    margin-left: 435px;
+    width: 1352px;
+    height: 851px;
+    background-image: url(../static_files/man-experiencing-virtual-reality-close-up.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+.content {
+    position: absolute;
+    margin-left: -95px;
+    margin-top: 107px;
+}
+
+.blur-32,
+.blur-32 * {
+    box-sizing: border-box;
+}
+
+.blur-32 {
+    background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 85%);
+    width: 1920px;
+    height: 497px;
+    position: sticky;
+    margin-top: 503px;
+    z-index: 0;
+}
+
+
+.vr-club,
+.vr-club * {
+    box-sizing: border-box;
+}
+
+.vr-club {
+    color: #ffffff;
+    text-align: left;
+    font: 800 88px "Montserrat", sans-serif;
+    position: relative;
+    width: 1187px;
+    height: 223px;
+}
+
+.sub-vr-club,
+.sub-vr-club * {
+    box-sizing: border-box;
+}
+
+.sub-vr-club {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: left;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    width: 562px;
+    height: 61px;
+}
+
+/* START Background */
+
+.intro_bg_block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-x: clip;
+}
+
+.ellipse-1,
+.ellipse-1 * {
+    box-sizing: border-box;
+}
+
+.ellipse-1 {
+    background: #ef7d1e;
+    border-radius: 50%;
+    width: 354px;
+    height: 354px;
+    position: absolute;
+    filter: blur(175px);
+    top: 88px;
+    left: -92px;
+}
+
+
+.ellipse-3,
+.ellipse-3 * {
+    box-sizing: border-box;
+}
+
+.ellipse-3 {
+    background: #00a3ff;
+    border-radius: 50%;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(175px);
+    top: 382px;
+    left: 1601px;
+    z-index: 1;
+}
+
+.ellipse-4,
+.ellipse-4 * {
+    box-sizing: border-box;
+}
+
+.ellipse-4 {
+    background: #00a3ff;
+    border-radius: 50%;
+    opacity: 0.699999988079071;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(200px);
+    top: 1291px;
+    left: -198px;
+}
+
+.ellipse-5,
+.ellipse-5 * {
+    box-sizing: border-box;
+}
+
+.ellipse-5 {
+    background: #ef7d1e;
+    border-radius: 50%;
+    width: 299px;
+    height: 299px;
+    position: relative;
+    filter: blur(175px);
+    top: 1611px;
+    left: 1688px;
+}
+
+.first-object {
+    position: absolute;
+    transform: translate(-149.9px, -1029px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+.second-object {
+    position: relative;
+    transform: translate(-433.9px, 266.93px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+    z-index: 0;
+}
+
+.third-object {
+    position: absolute;
+    transform: translate(-643px, 558px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+
+/* END Background */
