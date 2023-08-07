@@ -6,3 +6,10 @@ window.onload = function() {
         history.replaceState({}, document.title, window.location.pathname);
     }
 };
+
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+
+const buttons = document.querySelectorAll('.btn-blue');
+buttons.forEach(button => {
+    button.addEventListener('click', redirectToBooking);
+ });
