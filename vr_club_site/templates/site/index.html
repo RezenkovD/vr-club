@@ -4,8 +4,8 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'site/style/index.css' %}">
 {% endblock %}
-{% block main %}
-<div class="intro_bg_block">
+{% block intro_bg_block %}
+    <div class="intro_bg_block">
     <div class="ellipse-1"></div>
     <div class="ellipse-3"></div>
     <div class="ellipse-4"></div>
@@ -318,6 +318,8 @@
     </svg>
 
 </div>
+{% endblock %}
+{% block main %}
 <section style="height: auto;">
     <div class="photo-back">
         <div class="content">
@@ -328,8 +330,12 @@
         <div class="blur-32"></div>
     </div>
 </section>
-{% include 'site/calendar.html' %}
-{% include 'site/game-carousel.html' %}
+<section style="margin-top: 8px">
+    {% include 'site/game-carousel.html' %}
+</section>
+<section style="margin-top: 150px">
+    {% include 'site/calendar.html' %}
+</section>
 <section style="height: 514px;"></section>
 {% endblock %}
 {% block script %}
