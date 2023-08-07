@@ -419,19 +419,6 @@ li {
         margin-left: 0px;
         background: transparent;
         transition: all .5s linear;
-        margin-bottom: 32px;
-    }
-
-    ul li:last-child {
-        margin-bottom: 0;
-    }
-
-    ul li:hover {
-        background: #fff;
-    }
-
-    ul li:hover a {
-        color: #000;
     }
 
     .logo {
@@ -439,10 +426,9 @@ li {
     }
 
     .navigation-container {
-        gap: 0;
         float: none;
-        padding: 0px;
-        margin-right: 0px;
+        padding: 0;
+        margin-right: 0;
         background: border-box;
         border-radius: 3px;
         transition: max-height 0.2s ease-out;
@@ -453,6 +439,7 @@ li {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
+        gap: 32px;
     }
 
     .head-item a {
