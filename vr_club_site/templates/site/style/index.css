@@ -24,15 +24,15 @@
 
 
 .photo-back {
-    margin-top: 13px;
-    margin-left: 435px;
-    width: 1352px;
-    height: 851px;
+    width: auto;
+    max-height: 851px;
     background-image: url(../static_files/man-experiencing-virtual-reality-close-up.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
+    margin: 13px auto 0 435px;
+    height: auto;
 }
 
 .content {
@@ -48,7 +48,7 @@
 
 .blur-32 {
     background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 85%);
-    width: 1920px;
+    width: auto;
     height: 497px;
     position: sticky;
     margin-top: 503px;
@@ -192,6 +192,13 @@
     opacity: 0.11999999731779099;
 }
 
+
+@media screen and (max-width: 1300px) {
+    .photo-back {
+        margin: 13px auto 0 auto;
+        height: auto;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .main-btn-blue {
