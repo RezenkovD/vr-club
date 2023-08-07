@@ -408,13 +408,20 @@
     }
 }
 
-.carousel {
-    scroll-behavior: smooth;
-    transition: scroll 0.4s ease-in-out;
-}
 
 @media screen and (max-width: 768px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc(100% / 2);
+    }
+}
 
+@media screen and (max-width: 648px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) + 60px);
+    }
+}
+
+@media screen and (max-width: 532px) {
     .section-games {
         margin-top: 96px;
     }
@@ -422,6 +429,13 @@
     .wrapper .carousel {
         grid-auto-columns: calc(100% / 1);
     }
+}
+.carousel {
+    scroll-behavior: smooth;
+    transition: scroll 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
 
     .games {
         color: #ffffff;
