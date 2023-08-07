@@ -37,8 +37,8 @@
 
 .content {
     position: absolute;
-    margin-left: -95px;
-    margin-top: 107px;
+    margin-left: 340px;
+    margin-top: 105px;
 }
 
 .blur-32,
@@ -55,19 +55,28 @@
     z-index: 0;
 }
 
-
 .vr-club,
 .vr-club * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 .vr-club {
-    color: #ffffff;
-    text-align: left;
-    font: 800 88px "Montserrat", sans-serif;
-    position: relative;
-    width: 1187px;
-    height: 223px;
+  text-align: left;
+  font: 800 88px "Montserrat", sans-serif;
+  position: relative;
+  width: 1187px;
+  height: 223px;
+}
+.vr-club-span {
+  color: #ffffff;
+  font: 800 88px "Montserrat", sans-serif;
+}
+.vr-club-span2 {
+  color: #4fb4fe;
+  font: 800 88px "Montserrat", sans-serif;
+}
+.vr-club-span3 {
+  color: #ffffff;
+  font: 800 88px "Montserrat", sans-serif;
 }
 
 .sub-vr-club,
@@ -84,8 +93,6 @@
     width: 562px;
     height: 61px;
 }
-
-/* START Background */
 
 .intro_bg_block {
     position: absolute;
@@ -186,4 +193,75 @@
 }
 
 
-/* END Background */
+@media screen and (max-width: 768px) {
+    .main-btn-blue {
+        margin-top: 401px;
+        width: 311px;
+        height: 48px;
+        border-radius: 100px;
+        background: #4FB4FE;
+        padding: 13.71px 55px;
+
+        color: #ffffff;
+
+        z-index: 1;
+    }
+
+    .photo-back {
+        margin-top: 117px;
+        margin-left: -10px;
+        width: 423px;
+        height: 388px;
+        background-image: url(../static_files/man-experiencing-virtual-reality-close-up.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    .content {
+        position: absolute;
+        margin-left: 0;
+        margin-top: 56px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blur-32 {
+        background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        width: 100%;
+        height: 172.5px;
+        position: sticky;
+        margin-top: 235px;
+        z-index: 0;
+    }
+
+    .vr-club {
+        text-align: center;
+        font: 700 36px "Montserrat", sans-serif;
+        position: relative;
+        width: 327px;
+        height: 92px;
+    }
+    .vr-club-span {
+      font: 700 36px "Montserrat", sans-serif;
+    }
+    .vr-club-span2 {
+      font: 700 36px "Montserrat", sans-serif;
+    }
+    .vr-club-span3 {
+      font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .sub-vr-club {
+        margin-top: 16px;
+        text-align: center;
+        font: 500 16px "Montserrat", sans-serif;
+        position: relative;
+        width: 305px;
+        height: 46px;
+    }
+
+}

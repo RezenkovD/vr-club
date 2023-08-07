@@ -53,35 +53,6 @@
     flex-direction: column;
 }
 
-@media screen and (max-width: 1550px) {
-    .wrapper .carousel {
-        grid-auto-columns: calc((100% / 4) - 9px);
-    }
-}
-
-@media screen and (max-width: 1280px) {
-    .wrapper .carousel {
-        grid-auto-columns: calc((100% / 3) - 9px);
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .wrapper .carousel {
-        grid-auto-columns: calc((100% / 2) - 9px);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .wrapper .carousel {
-        grid-auto-columns: 100%;
-    }
-}
-
-.carousel {
-    scroll-behavior: smooth;
-    transition: scroll 0.4s ease-in-out;
-}
-
 .carousel.no-transition {
     transition: none;
 }
@@ -352,6 +323,35 @@
     margin-right: auto;
 }
 
+.games .span1 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.games .span2 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.games .span3 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+._15,
+._15 * {
+  box-sizing: border-box;
+}
+._15 {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    width: 694px;
+    height: 34px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .main-view-more {
     margin-top: 46px;
     position: relative;
@@ -384,4 +384,84 @@
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1550px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 4) - 9px);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 3) - 9px);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+.carousel {
+    scroll-behavior: smooth;
+    transition: scroll 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper .carousel {
+            grid-auto-columns: calc(100% / 1);
+        }
+
+        .carousel .card {
+            width: 100%;
+        }
+
+        .carousel li {
+            width: 100%;
+        }
+
+    .games {
+        color: #ffffff;
+        text-align: center;
+        font: 700 28px "Montserrat", sans-serif;
+        position: relative;
+        width: 311px;
+        height: 40px;
+    }
+
+    .games .span1 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .games .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .games .span3 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    ._15 {
+        margin-top: 12px;
+        font: 500 16px "Montserrat", sans-serif;
+        width: 305px;
+        height: 46px;
+    }
+
+    .main-view-more {
+        margin-top: 36px;
+        position: relative;
+        width: 311px;
+        height: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+
+    .view-more {
+        width: 311px;
+        height: 48px;
+        padding: 12px 55px 12px 55px;
+
+    }
 }

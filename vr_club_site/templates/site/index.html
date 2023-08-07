@@ -320,22 +320,28 @@
 </div>
 {% endblock %}
 {% block main %}
-<section style="height: auto;">
-    <div class="photo-back">
-        <div class="content">
-            <div class="vr-club">Нова реальність<br />разом з VRClub</div>
-            <div class="sub-vr-club">Поринь в світ віртуальної реальності разом з друзями</div>
-            <button class="main-btn-blue" onclick="redirectToBooking()">забронювати</button>
+<section style="height: auto; overflow-x: hidden">
+    <div class="content">
+        <div class="vr-club">
+          <span>
+              <span class="vr-club-span">Нова реальність<br />разом з </span>
+              <span class="vr-club-span2">VR</span>
+              <span class="vr-club-span3">Club </span>
+          </span>
         </div>
+        <div class="sub-vr-club">Поринь в світ віртуальної реальності разом з друзями</div>
+        <button class="main-btn-blue" onclick="redirectToBooking()">забронювати</button>
+    </div>
+    <div class="photo-back">
         <div class="blur-32"></div>
     </div>
 </section>
 <section style="margin-top: 8px">
     {% include 'site/game-carousel.html' %}
 </section>
-<section style="margin-top: 150px">
-    {% include 'site/calendar.html' %}
-</section>
+{#<section style="margin-top: 150px">#}
+{#    {% include 'site/calendar.html' %}#}
+{#</section>#}
 <section style="height: 514px;"></section>
 {% endblock %}
 {% block script %}
