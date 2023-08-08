@@ -189,14 +189,14 @@
 
 .first-object {
     position: absolute;
-    transform: translate(-149.9px, -1029px);
+    transform: translate(-87px, -1336px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
 
 .second-object {
     position: absolute;
-    transform: translate(-433.9px, 266.93px);
+    transform: translate(-427px, -87px);
     overflow: visible;
     opacity: 0.11999999731779099;
     z-index: 0;
@@ -204,14 +204,14 @@
 
 .third-object {
     position: absolute;
-    transform: translate(-643px, 558px);
+    transform: translate(1309px, 235px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
 
 .fourth-object {
     position: absolute;
-    transform: translate(-626px, 2492px);
+    transform: translate(1100px, 2512px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
