@@ -230,9 +230,9 @@
 .descriptions {
     color: var(--white, #f1f1f1);
     text-align: left;
-    font: 500 14px "Montserrat", sans-serif;
+    font: 500 16px "Montserrat", sans-serif;
     position: relative;
-    width: 268px;
+    width: auto;
     height: 157px;
     padding-left: 15.3px;
     opacity: 0;
