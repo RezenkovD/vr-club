@@ -170,6 +170,23 @@
     left: 1688px;
 }
 
+.ellipse-6,
+.ellipse-6 * {
+  box-sizing: border-box;
+}
+
+.ellipse-6 {
+    background: #00a3ff;
+    border-radius: 50%;
+    opacity: 0.8;
+    width: 371px;
+    height: 371px;
+    position: relative;
+    filter: blur(250px);
+    top: 3735px;
+    left: 1657px;
+}
+
 .first-object {
     position: absolute;
     transform: translate(-149.9px, -1029px);
@@ -178,7 +195,7 @@
 }
 
 .second-object {
-    position: relative;
+    position: absolute;
     transform: translate(-433.9px, 266.93px);
     overflow: visible;
     opacity: 0.11999999731779099;
@@ -188,6 +205,13 @@
 .third-object {
     position: absolute;
     transform: translate(-643px, 558px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+.fourth-object {
+    position: absolute;
+    transform: translate(-626px, 2492px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
@@ -571,4 +595,80 @@
         height: 63px;
     }
 
+    .ellipse-1 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 502px;
+        left: 306px;
+        z-index: 1;
+    }
+
+    .ellipse-3 {
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        top: -66px;
+        left: -55px;
+    }
+
+    .ellipse-4 {
+        background: #00a3ff;
+        border-radius: 50%;
+        opacity: 0.699999988079071;
+        width: 371px;
+        height: 371px;
+        position: absolute;
+        filter: blur(125px);
+        top: 1739px;
+        left: 306px;
+    }
+
+    .ellipse-5 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 1376px;
+        left: -126px;
+    }
+
+    .ellipse-6 {
+        background: #00a3ff;
+        border-radius: 50%;
+        opacity: 1;
+        width: 178px;
+        height: 178px;
+        position: relative;
+        filter: blur(125px);
+        top: 2700px;
+        left: -109px;
+    }
+
+    .first-object {
+        display: none;
+    }
+
+    .second-object {
+        position: absolute;
+        overflow: visible;
+        transform: rotate(346deg);
+        top: -865px;
+        left: -690px;
+        opacity: 0.11999999731779099;
+    }
+
+    .third-object {
+        display: none;
+    }
+
+    .fourth-object {
+        display: none;
+    }
 }
