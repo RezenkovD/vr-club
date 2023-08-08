@@ -339,6 +339,25 @@
 <section>
     {% include 'site/game-carousel.html' %}
 </section>
+<section class="section-what-to-play">
+    <div class="what-to-play">
+      <span>
+          <span class="span">На </span>
+          <span class="span2">чому</span>
+          <span class="span3"> грати?</span>
+      </span>
+    </div>
+    <div class="oculus-meta-quest-2">
+      Oculus Meta Quest 2 - сучасна бездротова гарнітура віртуальної реальності
+    </div>
+    <div class="photo-back-vr">
+        <img class="vr-helmet" src="{% static 'site/static_files/vr-helmet.png' %}"/>
+    </div>
+    <div class="main-more-details">
+        <a href="{% url 'site:games' %}" class="more-details">Детальніше</a>
+    </div>
+
+</section>
 <section>
     {% include 'site/calendar.html' %}
 </section>

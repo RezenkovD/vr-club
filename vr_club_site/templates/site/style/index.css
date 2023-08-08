@@ -192,11 +192,126 @@
     opacity: 0.11999999731779099;
 }
 
+.section-what-to-play {
+    margin-top: 150px;
+}
+
+.what-to-play,
+.what-to-play * {
+  box-sizing: border-box;
+}
+.what-to-play {
+  text-align: center;
+  font: 700 48px "Montserrat", sans-serif;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.what-to-play .span {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.what-to-play .span2 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.what-to-play .span3 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.oculus-meta-quest-2,
+.oculus-meta-quest-2 * {
+    box-sizing: border-box;
+}
+.oculus-meta-quest-2 {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    max-width: 693px;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-back-vr {
+    text-align: center;
+    width: auto;
+    max-height: 630px;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    z-index: 1;
+    position: sticky;
+}
+
+.vr-helmet {
+    width: auto;
+    max-height: 630px;
+}
+
+
+.main-more-details {
+    margin-top: 24px;
+    position: relative;
+    width: 290px;
+    height: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.more-details,
+.more-details * {
+    box-sizing: border-box;
+}
+
+.more-details {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+
+    padding: 16px 32px 16px 31px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 1300px) {
     .photo-back {
         margin: 13px auto 0 auto;
         height: auto;
+    }
+
+    .photo-back-vr {
+        text-align: center;
+        width: auto;
+        height: auto;
+        max-height: 630px;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vr-helmet {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
     }
 }
 
@@ -270,6 +385,51 @@
         max-width: 305px;
         width: auto;
         height: auto;
+    }
+
+    .section-what-to-play {
+        margin-top: 90px;
+    }
+
+    .what-to-play {
+      text-align: center;
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .what-to-play .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .what-to-play .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .what-to-play .span3 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .oculus-meta-quest-2 {
+        margin-top: 12px;
+        font: 500 16px "Montserrat", sans-serif;
+        max-width: 308px;
+    }
+    .vr-helmet {
+        width: auto;
+        height: auto;
+        max-height: 208px;
+        max-width: 370px;
+    }
+
+    .main-more-details {
+        margin-top: 36px;
+        position: relative;
+        width: 311px;
+        height: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+
+    .more-details {
+        width: 311px;
+        height: 48px;
+        padding: 12px 55px 12px 55px;
     }
 
 }
