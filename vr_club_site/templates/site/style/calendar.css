@@ -300,7 +300,7 @@
     .name-month {
         color: #4fb4fe;
         text-align: left;
-        font: 600 16px "Montserrat", sans-serif;
+        font: 500 16px "Montserrat", sans-serif;
         position: relative;
         width: auto;
         height: auto;
@@ -310,7 +310,7 @@
     .caret-right {
         width: 16px;
         height: 16px;
-        bottom: -1px;
+        bottom: -2px;
     }
 
     .wrap {
