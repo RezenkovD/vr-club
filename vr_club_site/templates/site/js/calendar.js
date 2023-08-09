@@ -76,6 +76,15 @@ document.addEventListener("DOMContentLoaded", function () {
             nextMonthBtn.innerHTML = months[currentMonth + 1];
         }
 
+        const prevMonth_ = document.getElementById("prevMonth");
+        if (currentYear === now.getFullYear() && currentMonth === now.getMonth()) {
+            prevMonth_.style.opacity = 0;
+            prevMonth_.style.cursor = "default"
+        } else {
+            prevMonth_.style.opacity = 1;
+            prevMonth_.style.cursor = "pointer"
+        }
+
     }
 
     function updateCalendar() {
@@ -83,12 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function prevMonth() {
-        currentMonth--;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            currentYear--;
+        if (currentYear !== now.getFullYear() || currentMonth !== now.getMonth()) {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            updateCalendar();
         }
-        updateCalendar();
     }
 
     function nextMonth() {
