@@ -29,6 +29,7 @@
     width: 796px;
     height: 759px;
     border-radius: 8px;
+    overflow: auto;
 }
 
 /* Стилізація для кнопки закриття попап вікна */
@@ -46,6 +47,7 @@
 }
 
 .title-popup {
+    margin-top: 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,6 +64,7 @@
 }
 
 .half-2 {
+    margin-top: 8px;
     color: var(--style, #202122);
     text-align: center;
     font: 700 32px/115% "Montserrat", sans-serif;
@@ -70,6 +73,7 @@
 }
 
 .booking-date {
+    margin-top: 20px;
     color: #4fb4fe;
     text-align: center;
     font: 500 24px/115% "Montserrat", sans-serif;
@@ -85,6 +89,20 @@
     text-align: left;
     font: 500 24px/170% "Montserrat", sans-serif;
     position: relative;
+}
+
+.people-count-2 {
+    gap: 125px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn-booking {
+    margin-left: auto;
+    margin-top: 32px;
+    margin-right: auto;
+    max-width: 369px;
 }
 
 .main-btn-blue-pop {
@@ -134,6 +152,7 @@
 }
 
 .av_slots {
+    margin-left: 12px;
     color: #4FB4FE;
     font-family: Montserrat, serif;
     font-size: 16px;
@@ -160,7 +179,8 @@
 }
 
 .people-count-price {
-    justify-content: space-between;
+    margin-top: 24px;
+    justify-content: flex-start;
     display: flex;
     width: 596px;
     height: 41px;
@@ -221,6 +241,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .number-input {
+    margin-left: 24px;
     order: 0;
     display: inline-flex;
     flex-direction: row;
@@ -290,6 +311,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Info */
 .info-form {
+    margin-top: 21px;
     display: flex;
     justify-content: space-between;
     width: 596px;
@@ -300,6 +322,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     width: 285px;
+    gap: 8px;
 }
 
 .column+.column {
@@ -381,4 +404,250 @@ input[type="checkbox"]:disabled {
 
 input[type="checkbox"]:checked {
     background-color: #4FB4FE;
+}
+
+
+@media screen and (max-width: 768px) {
+    .popup-container {
+        max-width: 376px;
+        max-height: 957px;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .title-popup {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+    }
+
+    .half-1 {
+        color: var(--style, #202122);
+        text-align: center;
+        font: 500 24px/115% "Montserrat", sans-serif;
+        position: relative;
+        max-width: 318px;
+        width: auto;
+    }
+
+    .half-2 {
+        text-align: center;
+        font: 700 20px/115% "Montserrat", sans-serif;
+        position: relative;
+        max-width: 300px;
+        width: auto;
+    }
+
+    .booking-date {
+        margin-top: 16px;
+        font: 500 18px/115% "Montserrat", sans-serif;
+        max-width: 194px;
+        width: auto;
+        max-height: 23px;
+        height: auto;
+    }
+
+    .people-count {
+        color: #202122;
+        text-align: left;
+        font: 500 18px/170% "Montserrat", sans-serif;
+        position: relative;
+        width: auto;
+    }
+
+    .btn-booking {
+        margin-left: auto;
+        margin-top: 24px;
+        margin-right: auto;
+        max-width: 311px;
+        margin-bottom: 32px;
+    }
+
+    .main-btn-blue-pop {
+        width: 311px;
+        height: 48px;
+        border-radius: 100px;
+        background: #4FB4FE;
+        padding: 13px 55px;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 16px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 150.521%;
+        text-transform: uppercase;
+
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 335px;
+        max-height: 243px;
+        width: auto;
+        height: auto;
+        column-gap: 48px;
+        row-gap: 18px;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+    }
+
+    .form-check {
+        max-height: 31px;
+        height: auto;
+        max-width: 140px;
+        width: auto;
+        margin-left: 0;
+    }
+
+    .form-check-label {
+        font-size: 18px;
+    }
+
+    .av_slots {
+        margin-left: 32px;
+        font-size: 12px;
+        max-height: 20px;
+        height: auto;
+    }
+
+    .view-slot {
+        border-radius: 4px;
+        border-style: solid;
+        border-color: #4fb4fe;
+        border-width: 1px;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        margin-top: 7px;
+    }
+
+    .people-count-price {
+        margin-top: 32px;
+        display: block;
+        max-width: 335px;
+        width: auto;
+        max-height: 73px;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .people-count-2 {
+        margin-top: 8px;
+        max-height: 34px;
+        gap: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .rectangle-6288,
+    .rectangle-6288 * {
+        box-sizing: border-box;
+    }
+
+    .rectangle-6288 {
+        margin-left: 24px;
+        background: #efefef;
+        border-radius: 4px;
+        flex-shrink: 0;
+        width: 131px;
+        height: 32px;
+        position: relative;
+    }
+
+    .total_cost {
+        color: #202122;
+        text-align: left;
+        font: 600 20px/170% "Montserrat", sans-serif;
+        position: relative;
+    }
+
+    .number-input {
+        margin-left: 0;
+        order: 0;
+        display: inline-flex;
+        flex-direction: row;
+        gap: 22px;
+        height: 32px;
+        width: 131px;
+
+        background: #efefef;
+        border-radius: 4px;
+        position: relative;
+        align-items: center;
+    }
+
+    .number-input,
+    .number-input * {
+        box-sizing: border-box;
+    }
+
+    .number-input div {
+        background-color: transparent;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+    }
+
+    .info-form {
+        margin-top: 17px;
+        display: flex;
+        max-width: 335px;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        width: 335px;
+        gap: 12px;
+    }
+
+    .column+.column {
+        margin-left: 0;
+    }
+
+    .input-container label {
+        margin-bottom: 8px;
+    }
+
+    .e1 {
+        font: 500 12px/170% "Montserrat", sans-serif;
+    }
+
+    .e2 {
+        font: 500 12px/170% "Montserrat", sans-serif;
+    }
+
+    .input-container .form-control {
+        width: 335px;
+    }
+
 }

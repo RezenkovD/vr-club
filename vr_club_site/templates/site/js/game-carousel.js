@@ -54,9 +54,3 @@ carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("scroll", infiniteScroll);
-wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
-
-const buttons = document.querySelectorAll('.btn-blue');
-buttons.forEach(button => {
-    button.addEventListener('click', redirectToBooking);
- });

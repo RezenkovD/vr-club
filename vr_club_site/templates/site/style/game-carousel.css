@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
+.section-games {
+    margin-top: 8px;
+}
+
 .wrapper {
     max-width: 1595px;
     width: 100%;
@@ -51,35 +55,6 @@
     list-style: none;
     cursor: pointer;
     flex-direction: column;
-}
-
-@media screen and (max-width: 1550px) {
-    .wrapper .carousel {
-        grid-auto-columns: calc((100% / 4) - 9px);
-    }
-}
-
-@media screen and (max-width: 1280px) {
-    .wrapper .carousel {
-        grid-auto-columns: calc((100% / 3) - 9px);
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .wrapper .carousel {
-        grid-auto-columns: calc((100% / 2) - 9px);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .wrapper .carousel {
-        grid-auto-columns: 100%;
-    }
-}
-
-.carousel {
-    scroll-behavior: smooth;
-    transition: scroll 0.4s ease-in-out;
 }
 
 .carousel.no-transition {
@@ -255,9 +230,9 @@
 .descriptions {
     color: var(--white, #f1f1f1);
     text-align: left;
-    font: 500 14px "Montserrat", sans-serif;
+    font: 500 16px "Montserrat", sans-serif;
     position: relative;
-    width: 268px;
+    width: auto;
     height: 157px;
     padding-left: 15.3px;
     opacity: 0;
@@ -336,6 +311,7 @@
     transform: translateY(-268px);
 }
 
+/**/
 .games,
 .games * {
     box-sizing: border-box;
@@ -352,6 +328,35 @@
     margin-right: auto;
 }
 
+.games .span1 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.games .span2 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.games .span3 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+._15,
+._15 * {
+  box-sizing: border-box;
+}
+._15 {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    width: 694px;
+    height: 34px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .main-view-more {
     margin-top: 46px;
     position: relative;
@@ -359,6 +364,7 @@
     height: 56px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
 }
 
 .view-more,
@@ -367,13 +373,13 @@
 }
 
 .view-more {
-    width: 122px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
     flex-shrink: 0;
     border-radius: 100px;
     border: 1px solid #FFF;
 
-    padding: 12px 32px 12px 31px;
+    padding: 16px 32px 16px 31px;
 
     color: #FFF;
     text-align: center;
@@ -384,4 +390,219 @@
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1550px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 4) - 9px);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 3) - 9px);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc(100% / 2);
+    }
+}
+
+@media screen and (max-width: 648px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) + 60px);
+    }
+}
+
+@media screen and (max-width: 532px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 1) - 50px);
+    }
+
+    .wrapper {
+        margin-top: 25px;
+    }
+
+    .carousel .card {
+        width: 366px;
+        height: 336px;
+    }
+
+    .game-card {
+        width: 263px;
+        height: 336px;
+    }
+
+    .group-1 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+    }
+
+    .rectangle-12 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-title {
+        font: 600 18px "Montserrat", sans-serif;
+        left: 16px;
+        top: 290px;
+        width: auto;
+    }
+
+    .age-group {
+        width: 44px;
+        height: 44px;
+        position: static;
+    }
+
+    .age-badge {
+        left: 203px;
+    }
+
+    .player-count {
+        width: auto;
+        height: 24px;
+        position: static;
+    }
+
+    .player-badge-one {
+        top: 254px;
+        font: 500 12px "Montserrat", sans-serif;
+        line-height: 24px;
+    }
+
+    .player-badge-two {
+        top: 254px;
+        font: 500 12px "Montserrat", sans-serif;
+        line-height: 24px;
+    }
+
+    .game-card:hover .rectangle-12 {
+        opacity: 1;
+    }
+
+    .game-title,
+    .player-badge-one,
+    .descriptions,
+    .btn-blue,
+    .btn-play {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .game-title,
+    .player-badge-two,
+    .descriptions,
+    .btn-blue,
+    .btn-play {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .game-card:hover .game-title {
+        transform: translateY(-238px);
+    }
+
+    .game-card:hover .player-badge-one {
+        transform: translateY(-238px);
+    }
+
+    .game-card:hover .player-badge-two {
+        transform: translateY(-238px);
+    }
+
+    .descriptions {
+        color: var(--white, #f1f1f1);
+        text-align: left;
+        font: 500 14px "Montserrat", sans-serif;
+        width: auto;
+        padding-right: 15px;
+        max-height: 158px;
+    }
+
+    .game-card:hover .descriptions {
+        opacity: 1;
+        transform: translateY(-250px);
+    }
+
+    .btn-blue {
+        width: 178px;
+        height: 44px;
+    }
+
+    .btn-play {
+        margin-left: 202px;
+    }
+
+}
+.carousel {
+    scroll-behavior: smooth;
+    transition: scroll 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .section-games {
+        margin-top: 96px;
+    }
+
+    .games {
+        color: #ffffff;
+        text-align: center;
+        font: 700 28px "Montserrat", sans-serif;
+        position: relative;
+        width: 311px;
+        height: 40px;
+    }
+
+    .games .span1 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .games .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .games .span3 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    ._15 {
+        margin-top: 12px;
+        font: 500 16px "Montserrat", sans-serif;
+        width: 305px;
+        height: 46px;
+    }
+
+    .main-view-more {
+        margin-top: 36px;
+        position: relative;
+        width: 311px;
+        height: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+
+    .view-more {
+        width: 311px;
+        height: 48px;
+        padding: 12px 55px 12px 55px;
+
+    }
 }

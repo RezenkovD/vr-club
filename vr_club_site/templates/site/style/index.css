@@ -24,21 +24,21 @@
 
 
 .photo-back {
-    margin-top: 13px;
-    margin-left: 435px;
-    width: 1352px;
-    height: 851px;
+    width: auto;
+    max-height: 851px;
     background-image: url(../static_files/man-experiencing-virtual-reality-close-up.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
+    margin: 13px auto 0 435px;
+    height: auto;
 }
 
 .content {
     position: absolute;
-    margin-left: -95px;
-    margin-top: 107px;
+    margin-left: 340px;
+    margin-top: 105px;
 }
 
 .blur-32,
@@ -48,26 +48,35 @@
 
 .blur-32 {
     background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 85%);
-    width: 1920px;
+    width: auto;
     height: 497px;
     position: sticky;
     margin-top: 503px;
     z-index: 0;
 }
 
-
 .vr-club,
 .vr-club * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 .vr-club {
-    color: #ffffff;
-    text-align: left;
-    font: 800 88px "Montserrat", sans-serif;
-    position: relative;
-    width: 1187px;
-    height: 223px;
+  text-align: left;
+  font: 800 88px "Montserrat", sans-serif;
+  position: relative;
+  width: 1187px;
+  height: 223px;
+}
+.vr-club-span {
+  color: #ffffff;
+  font: 800 88px "Montserrat", sans-serif;
+}
+.vr-club-span2 {
+  color: #4fb4fe;
+  font: 800 88px "Montserrat", sans-serif;
+}
+.vr-club-span3 {
+  color: #ffffff;
+  font: 800 88px "Montserrat", sans-serif;
 }
 
 .sub-vr-club,
@@ -84,8 +93,6 @@
     width: 562px;
     height: 61px;
 }
-
-/* START Background */
 
 .intro_bg_block {
     position: absolute;
@@ -163,16 +170,33 @@
     left: 1688px;
 }
 
+.ellipse-6,
+.ellipse-6 * {
+  box-sizing: border-box;
+}
+
+.ellipse-6 {
+    background: #00a3ff;
+    border-radius: 50%;
+    opacity: 0.8;
+    width: 371px;
+    height: 371px;
+    position: relative;
+    filter: blur(250px);
+    top: 3735px;
+    left: 1657px;
+}
+
 .first-object {
     position: absolute;
-    transform: translate(-149.9px, -1029px);
+    transform: translate(-87px, -1336px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
 
 .second-object {
-    position: relative;
-    transform: translate(-433.9px, 266.93px);
+    position: absolute;
+    transform: translate(-427px, -87px);
     overflow: visible;
     opacity: 0.11999999731779099;
     z-index: 0;
@@ -180,10 +204,471 @@
 
 .third-object {
     position: absolute;
-    transform: translate(-643px, 558px);
+    transform: translate(1309px, 235px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
 
+.fourth-object {
+    position: absolute;
+    transform: translate(1100px, 2512px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
 
-/* END Background */
+.section-what-to-play {
+    margin-top: 150px;
+}
+
+.what-to-play,
+.what-to-play * {
+  box-sizing: border-box;
+}
+.what-to-play {
+  text-align: center;
+  font: 700 48px "Montserrat", sans-serif;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.what-to-play .span {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.what-to-play .span2 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.what-to-play .span3 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.oculus-meta-quest-2,
+.oculus-meta-quest-2 * {
+    box-sizing: border-box;
+}
+.oculus-meta-quest-2 {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    max-width: 693px;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-back-vr {
+    text-align: center;
+    width: auto;
+    max-height: 630px;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    z-index: 1;
+    position: sticky;
+}
+
+.vr-helmet {
+    width: auto;
+    max-height: 630px;
+}
+
+
+.main-more-details {
+    margin-top: 24px;
+    position: relative;
+    width: 290px;
+    height: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.more-details,
+.more-details * {
+    box-sizing: border-box;
+}
+
+.more-details {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+
+    padding: 16px 32px 16px 31px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.section-rules-club {
+    margin-top: 150px;
+}
+.rules-club,
+.rules-club * {
+  box-sizing: border-box;
+}
+.rules-club {
+  text-align: center;
+  font: 700 48px "Montserrat", sans-serif;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.rules-club .span {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.rules-club .span2 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.rules {
+    margin-top: 64.5px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1187px;
+    max-height: 322px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.column-rul {
+    display: flex;
+    flex-direction: column;
+    max-width: 524px;
+    gap: 56px;
+}
+
+.rule {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.title {
+    color: #ffffff;
+    text-align: left;
+    font: 600 24px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.description {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+@media screen and (max-width: 1300px) {
+    .photo-back {
+        margin: 13px auto 0 auto;
+        height: auto;
+    }
+
+    .photo-back-vr {
+        text-align: center;
+        width: auto;
+        height: auto;
+        max-height: 630px;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .vr-helmet {
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-btn-blue {
+        margin-top: 401px;
+        width: 311px;
+        height: 48px;
+        border-radius: 100px;
+        background: #4FB4FE;
+        padding: 13.71px 55px;
+
+        color: #ffffff;
+
+        z-index: 1;
+    }
+
+    .photo-back {
+        width: auto;
+        height: auto;
+        background-image: url(../static_files/man-experiencing-virtual-reality-close-up.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        overflow: hidden;
+        margin: 117px -60px 0 auto;
+    }
+
+    .content {
+        position: absolute;
+        margin-left: 0;
+        margin-top: 56px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .blur-32 {
+        background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+        width: 100%;
+        height: 172.5px;
+        position: sticky;
+        margin-top: 235px;
+        z-index: 0;
+    }
+
+    .vr-club {
+        text-align: center;
+        font: 700 36px "Montserrat", sans-serif;
+        position: relative;
+        max-width: 327px;
+        width: auto;
+        height: auto;
+    }
+    .vr-club-span {
+      font: 700 36px "Montserrat", sans-serif;
+    }
+    .vr-club-span2 {
+      font: 700 36px "Montserrat", sans-serif;
+    }
+    .vr-club-span3 {
+      font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .sub-vr-club {
+        margin-top: 16px;
+        text-align: center;
+        font: 500 16px "Montserrat", sans-serif;
+        position: relative;
+        max-width: 305px;
+        width: auto;
+        height: auto;
+    }
+
+    .section-what-to-play {
+        margin-top: 90px;
+    }
+
+    /*  What to play   */
+    .what-to-play {
+      text-align: center;
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .what-to-play .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .what-to-play .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .what-to-play .span3 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .oculus-meta-quest-2 {
+        margin-top: 12px;
+        font: 500 16px "Montserrat", sans-serif;
+        max-width: 308px;
+    }
+    .vr-helmet {
+        width: auto;
+        height: auto;
+        max-height: 208px;
+        max-width: 370px;
+    }
+
+    .main-more-details {
+        margin-top: 36px;
+        position: relative;
+        width: 311px;
+        height: 48px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+    }
+
+    .more-details {
+        width: 311px;
+        height: 48px;
+        padding: 12px 55px 12px 55px;
+    }
+
+    /* Rules */
+    .section-rules-club {
+        margin-top: 96px;
+    }
+    .rules-club,
+    .rules-club * {
+      box-sizing: border-box;
+    }
+    .rules-club {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .rules-club .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .rules-club .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .rules {
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        max-height: 598px;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        gap: 36px;
+        max-width: 338px;
+    }
+
+    .column-rul {
+        display: flex;
+        flex-direction: column;
+        max-width: 524px;
+        gap: 36px;
+    }
+
+    .rule {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: row;
+    }
+
+    .title {
+        font: 600 20px "Montserrat", sans-serif;
+    }
+
+    .description {
+        font: 500 16px "Montserrat", sans-serif;
+    }
+
+    .pregnat_ {
+        width: 62.933px;
+        height: 74.927px;
+    }
+
+    .drink_ {
+        width: 63px;
+        height: 69px;
+    }
+
+    .old_ {
+        width: 63px;
+        height: 56px;
+    }
+
+    .time_ {
+        width: 63px;
+        height: 63px;
+    }
+
+    .ellipse-1 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 502px;
+        left: 306px;
+        z-index: 1;
+    }
+
+    .ellipse-3 {
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        top: -66px;
+        left: -55px;
+    }
+
+    .ellipse-4 {
+        background: #00a3ff;
+        border-radius: 50%;
+        opacity: 0.699999988079071;
+        width: 371px;
+        height: 371px;
+        position: absolute;
+        filter: blur(125px);
+        top: 1739px;
+        left: 306px;
+    }
+
+    .ellipse-5 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 1376px;
+        left: -126px;
+    }
+
+    .ellipse-6 {
+        background: #00a3ff;
+        border-radius: 50%;
+        opacity: 1;
+        width: 178px;
+        height: 178px;
+        position: relative;
+        filter: blur(125px);
+        top: 2700px;
+        left: -109px;
+    }
+
+    .first-object {
+        display: none;
+    }
+
+    .second-object {
+        position: absolute;
+        overflow: visible;
+        transform: rotate(346deg);
+        top: -865px;
+        left: -690px;
+        opacity: 0.11999999731779099;
+    }
+
+    .third-object {
+        display: none;
+    }
+
+    .fourth-object {
+        display: none;
+    }
+}

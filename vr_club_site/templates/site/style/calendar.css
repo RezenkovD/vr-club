@@ -9,6 +9,15 @@
     height: 65px;
 }
 
+.booking .span1 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.booking .span2 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
 .calendar {
     width: 738px;
 }
@@ -218,4 +227,153 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 44px;
+}
+
+.section-calendar {
+    margin-top: 96px;
+}
+
+@media screen and (max-width: 768px) {
+    .booking {
+        font: 700 28px "Montserrat", sans-serif;
+        width: 311px;
+        height: 74px;
+    }
+
+    .booking .span1 {
+        font: 700 28px "Montserrat", sans-serif;
+    }
+    .booking .span2 {
+        font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .calendar {
+        width: 738px;
+    }
+
+    .month {
+        color: #ffffff;
+        text-align: center;
+        font: 600 16px "Montserrat", sans-serif;
+        position: relative;
+        width: auto;
+        height: 24px;
+    }
+
+    .weekdays {
+        margin-top: 24px;
+        gap: 24px;
+    }
+
+    .weekdays div {
+        font: 500 16px/150% "Montserrat", sans-serif;
+        position: relative;
+        width: 21px;
+        height: 31px;
+    }
+
+    .days {
+        margin-top: 0;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+    }
+
+    .month-nav {
+        width: auto;
+        gap: 22px;
+    }
+
+    .item1 {
+        cursor: pointer;
+    }
+
+    .item3 {
+        cursor: pointer;
+    }
+
+    .button-m {
+        gap: 10px;
+    }
+
+    .name-month {
+        color: #4fb4fe;
+        text-align: left;
+        font: 600 16px "Montserrat", sans-serif;
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+
+    .caret-left,
+    .caret-right {
+        width: 16px;
+        height: 16px;
+        bottom: -1px;
+    }
+
+    .wrap {
+        width: 46px;
+        height: 80px;
+    }
+
+    .transparent-wrap {
+        width: 46px;
+        height: 80px;
+    }
+
+    .no-change {
+        width: 46px;
+        height: 80px;
+    }
+
+    .us-background {
+        width: 46px;
+        height: 80px;
+    }
+
+    .blue-background {
+        width: 46px;
+        height: 80px;
+    }
+
+    .old-day {
+        font: 500 20px/150% "Montserrat", sans-serif;
+        padding-top: 6px;
+        padding-left: 5px;
+    }
+
+    .base-day {
+        font: 500 20px/150% "Montserrat", sans-serif;
+        padding-top: 6px;
+        padding-left: 5px;
+    }
+
+    .today {
+        font: 500 20px/150% "Montserrat", sans-serif;
+        padding-top: 6px;
+        padding-left: 5px;
+    }
+
+    .wrap:hover .blue-background {
+        width: 46px;
+        height: 80px;
+    }
+
+    .wrap:hover .us-background {
+        width: 46px;
+        height: 80px;
+    }
+
+    .count_place {
+        font: 500 12px/110% "Montserrat", sans-serif;
+        height: 28px;
+        padding-left: 5px;
+        padding-top: 40px;
+    }
+
+    .flex-calendar {
+        margin-top: 20px;
+    }
 }
