@@ -425,7 +425,9 @@
 
 @media screen and (max-width: 532px) {
     .wrapper .carousel {
-        grid-auto-columns: calc((100% / 1) - 50px);
+        grid-auto-columns: 263px;
+        padding: 0;
+        grid-column-gap: 20px;
     }
 
     .wrapper {
@@ -433,7 +435,8 @@
     }
 
     .carousel .card {
-        width: 366px;
+        scroll-snap-align: center;
+        width: 263px;
         height: 336px;
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
