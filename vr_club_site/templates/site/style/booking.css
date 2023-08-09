@@ -29,6 +29,7 @@
     width: 796px;
     height: 759px;
     border-radius: 8px;
+    overflow: auto;
 }
 
 /* Стилізація для кнопки закриття попап вікна */
@@ -471,6 +472,7 @@ input[type="checkbox"]:checked {
         margin-top: 24px;
         margin-right: auto;
         max-width: 311px;
+        margin-bottom: 32px;
     }
 
     .main-btn-blue-pop {
