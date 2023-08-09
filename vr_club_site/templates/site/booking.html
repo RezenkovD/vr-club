@@ -13,10 +13,10 @@
                 d="M8.53317 25.3334L6.6665 23.4667L14.1332 16L6.6665 8.53335L8.53317 6.66669L15.9998 14.1334L23.4665 6.66669L25.3332 8.53335L17.8665 16L25.3332 23.4667L23.4665 25.3334L15.9998 17.8667L8.53317 25.3334Z"
                 fill="black"></path>
         </svg>
-        <div class="title-popup" style="margin-top: 28px;">
+        <div class="title-popup">
             <div class="half-1">Оберіть зручний час для гри в клубі:</div>
-            <div class="half-2" style="margin-top: 8px;">м. Славута, вул. Бла-бла, 32</div>
-            <div class="booking-date" style="margin-top: 20px;">01-01-2023</div>
+            <div class="half-2">м. Славута, вул. Бла-бла, 32</div>
+            <div class="booking-date">01-01-2023</div>
             <form id="bookingForm" method="post" style="margin-top: 24px;">
                 {% csrf_token %}
                 <div style="display: none;">
@@ -28,7 +28,7 @@
                             <label class="form-check-label">
                                 {{ slot }}
                             </label>
-                            <label class="av_slots" style="margin-left: 12px">
+                            <label class="av_slots">
                                 {% if av_slot > 0 %}
                                 {{ av_slot }} місця
                                 {% else %}
@@ -37,9 +37,10 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div class="people-count-price" style="margin-top: 24px">
+                <div class="people-count-price">
                     <div class="people-count">Кількість осіб:</div>
-                    <div class="number-input" style="margin-left: 24px">
+                    <div class="people-count-2">
+                        <div class="number-input">
                         <div onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                             style="margin-left:16px"></div>
                         <input class="quantity" min="1" name="people_count" value="1" type="number" required
@@ -48,10 +49,11 @@
                             class="Two plus" style="margin-right:16px"></div>
                     </div>
                     <span class="total_cost" id="total_cost" style="margin-left: auto">0.00 грн</span>
+                    </div>
                 </div>
                 <div class="info-form">
                     <div class="column">
-                    <div class="input-container" style="margin-top: 21px;">
+                    <div class="input-container">
                         <label for="{{ form.name.id_for_label }}">
                             <div class="frame-23">
                                 <span class="e1">Ваше ім’я</span>
@@ -60,7 +62,7 @@
                         </label>
                         {{ form.name }}
                     </div>
-                    <div class="input-container" style="margin-top: 8px">
+                    <div class="input-container">
                         <label for="{{ form.email.id_for_label }}">
                             <span class="e1">Електронна адреса</span>
                             <span class="e2">*</span>
@@ -69,13 +71,13 @@
                     </div>
                     </div>
                     <div class="column">
-                        <div class="input-container" style="margin-top: 21px">
+                        <div class="input-container">
                             <label for="{{ form.phone_number.id_for_label }}">
                                 <span class="e1">Номер телефону</span>
                             </label>
                             {{ form.phone_number }}
                         </div>
-                        <div class="input-container" style="margin-top: 8px">
+                        <div class="input-container">
                             <label for="{{ form.comment.id_for_label }}">
                                 <span class="e1">Коментар</span>
                             </label>
@@ -83,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="margin-left: 214px; margin-top: 32px">
+                <div class="btn-booking">
                     <button  id="bookingButton" class="main-btn-blue-pop">забронювати</button>
                 </div>
             </form>
