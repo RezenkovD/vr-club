@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+        var body = document.querySelector("body")
         var headerA = document.querySelector(".header-container");
         var menuUL = document.querySelector(".navigation-container");
         var btnToggle = document.querySelector(".btn-toggle");
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headerA.style.height = ""
                 headerA.style.width = ""
                 hiddenForHead.style.display = ""
+                body.style.overflowY = "auto"
             } else {
                 menuUL.style.maxHeight = "initial";
                 btnToggle_.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M25.3332 8.54675L23.4532 6.66675L15.9998 14.1201L8.5465 6.66675L6.6665 8.54675L14.1198 16.0001L6.6665 23.4534L8.5465 25.3334L15.9998 17.8801L23.4532 25.3334L25.3332 23.4534L17.8798 16.0001L25.3332 8.54675Z" fill="white"/></svg>'
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headerA.style.height = "100%"
                 headerA.style.width = "100%"
                 hiddenForHead.style.display = "none"
+                body.style.overflowY = "hidden"
             }
 
             if (signContainer.style.display === "flex") {
