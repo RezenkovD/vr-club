@@ -384,7 +384,7 @@
     color: #FFF;
     text-align: center;
     font-size: 16px;
-    font-family: "Gilroy", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     line-height: 150.521%;
     text-transform: uppercase;
@@ -600,8 +600,8 @@
     }
 
     .view-more {
-        width: 311px;
-        height: 48px;
+        width: auto;
+        height: auto;
         padding: 12px 55px 12px 55px;
 
     }
