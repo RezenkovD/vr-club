@@ -360,6 +360,73 @@
         overflow: visible;
         opacity: 0.12;
     }
+
+    .main {
+        margin: 56px auto 96px;
+    }
+
+    .main-text {
+        width: auto;
+        text-align: center;
+        height: auto;
+        font: 700 36px "Montserrat", sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .span1 {
+        color: #ffffff;
+        font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .span2 {
+        color: #4fb4fe;
+        font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .span3 {
+        color: #ffffff;
+        font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .forgot-pswd {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext {
+        font: 500 18px/170% "Montserrat", sans-serif;
+        width: auto;
+    }
+
+    .subtext .span1 {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext .span2 {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext .span3 {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .btn-blue {
+        margin-top: 24px;
+        width: 311px;
+        height: 48px;
+        padding: 13.71px 55px;
+    }
+
+    .subtext-or {
+        font: 500 18px/170% "Montserrat", sans-serif;
+        margin: 24px auto 0;
+        width: auto;
+    }
+
+    .error-container {
+        font: 500 16px/170% "Montserrat", sans-serif;
+        width: auto;
+    }
 }
 
 @media screen and (max-width: 768px) {
