@@ -15,24 +15,23 @@ li {
 }
 
 .header-container {
-    z-index: 1;
-    width: 100%;
-    max-width: 1240px;
     height: 48px;
-    flex-shrink: 0;
-    position: sticky;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 8px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    z-index: 9999;
+    gap: 41px;
 }
 
 /* Container 1: Logo */
 .logo-container {
     display: flex;
     align-items: center;
-    margin-top: 16px;
 }
 
 /* Container 2: Navigation */
@@ -138,7 +137,6 @@ li {
 
 /* Gamburger */
 .btn-toggle {
-    margin-top: 16px;
     background: transparent;
     float: right;
     border: none;
@@ -150,7 +148,6 @@ li {
 
 
 .change-cont {
-    margin-top: 16px;
     display: flex;
     gap: 56px;
 }
@@ -376,8 +373,9 @@ li {
     /* HEADER */
     .header-container {
         height: 48px;
-        align-items: flex-start;
+        align-items: center;
         z-index: 9999;
+        gap: 0;
     }
 
     .change-cont {
