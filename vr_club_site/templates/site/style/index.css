@@ -323,6 +323,10 @@
     margin-top: 8px;
 }
 
+.section-calendar {
+    margin-top: 150px;
+}
+
 
 @media screen and (max-width: 1300px) {
     .photo-back {
@@ -472,6 +476,10 @@
 
     .section-games {
         margin-top: 76px;
+    }
+
+    .section-calendar {
+        margin-top: 96px;
     }
 
     .ellipse-1 {

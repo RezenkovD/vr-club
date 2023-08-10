@@ -230,10 +230,6 @@
     margin-top: 44px;
 }
 
-.section-calendar {
-    margin-top: 96px;
-}
-
 @media screen and (max-width: 768px) {
     .booking {
         font: 700 28px "Montserrat", sans-serif;
