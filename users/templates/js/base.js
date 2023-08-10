@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener('load', function() {
     var header = document.querySelector('.header-container');
     var scrollPosition = window.scrollY;
+    var menuUL = document.querySelector(".navigation-container");
 
     if (scrollPosition > 0) {
         header.style.backgroundColor = 'rgba(2, 2, 4, 0.70)';
@@ -57,7 +58,11 @@ window.addEventListener('load', function() {
         var scrollPosition = window.scrollY;
 
         if (scrollPosition > 0) {
-            header.style.backgroundColor = 'rgba(2, 2, 4, 0.70)';
+            if (menuUL.style.maxHeight) {
+                header.style.backgroundColor = "";  // Зміна фону при відкритті бургер-меню
+            } else {
+                header.style.backgroundColor = 'rgba(2, 2, 4, 0.70)';
+            }
             header.style.marginTop = '0';
             header.style.height = '64px';
         } else {
