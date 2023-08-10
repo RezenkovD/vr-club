@@ -547,8 +547,71 @@ li {
     }
 
     .logo {
-        float: none;
+        color: #FFF;
+        font-family: Montserrat, serif;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
     }
+
+    .logo-span1 {
+        color: #4fb4fe;
+        font: 700 24px "Montserrat", sans-serif;
+    }
+
+    .logo-span2 {
+        color: #ffffff;
+        font: 700 24px "Montserrat", sans-serif;
+    }
+
+    .btn-sign-up {
+        border-radius: 100px;
+        border-style: solid;
+        border-color: #ffffff;
+        border-width: 1px;
+        width: 198px;
+        height: 48px;
+        position: relative;
+
+        padding: 11px;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 16px;
+        font-family: "Gilroy", sans-serif;
+        font-weight: 700;
+        line-height: 150.521%;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .btn-sign-in,
+    .btn-sign-in * {
+        box-sizing: border-box;
+    }
+
+    .btn-sign-in {
+        width: 122px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 100px;
+        border: 1px solid #FFF;
+
+        padding: 12px 32px 12px 31px;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 16px;
+        font-family: "Gilroy", sans-serif;
+        font-weight: 700;
+        line-height: 150.521%;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
 
     .navigation-container {
         float: none;
