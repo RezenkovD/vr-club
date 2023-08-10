@@ -1,0 +1,133 @@
+.rules-club,
+.rules-club * {
+  box-sizing: border-box;
+}
+.rules-club {
+  text-align: center;
+  font: 700 48px "Montserrat", sans-serif;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.rules-club .span {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.rules-club .span2 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.rules {
+    margin-top: 64.5px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1187px;
+    max-height: 322px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.column-rul {
+    display: flex;
+    flex-direction: column;
+    max-width: 524px;
+    gap: 56px;
+}
+
+.rule {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.title {
+    color: #ffffff;
+    text-align: left;
+    font: 600 24px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.description {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    font: 500 20px "Montserrat", sans-serif;
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    .rules-club,
+    .rules-club * {
+      box-sizing: border-box;
+    }
+    .rules-club {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .rules-club .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .rules-club .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .rules {
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        max-height: 598px;
+        margin-left: auto;
+        margin-right: auto;
+        flex-direction: column;
+        gap: 36px;
+        max-width: 338px;
+    }
+
+    .column-rul {
+        display: flex;
+        flex-direction: column;
+        max-width: 524px;
+        gap: 36px;
+    }
+
+    .rule {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: row;
+    }
+
+    .title {
+        font: 600 20px "Montserrat", sans-serif;
+    }
+
+    .description {
+        font: 500 16px "Montserrat", sans-serif;
+    }
+
+    .pregnat_ {
+        width: 62.933px;
+        height: 74.927px;
+    }
+
+    .drink_ {
+        width: 63px;
+        height: 69px;
+    }
+
+    .old_ {
+        width: 63px;
+        height: 56px;
+    }
+
+    .time_ {
+        width: 63px;
+        height: 63px;
+    }
+}
