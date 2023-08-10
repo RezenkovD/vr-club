@@ -73,7 +73,8 @@
     font: 700 48px "Montserrat", sans-serif;
     position: sticky;
     width: auto;
-    height: 65px;
+    max-height: 65px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
 }
@@ -130,7 +131,8 @@
     text-align: left;
     font: 500 14px/170% "Montserrat", sans-serif;
     position: relative;
-    width: 145px;
+    max-width: 145px;
+    width: auto;
 }
 
 .e2 {
@@ -138,7 +140,8 @@
     text-align: left;
     font: 500 14px/170% "Montserrat", sans-serif;
     position: relative;
-    width: 6px;
+    max-width: 6px;
+    width: auto;
 }
 
 .input-container-1 {
@@ -297,9 +300,134 @@
     font: 500 14px/170% "Montserrat", sans-serif;
     position: sticky;
     margin: 24px auto 0;
-    width: 297px;
+    max-width: 297px;
+    width: auto;
 }
 
+@media screen and (max-width: 1550px) {
+    .ellipse-1 {
+        position: fixed;
+        filter: blur(200px);
+        top: 50%;
+        right: 80%;
+    }
+
+    .ellipse-3 {
+        position: fixed;
+        top: 5%;
+        left: 90%;
+    }
+
+    .blue-object {
+        position: absolute;
+        transform: translate(25%, -25%);
+        overflow: visible;
+        opacity: 0.12;
+    }
+
+    .yellow-object {
+        position: fixed;
+        transform: translate(-30%, 15%);
+        overflow: visible;
+        opacity: 0.12;
+    }
+
+    .hiden-object {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 1365px) {
+    .blue-object {
+        position: absolute;
+        transform: translate(15%, -25%);
+        overflow: visible;
+        opacity: 0.12;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .blue-object {
+        position: absolute;
+        transform: translate(0%, -30%);
+        overflow: visible;
+        opacity: 0.12;
+    }
+    .yellow-object {
+        position: fixed;
+        transform: translate(-30%, 20%);
+        overflow: visible;
+        opacity: 0.12;
+    }
+
+    .main {
+        margin: 56px auto 96px;
+    }
+
+    .main-text {
+        width: auto;
+        text-align: center;
+        height: auto;
+        font: 700 36px "Montserrat", sans-serif;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .span1 {
+        color: #ffffff;
+        font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .span2 {
+        color: #4fb4fe;
+        font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .span3 {
+        color: #ffffff;
+        font: 700 36px "Montserrat", sans-serif;
+    }
+
+    .forgot-pswd {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext {
+        font: 500 18px/170% "Montserrat", sans-serif;
+        width: auto;
+    }
+
+    .subtext .span1 {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext .span2 {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .subtext .span3 {
+        font: 500 18px/170% "Montserrat", sans-serif;
+    }
+
+    .btn-blue {
+        margin-top: 24px;
+        width: 311px;
+        height: 48px;
+        padding: 13.71px 55px;
+    }
+
+    .subtext-or {
+        font: 500 18px/170% "Montserrat", sans-serif;
+        margin: 24px auto 0;
+        width: auto;
+    }
+
+    .error-container {
+        font: 500 16px/170% "Montserrat", sans-serif;
+        width: auto;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .main {

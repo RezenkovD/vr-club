@@ -60,11 +60,13 @@
   box-sizing: border-box;
 }
 .vr-club {
-  text-align: left;
-  font: 800 88px "Montserrat", sans-serif;
-  position: relative;
-  width: 1187px;
-  height: 223px;
+    text-align: left;
+    font: 800 88px "Montserrat", sans-serif;
+    position: relative;
+    max-width: 1187px;
+    width: auto;
+    height: auto;
+
 }
 .vr-club-span {
   color: #ffffff;
@@ -90,8 +92,9 @@
     text-align: left;
     font: 500 24px "Montserrat", sans-serif;
     position: relative;
-    width: 562px;
-    height: 61px;
+    max-width: 562px;
+    width: auto;
+    height: auto;
 }
 
 .section-what-to-play {
@@ -350,6 +353,41 @@
         max-height: 100%;
         max-width: 100%;
     }
+
+    .content {
+        margin: 105px auto auto;
+    }
+
+    .vr-club {
+        text-align: center;
+        font: 700 54px "Montserrat", sans-serif;
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+    .vr-club-span {
+      font: 700 54px "Montserrat", sans-serif;
+    }
+    .vr-club-span2 {
+      font: 700 54px "Montserrat", sans-serif;
+    }
+    .vr-club-span3 {
+      font: 700 54px "Montserrat", sans-serif;
+    }
+
+    .sub-vr-club {
+        margin-top: 16px;
+        text-align: center;
+        font: 500 32px "Montserrat", sans-serif;
+        position: relative;
+        width: auto;
+        height: auto;
+    }
+
+    .main-btn-blue {
+        margin-top: 36px;
+        margin-left: 50px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -360,7 +398,7 @@
         border-radius: 100px;
         background: #4FB4FE;
         padding: 13.71px 55px;
-
+        margin-left: 0px;
         color: #ffffff;
 
         z-index: 1;

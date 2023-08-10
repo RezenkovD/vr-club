@@ -318,8 +318,9 @@
     text-align: center;
     font: 700 48px "Montserrat", sans-serif;
     position: relative;
-    width: 1187px;
-    height: 65px;
+    max-width: 1187px;
+    width: auto;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
 }
