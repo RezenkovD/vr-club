@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-.section-games {
-    margin-top: 8px;
-}
-
 .wrapper {
     max-width: 1595px;
     width: 100%;
@@ -570,9 +566,6 @@
 }
 
 @media screen and (max-width: 768px) {
-    .section-games {
-        margin-top: 76px;
-    }
 
     .games {
         color: #ffffff;

@@ -319,6 +319,11 @@
     margin-top: 150px;
 }
 
+.section-games {
+    margin-top: 8px;
+}
+
+
 @media screen and (max-width: 1300px) {
     .photo-back {
         margin: 13px auto 0 auto;
@@ -463,6 +468,10 @@
 
     .section-rules-club {
         margin-top: 96px;
+    }
+
+    .section-games {
+        margin-top: 76px;
     }
 
     .ellipse-1 {
