@@ -94,6 +94,118 @@
     height: 61px;
 }
 
+.section-what-to-play {
+    margin-top: 150px;
+}
+
+.what-to-play,
+.what-to-play * {
+  box-sizing: border-box;
+}
+.what-to-play {
+  text-align: center;
+  font: 700 48px "Montserrat", sans-serif;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.what-to-play .span {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.what-to-play .span2 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.what-to-play .span3 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.oculus-meta-quest-2,
+.oculus-meta-quest-2 * {
+    box-sizing: border-box;
+}
+.oculus-meta-quest-2 {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    max-width: 693px;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-back-vr {
+    text-align: center;
+    width: auto;
+    max-height: 630px;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    z-index: 1;
+    position: sticky;
+}
+
+.vr-helmet {
+    width: auto;
+    max-height: 630px;
+}
+
+
+.main-more-details {
+    margin-top: 24px;
+    position: relative;
+    width: 290px;
+    height: 56px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.more-details,
+.more-details * {
+    box-sizing: border-box;
+}
+
+.more-details {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+
+    padding: 16px 32px 16px 31px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.section-rules-club {
+    margin-top: 150px;
+}
+
+.section-games {
+    margin-top: 8px;
+}
+
+.section-calendar {
+    margin-top: 150px;
+}
+
+
 .intro_bg_block {
     position: absolute;
     width: 100%;
@@ -215,118 +327,6 @@
     overflow: visible;
     opacity: 0.11999999731779099;
 }
-
-.section-what-to-play {
-    margin-top: 150px;
-}
-
-.what-to-play,
-.what-to-play * {
-  box-sizing: border-box;
-}
-.what-to-play {
-  text-align: center;
-  font: 700 48px "Montserrat", sans-serif;
-  position: relative;
-  width: auto;
-  height: auto;
-}
-.what-to-play .span {
-  color: #ffffff;
-  font: 700 48px "Montserrat", sans-serif;
-}
-.what-to-play .span2 {
-  color: #4fb4fe;
-  font: 700 48px "Montserrat", sans-serif;
-}
-.what-to-play .span3 {
-  color: #ffffff;
-  font: 700 48px "Montserrat", sans-serif;
-}
-
-.oculus-meta-quest-2,
-.oculus-meta-quest-2 * {
-    box-sizing: border-box;
-}
-.oculus-meta-quest-2 {
-    margin-top: 24px;
-    color: #ffffff;
-    text-align: center;
-    font: 500 24px "Montserrat", sans-serif;
-    position: relative;
-    max-width: 693px;
-    width: auto;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.photo-back-vr {
-    text-align: center;
-    width: auto;
-    max-height: 630px;
-    margin-top: 24px;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    z-index: 1;
-    position: sticky;
-}
-
-.vr-helmet {
-    width: auto;
-    max-height: 630px;
-}
-
-
-.main-more-details {
-    margin-top: 24px;
-    position: relative;
-    width: 290px;
-    height: 56px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-}
-
-.more-details,
-.more-details * {
-    box-sizing: border-box;
-}
-
-.more-details {
-    width: 100%;
-    height: 100%;
-    flex-shrink: 0;
-    border-radius: 100px;
-    border: 1px solid #FFF;
-
-    padding: 16px 32px 16px 31px;
-
-    color: #FFF;
-    text-align: center;
-    font-size: 16px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    line-height: 150.521%;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.section-rules-club {
-    margin-top: 150px;
-}
-
-.section-games {
-    margin-top: 8px;
-}
-
-.section-calendar {
-    margin-top: 150px;
-}
-
 
 @media screen and (max-width: 1300px) {
     .photo-back {
