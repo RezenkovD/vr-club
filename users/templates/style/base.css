@@ -308,69 +308,196 @@ li {
 }
 
 
-/* MEDIA */
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1245px) {
 
-    /* HEADER */
+    .header-container {
+        height: 48px;
+        margin-top: 8px;
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
     .change-cont {
-        gap: 12px;
+        display: flex;
+        gap: 40px;
     }
 
     .navigation-container {
-        gap: 12px;
+        display: flex;
+        gap: 40px;
+        padding-left: 0;
     }
 
     .sign-container {
-        gap: 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
+
 }
 
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 1125px) {
+    .header-container {
+        height: 48px;
+        margin-top: 8px;
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 20px;
+    }
 
-    /* HEADER */
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
     .change-cont {
-        gap: 0;
+        display: flex;
+        gap: 20px;
     }
 
     .navigation-container {
-        gap: 0;
+        display: flex;
+        gap: 20px;
+        padding-left: 0;
     }
 
     .sign-container {
-        gap: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
-    /* FOOTER */
-    .footer-container .foot-first {
-        width: 203px;
-        height: 139px;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
+    .btn-sign-up {
+        width: 170px;
+        height: 42px;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .btn-sign-in {
+        width: 120px;
+        height: 42px;
+        padding: 8px 32px 8px 32px;
+        font-size: 14px;
     }
 
     .footer-container .foot-second {
-        width: 413px;
-        height: 100px;
-        gap: 100px;
+        width: auto;
+        height: auto;
+        gap: 150px;
         display: inline-flex;
         align-items: flex-start;
     }
 
-    .footer-container .foot-third {
-        width: 295px;
-        height: 103px;
+}
+
+@media screen and (max-width: 970px) {
+    .header-container {
+        height: 48px;
+        margin-top: 8px;
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .change-cont {
+        display: flex;
+        gap: 10px;
+    }
+
+    .navigation-container {
+        display: flex;
+        gap: 15px;
+        padding-left: 0;
+    }
+
+    .sign-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .logo {
+        color: #FFF;
+        font-family: Montserrat, serif;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .logo-span1 {
+        color: #4fb4fe;
+        font: 700 18px "Montserrat", sans-serif;
+    }
+
+    .logo-span2 {
+        color: #ffffff;
+        font: 700 18px "Montserrat", sans-serif;
+    }
+
+    .btn-sign-up {
+        width: 148px;
+        height: 32px;
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .btn-sign-in {
+        width: 72px;
+        height: 32px;
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .footer-container .foot-second {
+        width: auto;
+        height: auto;
+        gap: 70px;
         display: inline-flex;
         align-items: flex-start;
-        flex-direction: column;
+    }
+
+}
+
+@media screen and (max-width: 840px) {
+    .header-container {
+        gap: 0;
+    }
+
+    .change-cont {
+        gap: 5px;
+    }
+
+    .navigation-container {
+        gap: 5px;
+    }
+
+    .sign-container {
+        gap: 5px;
     }
 
 }
 
 @media screen and (max-width: 768px) {
 
-    /* HEADER */
     .header-container {
         height: 48px;
         align-items: center;
@@ -476,7 +603,6 @@ li {
         width: 28px;
     }
 
-    /* FOOTER */
     .footer-container {
         max-height: 304px;
         height: auto;
@@ -548,7 +674,6 @@ li {
         width: auto;
         height: auto;
     }
-
 
     .svg-link-f svg {
         width: 28px;
