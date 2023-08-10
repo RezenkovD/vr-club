@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 menuUL.style.maxHeight = "initial";
                 btnToggle_.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M25.3332 8.54675L23.4532 6.66675L15.9998 14.1201L8.5465 6.66675L6.6665 8.54675L14.1198 16.0001L6.6665 23.4534L8.5465 25.3334L15.9998 17.8801L23.4532 25.3334L25.3332 23.4534L17.8798 16.0001L25.3332 8.54675Z" fill="white"/></svg>'
                 headerA.style.height = "auto";
-                headerA.style.position = "sticky"
+                headerA.style.position = "fixed"
                 headerA.style.background = "border-box"
                 headerA.style.height = "100%"
                 headerA.style.width = "100%"
@@ -36,3 +36,35 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+
+// Почекати, поки сторінка завантажиться
+window.addEventListener('load', function() {
+    var header = document.querySelector('.header-container');
+    var scrollPosition = window.scrollY;
+
+    if (scrollPosition > 0) {
+        header.style.backgroundColor = 'rgba(2, 2, 4, 0.70)';
+        header.style.marginTop = '0';
+        header.style.height = '64px';
+    } else {
+        header.style.backgroundColor = '';
+        header.style.marginTop = '8px';
+        header.style.height = '48px';
+    }
+
+    // Додати подію прокрутки після завантаження сторінки
+    window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+
+        if (scrollPosition > 0) {
+            header.style.backgroundColor = 'rgba(2, 2, 4, 0.70)';
+            header.style.marginTop = '0';
+            header.style.height = '64px';
+        } else {
+            header.style.backgroundColor = '';
+            header.style.marginTop = '8px';
+            header.style.height = '48px';
+        }
+    });
+});
