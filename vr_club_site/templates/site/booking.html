@@ -1,6 +1,5 @@
 <div id="popup" class="popup">
     {% load static %}
-    {% load custom_filters %}
     <link rel="stylesheet" href="{% static 'site/style/booking.css' %}">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -23,17 +22,12 @@
                     {{ form.date }}
                 </div>
                 <div class="form-group">
-                    {% for slot, av_slot in form.slots|zip:available_slots %}
+                    {% for slot in form.slots %}
                         <div class="form-check">
                             <label class="form-check-label">
                                 {{ slot }}
                             </label>
-                            <label class="av_slots">
-                                {% if av_slot > 0 %}
-                                {{ av_slot }} місця
-                                {% else %}
-                                {% endif %}
-                            </label>
+                            <label class="av_slots"></label>
                         </div>
                     {% endfor %}
                 </div>

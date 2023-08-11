@@ -92,13 +92,11 @@ def render_main_page(request):
     signup_url = reverse("account_signup")
     login_url = reverse("account_login")
     form = BookingForm()
-    _available_slots = get_available_slots()
     return render(
         request,
         "site/index.html",
         {
             "form": form,
-            "available_slots": _available_slots,
             "signup_url": signup_url,
             "login_url": login_url,
         },
