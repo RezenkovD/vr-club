@@ -630,26 +630,12 @@
     }
 
     .ellipse-1 {
-        background: #ef7d1e;
-        border-radius: 50%;
-        width: 165px;
-        height: 165px;
-        position: absolute;
-        filter: blur(125px);
-        top: 1300px;
-        left: 0px;
+       display: none;
     }
 
 
     .ellipse-2 {
-        background: #ef7d1e;
-        border-radius: 50%;
-        width: 165px;
-        height: 165px;
-        position: absolute;
-        filter: blur(125px);
-        top: 600px;
-        left: 300px;
+        display: none;
     }
 
 

@@ -62,7 +62,7 @@
 {% endblock %}
 {% block script %}
 <script>
-  function getFilteredGames (gameMode) {
+    function getFilteredGames (gameMode) {
     fetch(`{% url 'api/games:filter_games' %}?game_mode=${gameMode}`, {
       method: "GET",
       headers: {
@@ -102,33 +102,45 @@
               `;
           gamePanel.insertAdjacentHTML('beforeend', gameCardHTML);
         }
-      });
-  }
-  const divs = document.querySelectorAll('.filter div');
 
-  document.getElementById("both").addEventListener("click", function () {
+        positionEllipse();
+      });
+    }
+    const divs = document.querySelectorAll('.filter div');
+
+    document.getElementById("both").addEventListener("click", function () {
+        divs.forEach(div => div.classList.remove("all-games"));
+        divs.forEach(div => div.classList.add("fil-games"));
+        this.classList.remove("fil-games")
+        this.classList.add("all-games")
+        getFilteredGames ("both");
+    });
+    document.getElementById("multiplayer").addEventListener("click", function () {
+        divs.forEach(div => div.classList.remove("all-games"));
+        divs.forEach(div => div.classList.add("fil-games"));
+        this.classList.remove("fil-games")
+        this.classList.add("all-games")
+        getFilteredGames ("multiplayer");
+    });
+    document.getElementById("single").addEventListener("click", function () {
+        divs.forEach(div => div.classList.remove("all-games"));
+        divs.forEach(div => div.classList.add("fil-games"));
+        this.classList.remove("fil-games")
+        this.classList.add("all-games")
+        getFilteredGames ("single");
+    });
+    const div = document.getElementById("both")
+    div.classList.add("all-games")
     getFilteredGames ("both");
-    divs.forEach(div => div.classList.remove("all-games"));
-    divs.forEach(div => div.classList.add("fil-games"));
-    this.classList.remove("fil-games")
-    this.classList.add("all-games")
-  });
-  document.getElementById("multiplayer").addEventListener("click", function () {
-    getFilteredGames ("multiplayer");
-    divs.forEach(div => div.classList.remove("all-games"));
-    divs.forEach(div => div.classList.add("fil-games"));
-    this.classList.remove("fil-games")
-    this.classList.add("all-games")
-  });
-  document.getElementById("single").addEventListener("click", function () {
-    getFilteredGames ("single");
-    divs.forEach(div => div.classList.remove("all-games"));
-    divs.forEach(div => div.classList.add("fil-games"));
-    this.classList.remove("fil-games")
-    this.classList.add("all-games")
-  });
-  const div = document.getElementById("both")
-  div.classList.add("all-games")
-  getFilteredGames ("both");
+
+    function positionEllipse() {
+    var ellipse = document.querySelector('.ellipse-4');
+        ellipse.style.top = 0 + 'px';
+        var pageHeight = document.querySelector(".not-head").clientHeight;
+        console.log(pageHeight)
+        var newTop = pageHeight - 840;
+
+        ellipse.style.top = newTop + 'px';
+    }
 </script>
 {% endblock %}
