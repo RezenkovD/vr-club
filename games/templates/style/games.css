@@ -1,4 +1,5 @@
 .game-panel {
+    margin-top: 44px;
     display: flex;
     width: 987px;
     flex-direction: row;
@@ -102,7 +103,7 @@
     text-align: center;
     font: 500 14px "Montserrat", sans-serif;
     line-height: 24px;
-    padding: 3px 8px;
+    padding: 0 13.5px;
 }
 
 .rectangle-12,
@@ -308,7 +309,7 @@
     padding: 10px 10px;
     text-align: center;
     font-size: 16px;
-    font-family: "Gilroy", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     line-height: 150.521%;
     text-transform: uppercase;
@@ -428,4 +429,200 @@
     transform: translate(1024.91px, 826px);
     opacity: 0.11999999731779099;
     overflow: visible;
+}
+
+@media screen and (max-width: 1000px) {
+    .game-panel {
+        margin-top: 32px;
+        display: flex;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        row-gap: 24px;
+        column-gap: 0;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .games,
+    .games * {
+        box-sizing: border-box;
+    }
+
+    .games {
+        margin-top: 56px;
+        font: 700 28px "Montserrat", sans-serif;
+        position: relative;
+        max-width: 327px;
+        width: auto;
+        max-height: 70px;
+        height: auto;
+    }
+
+    .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .span3 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .filter {
+        margin-top: 44px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        max-width: 343px;
+        width: auto;
+        max-height: 44px;
+        height: auto;
+        gap: 12px;
+    }
+
+    .fil-games {
+        width: auto;
+        height: 44px;
+        border-radius: 100px;
+        border: 1px solid #FFF;
+        color: #FFF;
+        padding: 12px 10px;
+        text-align: center;
+        font-size: 12px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+    }
+
+    .all-games {
+        width: auto;
+        height: 44px;
+        border-radius: 100px;
+        background: #4FB4FE;
+        padding: 12px 13px;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 12px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 150.521%;
+        text-transform: uppercase;
+    }
+
+    .game-panel {
+        margin-top: 32px;
+        display: flex;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        row-gap: 24px;
+        column-gap: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .game-card {
+        width: 263px;
+        height: 336px;
+    }
+
+    .group-1 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+    }
+
+    .rectangle-12 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-title {
+        font: 600 18px "Montserrat", sans-serif;
+        left: 16px;
+        top: 290px;
+        width: auto;
+    }
+
+    .age-group {
+        width: 44px;
+        height: 44px;
+        position: static;
+    }
+
+    .age-badge {
+        left: 203px;
+    }
+
+    .player-count {
+        width: auto;
+        height: 24px;
+        position: static;
+    }
+
+    .player-badge {
+        top: 254px;
+        font: 500 12px "Montserrat", sans-serif;
+        line-height: 24px;
+    }
+
+    .game-card:hover .rectangle-12 {
+        opacity: 1;
+        outline: none !important;
+    }
+
+    .game-title,
+    .player-badge,
+    .descriptions,
+    .btn-blue,
+    .btn-play {
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s;
+    }
+
+    .game-card:hover .game-title {
+        transform: translateY(-238px);
+    }
+
+    .game-card:hover .player-badge {
+        transform: translateY(-238px);
+    }
+
+    .descriptions {
+        color: var(--white, #f1f1f1);
+        text-align: left;
+        font: 500 14px "Montserrat", sans-serif;
+        width: auto;
+        padding-right: 15px;
+        max-height: 158px;
+    }
+
+    .game-card:hover .descriptions {
+        opacity: 1;
+        transform: translateY(-250px);
+    }
+
+    .btn-blue {
+        width: 178px;
+        height: 44px;
+    }
+
+    .btn-play {
+        margin-left: 202px;
+    }
+
 }
