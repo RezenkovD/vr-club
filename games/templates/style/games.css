@@ -267,7 +267,7 @@
     height: 48px;
     border-radius: 100px;
     background: #4FB4FE;
-    padding: 13px 10px;
+    padding: 14px 10px;
 
     color: #FFF;
     text-align: center;
@@ -478,40 +478,44 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        max-width: 343px;
-        width: auto;
-        max-height: 44px;
-        height: auto;
+        width: 343px;
+        height: 44px;
         gap: 12px;
     }
 
     .fil-games {
-        width: auto;
         height: 44px;
-        border-radius: 100px;
         border: 1px solid #FFF;
-        color: #FFF;
         padding: 12px 10px;
-        text-align: center;
         font-size: 12px;
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
+    }
+
+    .both {
+        width: 83px;
+        height: 44px;
+        padding-left: 11px;
+        padding-top: 13px;
+    }
+
+    .single {
+        width: 111px;
+        height: 44px;
+        padding-left: 7px;
+        padding-top: 13px;
+    }
+
+    .multi {
+        width: 125px;
+        height: 44px;
+        padding-left: 12px;
+        padding-top: 13px;
     }
 
     .all-games {
-        width: auto;
         height: 44px;
-        border-radius: 100px;
         background: #4FB4FE;
-        padding: 13px 13px;
-
-        color: #FFF;
-        text-align: center;
         font-size: 12px;
         font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        line-height: 150.521%;
-        text-transform: uppercase;
     }
 
     .game-panel {
@@ -669,7 +673,7 @@
         position: absolute;
         filter: blur(125px);
         left: 240px;
-        top: 2000px;
+        top: 1820px;
     }
 
 
