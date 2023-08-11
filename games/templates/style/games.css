@@ -1,4 +1,5 @@
 .game-panel {
+    margin-top: 44px;
     display: flex;
     width: 987px;
     flex-direction: row;
@@ -102,7 +103,7 @@
     text-align: center;
     font: 500 14px "Montserrat", sans-serif;
     line-height: 24px;
-    padding: 3px 8px;
+    padding: 0 13.5px;
 }
 
 .rectangle-12,
@@ -126,13 +127,6 @@
 .game-card:hover .rectangle-12 {
     opacity: 1;
 }
-/*.game-title,*/
-/*.player-badge,*/
-/*.descriptions,*/
-/*.btn-blue,*/
-/*.btn-play {*/
-/*    transition: transform 0.3s ease-in-out;*/
-/*}*/
 
 .game-card:hover .game-title {
     transform: translateY(-262px);
@@ -238,11 +232,14 @@
 }
 
 .games {
+    margin-top: 90px;
     text-align: center;
     font: 700 48px "Montserrat", sans-serif;
     position: relative;
-    width: 1187px;
-    height: 65px;
+    max-width: 1187px;
+    width: auto;
+    max-height: 65px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
 }
@@ -258,217 +255,6 @@
 .span3 {
   color: #ffffff;
   font: 700 48px "Montserrat", sans-serif;
-}
-
-.calendar {
-    width: 738px;
-}
-
-.month {
-    color: #ffffff;
-    text-align: center;
-    font: 600 24px "Montserrat", sans-serif;
-    position: relative;
-    width: auto;
-    height: 33px;
-}
-
-.weekdays {
-    margin-top: 46px;
-    opacity: 0.5;
-    display: flex;
-    flex-direction: row;
-    gap: 72px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: relative;
-}
-
-.weekdays div {
-    color: #ffffff;
-    text-align: center;
-    font: 500 18px/150% "Montserrat", sans-serif;
-    position: relative;
-    width: 33px;
-    height: 31px;
-}
-
-.days {
-    margin-top: 24px;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-}
-
-.month-nav {
-    display: flex;
-    justify-content: space-between;
-    width: 738px;
-}
-
-.item1 {
-    cursor: pointer;
-}
-
-.item3 {
-    cursor: pointer;
-}
-
-.button-m,
-.button-m * {
-    box-sizing: border-box;
-}
-
-.button-m {
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-    align-items: flex-start;
-    justify-content: flex-start;
-    position: relative;
-}
-
-.name-month {
-    color: #4fb4fe;
-    text-align: left;
-    font: 500 24px "Montserrat", sans-serif;
-    position: relative;
-    width: auto;
-    height: 33px;
-}
-
-.caret-right {
-    flex-shrink: 0;
-    position: relative;
-    overflow: visible;
-    bottom: 1px;
-}
-
-.caret-left {
-    flex-shrink: 0;
-    position: relative;
-    overflow: visible;
-    bottom: 1px;
-}
-
-.wrap,
-.wrap * {
-    box-sizing: border-box;
-}
-
-.wrap {
-    width: 102px;
-    height: 102px;
-    position: static;
-}
-
-.transparent-wrap,
-.transparent-wrap * {
-    box-sizing: border-box;
-}
-
-.transparent-wrap {
-    width: 102px;
-    height: 102px;
-    position: static;
-    opacity: 0;
-}
-
-.no-change {
-    background: rgba(79, 180, 254, 0.2);
-    border-radius: 12px;
-    width: 102px;
-    height: 102px;
-    position: absolute;
-}
-
-.us-background {
-    background: rgba(79, 180, 254, 0.2);
-    border-radius: 12px;
-    width: 102px;
-    height: 102px;
-    position: absolute;
-}
-
-.blue-background {
-    background: #4fb4fe;
-    border-radius: 12px;
-    width: 102px;
-    height: 102px;
-    position: absolute;
-}
-
-.old-day {
-    color: rgba(255, 255, 255, 0.5);
-    text-align: left;
-    font: 500 24px/150% "Montserrat", sans-serif;
-    position: relative;
-    padding-top: 8px;
-    padding-left: 12px;
-    cursor: default;
-}
-
-.base-day {
-    color: #4FB4FE;
-    font: 500 24px/150% "Montserrat", sans-serif;
-    position: absolute;
-    padding-top: 8px;
-    padding-left: 12px;
-    cursor: default;
-}
-
-.today {
-    color: #001729;
-    font: 500 24px/150% "Montserrat", sans-serif;
-    position: absolute;
-    padding-top: 8px;
-    padding-left: 12px;
-    cursor: default;
-}
-
-.wrap:hover .blue-background {
-    background: #ffffff;
-    border-radius: 12px;
-    width: 102px;
-    height: 102px;
-    position: absolute;
-}
-
-.wrap:hover .us-background {
-    background: #ffffff;
-    border-radius: 12px;
-    width: 102px;
-    height: 102px;
-    position: absolute;
-}
-
-.wrap:hover .today {
-    color: #001729;
-}
-
-.wrap:hover .base-day {
-    color: #001729;
-}
-
-.count_place,
-.count_place * {
-    box-sizing: border-box;
-}
-
-.count_place {
-    color: #001729;
-    text-align: left;
-    font: 500 18px/150% "Montserrat", sans-serif;
-    position: relative;
-    height: 25px;
-    padding-left: 12px;
-    padding-top: 54px;
-}
-
-.flex-calendar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .all-games,
@@ -498,6 +284,7 @@
 }
 
 .filter {
+    margin-top: 44px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -522,7 +309,7 @@
     padding: 10px 10px;
     text-align: center;
     font-size: 16px;
-    font-family: "Gilroy", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     line-height: 150.521%;
     text-transform: uppercase;
@@ -642,4 +429,269 @@
     transform: translate(1024.91px, 826px);
     opacity: 0.11999999731779099;
     overflow: visible;
+}
+
+@media screen and (max-width: 1000px) {
+    .game-panel {
+        margin-top: 32px;
+        display: flex;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        row-gap: 24px;
+        column-gap: 0;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .games,
+    .games * {
+        box-sizing: border-box;
+    }
+
+    .games {
+        margin-top: 56px;
+        font: 700 28px "Montserrat", sans-serif;
+        position: relative;
+        max-width: 327px;
+        width: auto;
+        max-height: 70px;
+        height: auto;
+    }
+
+    .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .span3 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .filter {
+        margin-top: 44px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        max-width: 343px;
+        width: auto;
+        max-height: 44px;
+        height: auto;
+        gap: 12px;
+    }
+
+    .fil-games {
+        width: auto;
+        height: 44px;
+        border-radius: 100px;
+        border: 1px solid #FFF;
+        color: #FFF;
+        padding: 12px 10px;
+        text-align: center;
+        font-size: 12px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+    }
+
+    .all-games {
+        width: auto;
+        height: 44px;
+        border-radius: 100px;
+        background: #4FB4FE;
+        padding: 12px 13px;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 12px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 150.521%;
+        text-transform: uppercase;
+    }
+
+    .game-panel {
+        margin-top: 32px;
+        display: flex;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        row-gap: 24px;
+        column-gap: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .game-card {
+        width: 263px;
+        height: 336px;
+    }
+
+    .group-1 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+    }
+
+    .rectangle-12 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-title {
+        font: 600 18px "Montserrat", sans-serif;
+        left: 16px;
+        top: 290px;
+        width: auto;
+    }
+
+    .age-group {
+        width: 44px;
+        height: 44px;
+        position: static;
+    }
+
+    .age-badge {
+        left: 203px;
+    }
+
+    .player-count {
+        width: auto;
+        height: 24px;
+        position: static;
+    }
+
+    .player-badge {
+        top: 254px;
+        font: 500 12px "Montserrat", sans-serif;
+        line-height: 24px;
+    }
+
+    .game-card:hover .rectangle-12 {
+        opacity: 1;
+        outline: none !important;
+    }
+
+    .game-title,
+    .player-badge,
+    .descriptions,
+    .btn-blue,
+    .btn-play {
+        transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.3s;
+    }
+
+    .game-card:hover .game-title {
+        transform: translateY(-238px);
+    }
+
+    .game-card:hover .player-badge {
+        transform: translateY(-238px);
+    }
+
+    .descriptions {
+        color: var(--white, #f1f1f1);
+        text-align: left;
+        font: 500 14px "Montserrat", sans-serif;
+        width: auto;
+        padding-right: 15px;
+        max-height: 158px;
+    }
+
+    .game-card:hover .descriptions {
+        opacity: 1;
+        transform: translateY(-250px);
+    }
+
+    .btn-blue {
+        width: 178px;
+        height: 44px;
+    }
+
+    .btn-play {
+        margin-left: 202px;
+    }
+
+    .ellipse-1 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 1300px;
+        left: 0px;
+    }
+
+
+    .ellipse-2 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 600px;
+        left: 300px;
+    }
+
+
+    .ellipse-3 {
+        background: #00a3ff;
+        border-radius: 50%;
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        top: -65px;
+        right: 243px;
+    }
+
+
+    .ellipse-4 {
+        background: #00a3ff;
+        border-radius: 50%;
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        left: 240px;
+        top: 2000px;
+    }
+
+
+    .group1 {
+        display: none;
+    }
+
+    .group2 {
+        display: none;
+    }
+
+    .group3 {
+        position: absolute;
+        overflow: visible;
+        transform: rotate(303deg);
+        top: -905px;
+        left: -793px;
+        opacity: 0.11999999731779099;
+    }
+
+    .group4 {
+        display: none;
+    }
+
 }
