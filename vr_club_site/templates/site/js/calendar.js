@@ -158,3 +158,14 @@ function closePopup() {
     popup.style.display = 'none';
     body.style.overflow = 'auto';
 }
+
+window.addEventListener('popstate', function(event) {
+    var state = event.state;
+
+    if (state && state.popupOpen) {
+        openPopup(day, month, year);
+    } else {
+        closePopup();
+    }
+});
+
