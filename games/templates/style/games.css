@@ -126,13 +126,6 @@
 .game-card:hover .rectangle-12 {
     opacity: 1;
 }
-/*.game-title,*/
-/*.player-badge,*/
-/*.descriptions,*/
-/*.btn-blue,*/
-/*.btn-play {*/
-/*    transition: transform 0.3s ease-in-out;*/
-/*}*/
 
 .game-card:hover .game-title {
     transform: translateY(-262px);
@@ -238,11 +231,14 @@
 }
 
 .games {
+    margin-top: 90px;
     text-align: center;
     font: 700 48px "Montserrat", sans-serif;
     position: relative;
-    width: 1187px;
-    height: 65px;
+    max-width: 1187px;
+    width: auto;
+    max-height: 65px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
 }
@@ -287,6 +283,7 @@
 }
 
 .filter {
+    margin-top: 44px;
     display: flex;
     flex-direction: row;
     justify-content: center;
