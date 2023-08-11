@@ -267,7 +267,7 @@
     height: 48px;
     border-radius: 100px;
     background: #4FB4FE;
-    padding: 13px 46px;
+    padding: 13px 10px;
 
     color: #FFF;
     text-align: center;
@@ -306,7 +306,7 @@
     border-radius: 100px;
     border: 1px solid #FFF;
     color: #FFF;
-    padding: 10px 10px;
+    padding: 12px 10px;
     text-align: center;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
@@ -503,7 +503,7 @@
         height: 44px;
         border-radius: 100px;
         background: #4FB4FE;
-        padding: 12px 13px;
+        padding: 13px 13px;
 
         color: #FFF;
         text-align: center;

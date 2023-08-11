@@ -23,7 +23,7 @@
         </span>
     </div>
     <div class="filter">
-        <div class="fil-games" id="both">Усі ігри</div>
+        <div class="all-games" id="both">Усі ігри</div>
         <div class="fil-games" id="single">Для ОДНОГО</div>
         <div class="fil-games" id="multiplayer">Мультиплеєр</div>
     </div>
@@ -109,16 +109,22 @@
   document.getElementById("both").addEventListener("click", function () {
     getFilteredGames ("both");
     divs.forEach(div => div.classList.remove("all-games"));
+    divs.forEach(div => div.classList.add("fil-games"));
+    this.classList.remove("fil-games")
     this.classList.add("all-games")
   });
   document.getElementById("multiplayer").addEventListener("click", function () {
     getFilteredGames ("multiplayer");
     divs.forEach(div => div.classList.remove("all-games"));
+    divs.forEach(div => div.classList.add("fil-games"));
+    this.classList.remove("fil-games")
     this.classList.add("all-games")
   });
   document.getElementById("single").addEventListener("click", function () {
     getFilteredGames ("single");
     divs.forEach(div => div.classList.remove("all-games"));
+    divs.forEach(div => div.classList.add("fil-games"));
+    this.classList.remove("fil-games")
     this.classList.add("all-games")
   });
   const div = document.getElementById("both")
