@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
     nextMonthBtn.addEventListener("click", nextMonth);
 });
 var popupScrollPosition;
-function openPopup(day, month, year) {
+async function openPopup(day, month, year) {
     popupScrollPosition = window.scrollY;
     const dateDiv = document.querySelector('.booking-date');
     const monthsNames = [
@@ -143,7 +143,7 @@ function openPopup(day, month, year) {
     dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
 
     getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
-
+    await new Promise(resolve => setTimeout(resolve, 150));
     const dateInput = document.getElementById('id_date');
     dateInput.value = `${day}-${month}-${year}`;
 
