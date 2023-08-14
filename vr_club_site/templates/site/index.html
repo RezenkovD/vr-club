@@ -11,10 +11,13 @@
     <div class="ellipse-4"></div>
     <div class="ellipse-5"></div>
     <div class="ellipse-6"></div>
+    <div class="ellipse-7"></div>
+    <div class="ellipse-8"></div>
     {% include 'site/svg-objects/index-first-object.html' %}
     {% include 'site/svg-objects/index-second-object.html' %}
     {% include 'site/svg-objects/index-third-object.html' %}
     {% include 'site/svg-objects/index-fourth-object.html' %}
+    {% include 'site/svg-objects/index-fifth-object.html' %}
 </div>
 {% endblock %}
 {% block main %}
@@ -60,6 +63,59 @@
 </section>
 <section class="section-rules-club">
     {% include 'site/rules.html' %}
+</section>
+<section class="section-prices">
+    <div class="price-for-hour">
+      <span>
+          <span class="span">Ціна</span>
+          <span class="span2"> за годину безцінних </span>
+          <span class="span3">емоцій</span>
+      </span>
+    </div>
+    <div class="price-day">
+        <div class="item">
+            <div class="when">
+                БУДНІ
+            </div>
+            <div class="price-details">
+                <div class="i-h-1">
+                    <div class="when-description">
+                        Година перемог над монстрами, тріумфів та незабутніх емоцій в світі віртуальної реальності.
+                    </div>
+                </div>
+                <div class="i-h-2">
+                    <div class="when-time">
+                        60 хвилин
+                    </div>
+                    <div class="how-many">
+                        200 грн
+                    </div>
+                </div>
+            </div>
+                <button class="btn-price" onclick="redirectToBooking()">Забронювати</button>
+        </div>
+        <div class="item">
+            <div class="when">
+                ВИХІДНІ
+            </div>
+            <div class="price-details">
+                <div class="i-h-1">
+                    <div class="when-description">
+                        Чудовий відпочинок для кожного, хто хоче перемагати та весело провести час!
+                    </div>
+                </div>
+                <div class="i-h-2">
+                    <div class="when-time">
+                        60 хвилин
+                    </div>
+                    <div class="how-many">
+                        250 грн
+                    </div>
+                </div>
+            </div>
+            <button class="btn-price" onclick="redirectToBooking()">Забронювати</button>
+        </div>
+    </div>
 </section>
 <section style="height: 514px;"></section>
 {% endblock %}
