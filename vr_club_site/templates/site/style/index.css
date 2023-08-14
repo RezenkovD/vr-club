@@ -240,7 +240,7 @@
 .price-day .item {
     display: flex;
     width: 525px;
-    height: 255px;
+    height: 218px;
     color: #efefef;
     border-radius: 18px;
     background: rgba(241, 241, 241, 0.20);
@@ -304,6 +304,7 @@
 }
 
 .btn-price {
+    margin-top: 24px;
     width: 284px;
     height: 56px;
     flex-shrink: 0;
@@ -395,8 +396,8 @@
     height: 371px;
     position: absolute;
     filter: blur(200px);
-    top: 1291px;
-    left: -198px;
+    top: 1513px;
+    left: -75px;
 }
 
 .ellipse-5,
@@ -409,9 +410,9 @@
     border-radius: 50%;
     width: 299px;
     height: 299px;
-    position: relative;
+    position: absolute;
     filter: blur(175px);
-    top: 1611px;
+    top: 1846px;
     left: 1688px;
 }
 
@@ -426,22 +427,55 @@
     opacity: 0.8;
     width: 371px;
     height: 371px;
-    position: relative;
+    position: absolute;
     filter: blur(250px);
-    top: 3735px;
+    top: 3935px;
     left: 1657px;
 }
 
+.ellipse-7,
+.ellipse-7 * {
+  box-sizing: border-box;
+}
+.ellipse-7 {
+  background: #ef7d1e;
+  border-radius: 50%;
+  width: 299px;
+  height: 299px;
+  position: absolute;
+  filter: blur(175px);
+  left: 68px;
+  top: 4520px;
+
+}
+
+.ellipse-8,
+.ellipse-8 * {
+  box-sizing: border-box;
+}
+.ellipse-8 {
+  background: #00a3ff;
+  border-radius: 50%;
+  opacity: 0.800000011920929;
+  width: 371px;
+  height: 371px;
+  position: absolute;
+  filter: blur(250px);
+  left: 1445px;
+  top: 4690px;
+}
+
+
 .first-object {
     position: absolute;
-    transform: translate(-87px, -1336px);
+    transform: translate(-150px, -730px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
 
 .second-object {
     position: absolute;
-    transform: translate(-427px, -87px);
+    transform: translate(-428px, 586px);
     overflow: visible;
     opacity: 0.11999999731779099;
     z-index: 0;
@@ -449,14 +483,21 @@
 
 .third-object {
     position: absolute;
-    transform: translate(1309px, 235px);
+    transform: translate(1284px, 1100px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
 
 .fourth-object {
     position: absolute;
-    transform: translate(1100px, 2512px);
+    transform: translate(1158px, 3152px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+}
+
+.fifth-object {
+    position: absolute;
+    transform: translate(-945px, 3784px);
     overflow: visible;
     opacity: 0.11999999731779099;
 }
@@ -835,6 +876,29 @@
         left: -109px;
     }
 
+    .ellipse-7 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        left: -78px;
+        top: 3416px;
+    }
+
+    .ellipse-8 {
+        background: #00a3ff;
+        border-radius: 50%;
+        opacity: 0.800000011920929;
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        left: 327px;
+        top: 3706px;
+    }
+
     .first-object {
         display: none;
     }
@@ -853,6 +917,10 @@
     }
 
     .fourth-object {
+        display: none;
+    }
+
+    .fifth-object {
         display: none;
     }
 }
