@@ -143,18 +143,6 @@ function openPopup(day, month, year) {
     dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
 
     getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-    });
-    const inputElements = document.querySelectorAll('input[type="text"]');
-    inputElements.forEach(input => {
-        input.value = '';
-    });
-    const peopleCountInput = document.getElementById('id_people_count');
-    peopleCountInput.value = 1;
-    const totalCostSpan = document.getElementById('total_cost');
-    totalCostSpan.textContent = '0.00 грн';
 
     const dateInput = document.getElementById('id_date');
     dateInput.value = `${day}-${month}-${year}`;
@@ -173,6 +161,18 @@ function closePopup() {
     body.style.overflow = 'auto';
     window.scrollTo(0, popupScrollPosition);
     history.pushState(null, null, '');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    const inputElements = document.querySelectorAll('input[type="text"]');
+    inputElements.forEach(input => {
+        input.value = '';
+    });
+    const peopleCountInput = document.getElementById('id_people_count');
+    peopleCountInput.value = 1;
+    const totalCostSpan = document.getElementById('total_cost');
+    totalCostSpan.textContent = '0.00 грн';
 }
 
 window.addEventListener('popstate', function(event) {
