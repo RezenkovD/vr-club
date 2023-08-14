@@ -196,6 +196,136 @@
     cursor: pointer;
 }
 
+.section-prices {
+    margin-top: 150px;
+}
+.price-for-hour,
+.price-for-hour * {
+  box-sizing: border-box;
+}
+.price-for-hour {
+  text-align: center;
+  font: 700 48px "Montserrat", sans-serif;
+  position: relative;
+  width: auto;
+  height: auto;
+}
+.price-for-hour .span {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.price-for-hour .span2 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.price-for-hour .span3 {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.price-day {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: row;
+    max-width: 1094px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 255px;
+    height: auto;
+    gap: 44px;
+    justify-content: center;
+}
+
+.price-day .item {
+    display: flex;
+    width: 525px;
+    height: 255px;
+    color: #efefef;
+    border-radius: 18px;
+    background: rgba(241, 241, 241, 0.20);
+    flex-direction: column;
+}
+
+.item .when {
+    margin-top: 24px;
+    margin-left: 28px;
+    color: var(--white, #F1F1F1);
+    font-family: Montserrat, serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 155%; /* 37.2px */
+}
+
+.item .price-details {
+    margin-top: 18px;
+    margin-left: 28px;
+    display: flex;
+    flex-direction: row;
+    gap: 24px
+}
+
+.when-description {
+    width: 262px;
+    color: var(--white, #F1F1F1);
+    font-family: Montserrat, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.when-time {
+    width: 121px;
+    color: var(--white, #F1F1F1);
+    font-family: Montserrat, serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 155%; /* 31px */
+}
+
+.how-many {
+    width: 180px;
+    height: 61px;
+    flex-shrink: 0;
+    color: #EF7D1E;
+    font-family: Montserrat, serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 155%; /* 62px */
+}
+
+.btn-price,
+.btn-prices * {
+    box-sizing: border-box;
+}
+
+.btn-price {
+    width: 284px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    border: 1px solid #FFF;
+    background: #010103;
+
+    padding: 16px 18px 16px 18px;
+
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    line-height: 150.521%;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .section-rules-club {
     margin-top: 150px;
 }
@@ -388,6 +518,112 @@
         margin-top: 36px;
         margin-left: 50px;
     }
+
+    .price-day {
+        margin-top: 56px;
+        display: flex;
+        flex-direction: column;
+        max-width: 343px;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 540px;
+        height: auto;
+        gap: 44px;
+        justify-content: center;
+    }
+
+    .price-day .item {
+        display: flex;
+        width: 343px;
+        height: 236px;
+        color: #efefef;
+        border-radius: 18px;
+        background: rgba(241, 241, 241, 0.20);
+        flex-direction: column;
+    }
+
+    .item .when {
+        margin-top: 20px;
+        margin-left: 20px;
+        color: var(--white, #F1F1F1);
+        font-family: Montserrat, serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 155%; /* 31px */
+    }
+
+    .item .price-details {
+        margin-top: 18px;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px
+    }
+
+    .when-description {
+        height: 60px;
+        width: 303px;
+        color: var(--white, #F1F1F1);
+        font-family: Montserrat, serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+    .i-h-2 {
+        gap: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .when-time {
+        width: 121px;
+        color: var(--white, #F1F1F1);
+        font-family: Montserrat, serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%; /* 17.6px */
+    }
+
+    .how-many {
+        width: 133px;
+        height: 51px;
+        color: #EF7D1E;
+        font-family: Montserrat, serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 155%; /* 49.6px */
+    }
+
+    .btn-price {
+        margin-top: 20px;
+        width: 311px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 100px;
+        border: 1px solid #FFF;
+        background: #010103;
+
+        padding: 10px 55px 7px 55px;
+
+        color: #FFF;
+        text-align: center;
+        font-size: 16px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 150.521%;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -506,6 +742,29 @@
         width: 311px;
         height: 48px;
         padding: 12px 55px 12px 55px;
+    }
+
+    .section-prices {
+        margin-top: 96px;
+    }
+
+    .price-for-hour {
+      text-align: center;
+      font: 700 28px "Montserrat", sans-serif;
+      position: relative;
+      width: 311px;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .price-for-hour .span {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .price-for-hour .span2 {
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .price-for-hour .span3 {
+      font: 700 28px "Montserrat", sans-serif;
     }
 
     .section-rules-club {
