@@ -29,6 +29,7 @@
 }
 
 .carousel.dragging {
+    cursor: grabbing;
     scroll-snap-type: none;
     scroll-behavior: auto;
 }
@@ -51,6 +52,7 @@
     list-style: none;
     cursor: pointer;
     flex-direction: column;
+    flex: 0 0 auto;
 }
 
 .carousel.no-transition {
@@ -563,7 +565,7 @@
 }
 .carousel {
     scroll-behavior: smooth;
-    transition: scroll 0.4s ease-in-out;
+    transition: scroll 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {
