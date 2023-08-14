@@ -89,13 +89,15 @@
     text-align: left;
     font: 500 24px/170% "Montserrat", sans-serif;
     position: relative;
+    width: 45%;
 }
 
 .people-count-2 {
-    gap: 124px;
+    gap: 115px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 }
 
 .btn-booking {
@@ -241,7 +243,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .number-input {
-    margin-left: 24px;
     order: 0;
     display: inline-flex;
     flex-direction: row;

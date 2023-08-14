@@ -124,8 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 var popupScrollPosition;
 function openPopup(day, month, year) {
     popupScrollPosition = window.scrollY;
-    const state = { popupOpen: true, day: day, month: month, year: year };
-    history.pushState(state, null, ''); // Збереження стану в історії браузера
     const dateDiv = document.querySelector('.booking-date');
     const monthsNames = [
         "січня",
@@ -145,6 +143,18 @@ function openPopup(day, month, year) {
     dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
 
     getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    const inputElements = document.querySelectorAll('input[type="text"]');
+    inputElements.forEach(input => {
+        input.value = '';
+    });
+    const peopleCountInput = document.getElementById('id_people_count');
+    peopleCountInput.value = 1;
+    const totalCostSpan = document.getElementById('total_cost');
+    totalCostSpan.textContent = '0.00 грн';
 
     const dateInput = document.getElementById('id_date');
     dateInput.value = `${day}-${month}-${year}`;
@@ -153,6 +163,7 @@ function openPopup(day, month, year) {
     const body = document.querySelector('body');
     popup.style.display = 'block';
     body.style.overflow = 'hidden';
+    history.pushState(null, null, '');
 }
 
 function closePopup() {
