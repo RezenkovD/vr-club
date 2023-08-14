@@ -286,11 +286,23 @@
     line-height: 155%; /* 31px */
 }
 
-.how-many {
+.how-many-o {
     width: 180px;
     height: 61px;
     flex-shrink: 0;
     color: #EF7D1E;
+    font-family: Montserrat, serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 155%; /* 62px */
+}
+
+.how-many-b {
+     width: 180px;
+    height: 61px;
+    flex-shrink: 0;
+    color: #4FB4FE;
     font-family: Montserrat, serif;
     font-size: 40px;
     font-style: normal;
@@ -631,10 +643,21 @@
         line-height: 110%; /* 17.6px */
     }
 
-    .how-many {
+    .how-many-o {
         width: 133px;
         height: 51px;
         color: #EF7D1E;
+        font-family: Montserrat, serif;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 155%; /* 49.6px */
+    }
+
+    .how-many-b {
+        width: 133px;
+        height: 51px;
+        color: #4FB4FE;
         font-family: Montserrat, serif;
         font-size: 32px;
         font-style: normal;
