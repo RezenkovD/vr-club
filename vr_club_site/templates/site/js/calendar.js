@@ -124,6 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
 var popupScrollPosition;
 function openPopup(day, month, year) {
     popupScrollPosition = window.scrollY;
+    const state = { popupOpen: true, day: day, month: month, year: year };
+    history.pushState(state, null, ''); // Збереження стану в історії браузера
     const dateDiv = document.querySelector('.booking-date');
     const monthsNames = [
         "січня",
@@ -159,13 +161,14 @@ function closePopup() {
     popup.style.display = 'none';
     body.style.overflow = 'auto';
     window.scrollTo(0, popupScrollPosition);
+    history.pushState(null, null, '');
 }
 
 window.addEventListener('popstate', function(event) {
     var state = event.state;
 
     if (state && state.popupOpen) {
-        openPopup(day, month, year);
+        openPopup(state.day, state.month, state.year);
     } else {
         closePopup();
     }
