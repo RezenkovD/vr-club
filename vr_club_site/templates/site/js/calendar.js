@@ -121,8 +121,9 @@ document.addEventListener("DOMContentLoaded", function () {
     prevMonthBtn.addEventListener("click", prevMonth);
     nextMonthBtn.addEventListener("click", nextMonth);
 });
-
+var popupScrollPosition;
 function openPopup(day, month, year) {
+    popupScrollPosition = window.scrollY;
     const dateDiv = document.querySelector('.booking-date');
     const monthsNames = [
         "січня",
@@ -157,6 +158,7 @@ function closePopup() {
     const body = document.querySelector('body');
     popup.style.display = 'none';
     body.style.overflow = 'auto';
+    window.scrollTo(0, popupScrollPosition);
 }
 
 window.addEventListener('popstate', function(event) {
