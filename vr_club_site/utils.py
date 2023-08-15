@@ -1,7 +1,7 @@
 import decimal
 
 from django.db import IntegrityError, transaction
-from django.db.models import Sum
+from django.db.models import Sum, ExpressionWrapper, F, IntegerField
 from django.contrib import messages
 
 from .models import Booking, BookingTime, ACTUAL, Settings
@@ -11,9 +11,7 @@ COST_SESSION = 200
 MAX_SESSION = 2
 
 
-def get_available_slots(selected_date=None):
-    _available_slots = []
-
+def get_session_seats():
     try:
         setting = Settings.objects.get(name="seats")
         setting_type = setting.variable_type
@@ -27,6 +25,38 @@ def get_available_slots(selected_date=None):
 
     except Settings.DoesNotExist:
         session_seats = 1
+
+    return session_seats
+
+
+def get_available_slots_for_month(currentYear=None, currentMonth=None):
+    _available_slots = []
+    session_seats = get_session_seats()
+
+    booking_counts = (
+        Booking.objects.filter(
+            time__date__year=currentYear, time__date__month=currentMonth
+        )
+        .values("time__date")
+        .annotate(
+            total_people=Sum("people_count"),
+            available_slots=ExpressionWrapper(
+                session_seats * len(BookingTime.TIME_CHOICES) - F("total_people"),
+                output_field=IntegerField(),
+            ),
+        )
+        .order_by("time__date")
+    )
+    data = [
+        {"date": booking["time__date"], "available_slots": booking["available_slots"]}
+        for booking in booking_counts
+    ]
+    return data
+
+
+def get_available_slots(selected_date=None):
+    _available_slots = []
+    session_seats = get_session_seats()
 
     for x in BookingTime.TIME_CHOICES:
         try:
