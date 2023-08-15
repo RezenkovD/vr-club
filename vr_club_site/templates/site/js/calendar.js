@@ -105,7 +105,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    const maxMonthsAhead = 2;
+
     function nextMonth() {
+        const currentDate = new Date(currentYear, currentMonth);
+
+        const maxAllowedDate = new Date();
+        maxAllowedDate.setMonth(maxAllowedDate.getMonth() + maxMonthsAhead - 1);
+
+        if (currentDate > maxAllowedDate) {
+            return;
+        }
         currentMonth++;
         if (currentMonth > 11) {
             currentMonth = 0;
