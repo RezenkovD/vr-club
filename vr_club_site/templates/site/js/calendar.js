@@ -88,6 +88,19 @@ document.addEventListener("DOMContentLoaded", function () {
             prevMonth_.style.cursor = "pointer"
         }
 
+        const nextMonth_ = document.getElementById("nextMonth");
+        const currentDate = new Date(currentYear, currentMonth);
+        const maxAllowedDate = new Date();
+        maxAllowedDate.setMonth(maxAllowedDate.getMonth() + maxMonthsAhead - 1);
+
+        if (currentDate > maxAllowedDate) {
+            nextMonth_.style.opacity = 0;
+            nextMonth_.style.cursor = "default"
+        } else {
+            nextMonth_.style.opacity = 1;
+            nextMonth_.style.cursor = "pointer"
+        }
+
     }
 
     function updateCalendar() {
