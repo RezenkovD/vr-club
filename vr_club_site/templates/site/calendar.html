@@ -74,7 +74,6 @@ async function getAvailableSlotsMonth(currentYear, currentMonth) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             data.available_slots.forEach(item => {
                 const date = new Date(item.date);
                 const dayNumber = date.getDate();
