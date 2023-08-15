@@ -28,13 +28,7 @@ def get_available_slots_for_month_view(request):
         year = request.GET.get("year")
         month = request.GET.get("month")
         available_slots = get_available_slots_for_month(year, month)
-        return JsonResponse(
-            {
-                "available_slots": available_slots,
-                "max_available_slots": get_session_seats()
-                * len(BookingTime.TIME_CHOICES),
-            }
-        )
+        return JsonResponse({"available_slots": available_slots})
 
 
 def index_page(request):

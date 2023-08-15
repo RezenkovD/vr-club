@@ -64,4 +64,26 @@ function getAvailableSlots(date) {
              updateSlotAvailability();
         });
 }
+function getAvailableSlotsMonth(currentYear, currentMonth) {
+    currentMonth += 1
+    fetch(`{% url 'site:get_available_slots_for_month' %}?year=${currentYear}&month=${currentMonth}`, {
+        method: "GET",
+        headers: {
+            "X-Requested-With": "XMLHttpRequest",
+        },
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            data.available_slots.forEach(item => {
+                const date = new Date(item.date);
+                const dayNumber = date.getDate();
+                const countPlaceElement = document.querySelector(`[data-day="${dayNumber}"] .count_place`);
+                if (countPlaceElement) {
+                    countPlaceElement.textContent = `${item.available_slots} місць`;
+                }
+            });
+        });
+
+}
 </script>

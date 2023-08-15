@@ -38,23 +38,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let today = now.getDate();
         let number;
+        let day_;
         for (let i = 1; i <= daysInMonth; i++) {
+            day_ = i
             number = i;
             if (number < 10) {
                 number = "0" + number;
             }
             if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                 today = i;
-                days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
+                days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" data-day="${day_}" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place"></div></div>`;
             } else {
                 if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                     days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
                 }
                 else {
-                    days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
+                    days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" data-day="${day_}" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div><div class="count_place"></div></div>`;
                 }
             }
         }
+        getAvailableSlotsMonth(year, month)
 
         for (let i = 1; i < 7 - lastDayIndex; i++) {
             days += `<div class="transparent-wrap"></div>`;
