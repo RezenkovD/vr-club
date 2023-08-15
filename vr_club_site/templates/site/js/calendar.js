@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextMonthBtn = document.getElementById("nextMonthBtn");
     let currentYear, currentMonth;
 
-    function generateCalendar(year, month) {
+    async function generateCalendar(year, month) {
         const now = new Date();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const firstDayIndex = new Date(year, month, 0).getDay();
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         }
-        getAvailableSlotsMonth(year, month)
+        await getAvailableSlotsMonth(year, month)
 
         for (let i = 1; i < 7 - lastDayIndex; i++) {
             days += `<div class="transparent-wrap"></div>`;
@@ -145,8 +145,7 @@ async function openPopup(day, month, year) {
 
     dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
 
-    getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
-    await new Promise(resolve => setTimeout(resolve, 150));
+    await getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
     const dateInput = document.getElementById('id_date');
     dateInput.value = `${day}-${month}-${year}`;
 
