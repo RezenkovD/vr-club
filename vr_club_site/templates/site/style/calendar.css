@@ -234,6 +234,19 @@
     color: #010103;
 }
 
+.inactive .base-day {
+    color: #768A9A;
+}
+
+.inactive .count_place {
+    color: #768A9A;
+}
+
+.wrap.inactive {
+    pointer-events: none;
+}
+
+
 @media screen and (max-width: 768px) {
     .booking {
         font: 700 28px "Montserrat", sans-serif;

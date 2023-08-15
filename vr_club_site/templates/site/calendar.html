@@ -80,6 +80,11 @@ function getAvailableSlotsMonth(currentYear, currentMonth) {
                 const dayNumber = date.getDate();
                 const countPlaceElement = document.querySelector(`[data-day="${dayNumber}"] .count_place`);
                 if (countPlaceElement) {
+                    if (item.available_slots <= 0) {
+                        countPlaceElement.closest('.wrap').classList.add('inactive');
+                        countPlaceElement.closest('.wrap').removeAttribute('onclick');
+                        countPlaceElement.closest('.wrap').style.cursor = 'default';
+                    }
                     countPlaceElement.textContent = `${item.available_slots} місць`;
                 }
             });
