@@ -337,6 +337,7 @@
     cursor: pointer;
     margin-left: auto;
     margin-right: auto;
+    z-index: 9999;
 }
 
 .section-rules-club {
@@ -687,6 +688,7 @@
         cursor: pointer;
         margin-left: auto;
         margin-right: auto;
+        z-index: 9999;
     }
 }
 
