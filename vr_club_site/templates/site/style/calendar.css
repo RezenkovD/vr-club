@@ -214,7 +214,7 @@
 }
 
 .count_place {
-    color: #001729;
+    color: #4FB4FE;
     text-align: left;
     font: 500 18px/150% "Montserrat", sans-serif;
     position: relative;
@@ -228,6 +228,10 @@
     flex-direction: column;
     align-items: center;
     margin-top: 44px;
+}
+
+.wrap:hover .count_place {
+    color: #010103;
 }
 
 @media screen and (max-width: 768px) {
@@ -360,6 +364,10 @@
     .wrap:hover .us-background {
         width: 46px;
         height: 80px;
+    }
+
+    .wrap:hover .count_place {
+        color: #010103;
     }
 
     .count_place {

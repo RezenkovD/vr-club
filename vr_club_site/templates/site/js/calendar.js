@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                 today = i;
-                days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" data-day="${day_}" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place"></div></div>`;
+                days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" data-day="${day_}" style="cursor: pointer;"><div class="blue-background"></div><div class="today" style="color: #001729;">${number}</div><div class="count_place" style="color: #001729;"></div></div>`;
             } else {
                 if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                     days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
