@@ -7,6 +7,8 @@ from .forms import BookingForm
 from .models import BookingTime
 from .utils import (
     get_available_slots,
+    get_available_slots_for_month,
+    get_session_seats,
     is_all_neighbors,
     has_invalid_slots,
     book_session,
@@ -18,6 +20,14 @@ def get_available_slots_view(request):
     if request.method == "GET":
         selected_date = request.GET.get("date")
         available_slots = get_available_slots(selected_date)
+        return JsonResponse({"available_slots": available_slots})
+
+
+def get_available_slots_for_month_view(request):
+    if request.method == "GET":
+        year = request.GET.get("year")
+        month = request.GET.get("month")
+        available_slots = get_available_slots_for_month(year, month)
         return JsonResponse({"available_slots": available_slots})
 
 

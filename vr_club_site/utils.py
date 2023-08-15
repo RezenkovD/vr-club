@@ -1,7 +1,10 @@
+import calendar
 import decimal
+from datetime import datetime, date
 
 from django.db import IntegrityError, transaction
-from django.db.models import Sum
+from django.db.models import F, Sum, Case, When, Value, IntegerField
+from django.db.models.functions import Greatest, Least
 from django.contrib import messages
 
 from .models import Booking, BookingTime, ACTUAL, Settings
@@ -11,9 +14,7 @@ COST_SESSION = 200
 MAX_SESSION = 2
 
 
-def get_available_slots(selected_date=None):
-    _available_slots = []
-
+def get_session_seats():
     try:
         setting = Settings.objects.get(name="seats")
         setting_type = setting.variable_type
@@ -28,12 +29,77 @@ def get_available_slots(selected_date=None):
     except Settings.DoesNotExist:
         session_seats = 1
 
+    return session_seats
+
+
+def get_available_slots_for_month(currentYear=None, currentMonth=None):
+    _available_slots = []
+    session_seats = get_session_seats()
+    days_in_month = calendar.monthrange(int(currentYear), int(currentMonth))[1]
+
+    time_choice_to_index = {
+        choice[0]: index for index, choice in enumerate(BookingTime.TIME_CHOICES)
+    }
+
+    all_time_choices = [choice[0] for choice in BookingTime.TIME_CHOICES]
+
+    daily_available_slots = {
+        day: [session_seats] * len(all_time_choices)
+        for day in range(1, days_in_month + 1)
+    }
+
+    bookings = (
+        Booking.objects.filter(
+            time__status=ACTUAL,
+            time__date__year=currentYear,
+            time__date__month=currentMonth,
+        )
+        .annotate(
+            time_index=Case(
+                *[
+                    When(time__time=choice, then=Value(index))
+                    for choice, index in time_choice_to_index.items()
+                ],
+                output_field=IntegerField(),
+            )
+        )
+        .values("time__date", "time_index")
+        .annotate(total_people=Sum("people_count"))
+    )
+
+    for booking in bookings:
+        day = booking["time__date"].day
+        time_index = booking["time_index"]
+        total_people = booking["total_people"]
+        daily_available_slots[day][time_index] -= total_people
+
+    for day, available_slots in daily_available_slots.items():
+        selected_date = date(int(currentYear), int(currentMonth), day)
+        total_available_slots = sum(max(slot, 0) for slot in available_slots)
+        _available_slots.append(
+            {
+                "date": selected_date.strftime("%Y-%m-%d"),
+                "available_slots": total_available_slots,
+            }
+        )
+
+    return _available_slots
+
+
+def get_available_slots(selected_date=None):
+    _available_slots = []
+    session_seats = get_session_seats()
+
     for x in BookingTime.TIME_CHOICES:
         try:
             slot = (
                 Booking.objects.filter(
                     time__status=ACTUAL, time__time=x[0], time__date=selected_date
-                ).aggregate(total_people=Sum("people_count"))["total_people"]
+                ).aggregate(
+                    total_people=Least(Greatest(Sum("people_count"), 0), session_seats)
+                )[
+                    "total_people"
+                ]
                 or 0
             )
         except BookingTime.DoesNotExist:

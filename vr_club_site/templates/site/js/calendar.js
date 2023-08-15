@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextMonthBtn = document.getElementById("nextMonthBtn");
     let currentYear, currentMonth;
 
-    function generateCalendar(year, month) {
+    async function generateCalendar(year, month) {
         const now = new Date();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const firstDayIndex = new Date(year, month, 0).getDay();
@@ -38,23 +38,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let today = now.getDate();
         let number;
+        let day_;
         for (let i = 1; i <= daysInMonth; i++) {
+            day_ = i
             number = i;
             if (number < 10) {
                 number = "0" + number;
             }
             if (i === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
                 today = i;
-                days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="blue-background"></div><div class="today">${number}</div><div class="count_place">12 місць</div></div>`;
+                days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" data-day="${day_}" style="cursor: pointer;"><div class="blue-background"></div><div class="today" style="color: #001729;">${number}</div><div class="count_place" style="color: #001729;"></div></div>`;
             } else {
                 if (i < today && month <= now.getMonth() && year <= now.getFullYear() || month < now.getMonth() && year <= now.getFullYear() || month > now.getMonth() && year < now.getFullYear() || i >= today && month === now.getMonth() && year < now.getFullYear()) {
                     days += `<div class="wrap"><div class="no-change"></div><div class="old-day">${number}</div></div>`;
                 }
                 else {
-                    days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div></div>`;
+                    days += `<div class="wrap" onclick="openPopup('${number}', '${month + 1}', '${year}')" data-day="${day_}" style="cursor: pointer;"><div class="us-background"></div><div class="base-day">${number}</div><div class="count_place"></div></div>`;
                 }
             }
         }
+        await getAvailableSlotsMonth(year, month)
 
         for (let i = 1; i < 7 - lastDayIndex; i++) {
             days += `<div class="transparent-wrap"></div>`;
@@ -85,6 +88,19 @@ document.addEventListener("DOMContentLoaded", function () {
             prevMonth_.style.cursor = "pointer"
         }
 
+        const nextMonth_ = document.getElementById("nextMonth");
+        const currentDate = new Date(currentYear, currentMonth);
+        const maxAllowedDate = new Date();
+        maxAllowedDate.setMonth(maxAllowedDate.getMonth() + maxMonthsAhead - 1);
+
+        if (currentDate > maxAllowedDate) {
+            nextMonth_.style.opacity = 0;
+            nextMonth_.style.cursor = "default"
+        } else {
+            nextMonth_.style.opacity = 1;
+            nextMonth_.style.cursor = "pointer"
+        }
+
     }
 
     function updateCalendar() {
@@ -102,7 +118,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    const maxMonthsAhead = 2;
+
     function nextMonth() {
+        const currentDate = new Date(currentYear, currentMonth);
+
+        const maxAllowedDate = new Date();
+        maxAllowedDate.setMonth(maxAllowedDate.getMonth() + maxMonthsAhead - 1);
+
+        if (currentDate > maxAllowedDate) {
+            return;
+        }
         currentMonth++;
         if (currentMonth > 11) {
             currentMonth = 0;
@@ -142,8 +168,7 @@ async function openPopup(day, month, year) {
 
     dateDiv.textContent = `${parseInt(day, 10)} ${monthsNames[parseInt(month) - 1]} ${year}`;
 
-    getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
-    await new Promise(resolve => setTimeout(resolve, 150));
+    await getAvailableSlots(`${year}-${parseInt(month, 10)}-${parseInt(day, 10)}`)
     const dateInput = document.getElementById('id_date');
     dateInput.value = `${day}-${month}-${year}`;
 

@@ -214,7 +214,7 @@
 }
 
 .count_place {
-    color: #001729;
+    color: #4FB4FE;
     text-align: left;
     font: 500 18px/150% "Montserrat", sans-serif;
     position: relative;
@@ -229,6 +229,23 @@
     align-items: center;
     margin-top: 44px;
 }
+
+.wrap:hover .count_place {
+    color: #010103;
+}
+
+.inactive .base-day {
+    color: #768A9A;
+}
+
+.inactive .count_place {
+    color: #768A9A;
+}
+
+.wrap.inactive {
+    pointer-events: none;
+}
+
 
 @media screen and (max-width: 768px) {
     .booking {
@@ -360,6 +377,10 @@
     .wrap:hover .us-background {
         width: 46px;
         height: 80px;
+    }
+
+    .wrap:hover .count_place {
+        color: #010103;
     }
 
     .count_place {
