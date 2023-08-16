@@ -17,31 +17,9 @@ MAX_SESSION = 2
 def get_price(date):
     day_of_week = date.weekday()
     if day_of_week >= 5:
-        try:
-            setting = Settings.objects.get(name="weekend")
-            setting_type = setting.variable_type
-            price = setting.value
-            if setting_type == "int":
-                price = int(price)
-            elif setting_type == "str":
-                price = str(price)
-            elif setting_type == "decimal":
-                price = decimal.Decimal(price)
-        except Settings.DoesNotExist:
-            price = 500
+        price = get_weekend_price()
     else:
-        try:
-            setting = Settings.objects.get(name="weekdays")
-            setting_type = setting.variable_type
-            price = setting.value
-            if setting_type == "int":
-                price = int(price)
-            elif setting_type == "str":
-                price = str(price)
-            elif setting_type == "decimal":
-                price = decimal.Decimal(price)
-        except Settings.DoesNotExist:
-            price = 300
+        price = get_weekday_price()
     return price
 
 
@@ -61,6 +39,38 @@ def get_session_seats():
         session_seats = 1
 
     return session_seats
+
+
+def get_weekday_price():
+    try:
+        setting = Settings.objects.get(name="weekdays")
+        setting_type = setting.variable_type
+        weekend_price = setting.value
+        if setting_type == "int":
+            weekend_price = int(weekend_price)
+        elif setting_type == "str":
+            weekend_price = str(weekend_price)
+        elif setting_type == "decimal":
+            weekend_price = decimal.Decimal(weekend_price)
+    except Settings.DoesNotExist:
+        weekend_price = 300
+    return weekend_price
+
+
+def get_weekend_price():
+    try:
+        setting = Settings.objects.get(name="weekend")
+        setting_type = setting.variable_type
+        weekday_price = setting.value
+        if setting_type == "int":
+            weekday_price = int(weekday_price)
+        elif setting_type == "str":
+            weekday_price = str(weekday_price)
+        elif setting_type == "decimal":
+            weekday_price = decimal.Decimal(weekday_price)
+    except Settings.DoesNotExist:
+        weekday_price = 500
+    return weekday_price
 
 
 def get_available_slots_for_month(currentYear=None, currentMonth=None):
