@@ -14,6 +14,37 @@ COST_SESSION = 200
 MAX_SESSION = 2
 
 
+def get_price(date):
+    day_of_week = date.weekday()
+    if day_of_week >= 5:
+        try:
+            setting = Settings.objects.get(name="weekend")
+            setting_type = setting.variable_type
+            price = setting.value
+            if setting_type == "int":
+                price = int(price)
+            elif setting_type == "str":
+                price = str(price)
+            elif setting_type == "decimal":
+                price = decimal.Decimal(price)
+        except Settings.DoesNotExist:
+            price = 500
+    else:
+        try:
+            setting = Settings.objects.get(name="weekdays")
+            setting_type = setting.variable_type
+            price = setting.value
+            if setting_type == "int":
+                price = int(price)
+            elif setting_type == "str":
+                price = str(price)
+            elif setting_type == "decimal":
+                price = decimal.Decimal(price)
+        except Settings.DoesNotExist:
+            price = 300
+    return price
+
+
 def get_session_seats():
     try:
         setting = Settings.objects.get(name="seats")
