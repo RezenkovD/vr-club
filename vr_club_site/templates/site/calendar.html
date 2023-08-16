@@ -90,4 +90,19 @@ async function getAvailableSlotsMonth(currentYear, currentMonth) {
         });
 
 }
+async function getPrice(date) {
+    try {
+        const response = await fetch(`{% url 'site:get_price_day' %}?date=${date}`, {
+            method: "GET",
+            headers: {
+                "X-Requested-With": "XMLHttpRequest",
+            },
+        });
+        const data = await response.json();
+        return data.price;
+    } catch (error) {
+        console.error('Помилка отримання ціни:', error);
+        return null;
+    }
+}
 </script>

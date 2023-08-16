@@ -133,8 +133,38 @@ document.getElementById('bookingForm').addEventListener('submit', function (even
         });
     });
 // Підрахунок грошей
-    function calculateTotalCost() {
-        const slotCost = 200;
+    async function calculateTotalCost() {
+        const bookingDateElement = document.querySelector('.booking-date');
+        const bookingDateText = bookingDateElement.textContent.trim();
+        const dateComponents = bookingDateText.split(' ');
+        let formattedDate;
+        if (dateComponents.length === 3) {
+            const day = dateComponents[0];
+            const monthWord = dateComponents[1];
+            const year = dateComponents[2];
+
+            const months = {
+                'січня': '01',
+                'лютого': '02',
+                'березня': '03',
+                'квітня': '04',
+                'травня': '05',
+                'червня': '06',
+                'липня': '07',
+                'серпня': '08',
+                'вересня': '09',
+                'жовтня': '10',
+                'листопада': '11',
+                'грудня': '12'
+            };
+
+            const month = months[monthWord];
+
+            formattedDate = `${year}-${month}-${day}`;
+        } else {
+            console.error('Некоректний формат дати:', bookingDateText);
+        }
+        const slotCost =  await getPrice(formattedDate);
         const peopleCountInput1 = document.querySelector('#id_people_count');
         const peopleCount1 = parseInt(peopleCountInput1.value);
 
