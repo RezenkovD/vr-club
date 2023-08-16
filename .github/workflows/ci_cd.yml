@@ -87,6 +87,8 @@ jobs:
           GOOGLE_SECRET: ${{ secrets.GOOGLE_SECRET }}
           CSRF_TRUSTED_ORIGINS: ${{ secrets.CSRF_TRUSTED_ORIGINS }}
           USE_X_FORWARDED_HOST: ${{ secrets.USE_X_FORWARDED_HOST }}
+          BOOKING_TELEGRAM_API_TOKEN: ${{ secrets.BOOKING_TELEGRAM_API_TOKEN }}
+          BOOKING_TELEGRAM_CHAT_ID: ${{ secrets.BOOKING_TELEGRAM_CHAT_ID }}
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v2
@@ -174,6 +176,8 @@ jobs:
                 export SUB_DOMAIN='${{ secrets.SUB_DOMAIN }}'
                 export CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }}
                 export USE_X_FORWARDED_HOST='${{ secrets.USE_X_FORWARDED_HOST }}'
+                export BOOKING_TELEGRAM_API_TOKEN='${{ secrets.BOOKING_TELEGRAM_API_TOKEN }}'
+                export BOOKING_TELEGRAM_CHAT_ID='${{ secrets.BOOKING_TELEGRAM_CHAT_ID }}'
       
                 git pull
                 pip3 install -r requirements.txt
@@ -209,6 +213,8 @@ jobs:
                 export SUB_DOMAIN='${{ secrets.SUB_DOMAIN }}'
                 export CSRF_TRUSTED_ORIGINS=${{ secrets.CSRF_TRUSTED_ORIGINS }}
                 export USE_X_FORWARDED_HOST='${{ secrets.USE_X_FORWARDED_HOST }}'
+                export BOOKING_TELEGRAM_API_TOKEN='${{ secrets.BOOKING_TELEGRAM_API_TOKEN }}'
+                export BOOKING_TELEGRAM_CHAT_ID='${{ secrets.BOOKING_TELEGRAM_CHAT_ID }}'
             
                 sudo apt-get install -y libpq-dev python3-dev
                 sudo apt-get install -y build-essential
