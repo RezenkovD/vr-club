@@ -4,6 +4,7 @@ from .views import (
     index_page,
     get_available_slots_view,
     get_available_slots_for_month_view,
+    get_price_day,
 )
 from games.views import game_page
 
@@ -21,5 +22,10 @@ urlpatterns = [
         "api/get_available_slots_for_month/",
         get_available_slots_for_month_view,
         name="get_available_slots_for_month",
+    ),
+    path(
+        "api/get_price_day/",
+        get_price_day,
+        name="get_price_day",
     ),
 ]

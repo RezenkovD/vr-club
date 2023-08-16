@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.urls import reverse
@@ -13,6 +15,9 @@ from .utils import (
     has_invalid_slots,
     book_session,
     MAX_SESSION,
+    get_price,
+    get_weekend_price,
+    get_weekday_price,
 )
 
 
@@ -29,6 +34,14 @@ def get_available_slots_for_month_view(request):
         month = request.GET.get("month")
         available_slots = get_available_slots_for_month(year, month)
         return JsonResponse({"available_slots": available_slots})
+
+
+def get_price_day(request):
+    if request.method == "GET":
+        selected_date = request.GET.get("date")
+        date_obj = datetime.strptime(selected_date, "%Y-%m-%d")
+        price = get_price(date_obj)
+        return JsonResponse({"price": price})
 
 
 def index_page(request):
@@ -83,5 +96,7 @@ def render_index_page(request):
             "form": form,
             "signup_url": signup_url,
             "login_url": login_url,
+            "weekday_price": get_weekday_price(),
+            "weekend_price": get_weekend_price(),
         },
     )
