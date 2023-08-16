@@ -176,7 +176,9 @@ def book_session(request, slots, data_to_save):
         phone_number=data_to_save["phone_number"],
         people_count=data_to_save["people_count"],
         comment=data_to_save["comment"],
-        price=COST_SESSION * data_to_save["people_count"] * len(slots),
+        price=get_price(data_to_save["date"])
+        * data_to_save["people_count"]
+        * len(slots),
     )
     booking.save()
     booking_times_to_create = [
