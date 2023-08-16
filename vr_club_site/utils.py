@@ -1,4 +1,6 @@
 import calendar
+import requests
+import os
 import decimal
 from datetime import datetime, date
 
@@ -8,10 +10,17 @@ from django.db.models.functions import Greatest, Least
 from django.contrib import messages
 
 from .models import Booking, BookingTime, ACTUAL, Settings
+from vr_club.settings import BOOKING_BOT_TOKEN, BOOKING_CHAT_ID
 
-
-COST_SESSION = 200
 MAX_SESSION = 2
+
+
+def send_order_details(api_token, chat_id, order_details):
+    url = f"https://api.telegram.org/bot{api_token}/sendMessage"
+    message = f"Нове замовлення:\n\n{order_details}"
+    payload = {"chat_id": chat_id, "text": message}
+    response = requests.post(url, data=payload)
+    return response
 
 
 def get_price(date):
@@ -191,5 +200,16 @@ def book_session(request, slots, data_to_save):
 
             for booking_time in booking_times_to_create:
                 booking.time.add(booking_time)
+
+            order_details = f"Ім'я: {booking.name}\n"
+            order_details += f"Email: {booking.email}\n"
+            order_details += f"Телефон: {booking.phone_number}\n"
+            order_details += f"Дата: {data_to_save['date']}\n"
+            order_details += f"Слоти: {slots}\n"
+            order_details += f"Кількість людей: {booking.people_count}\n"
+            order_details += f"Ціна: {booking.price} грн\n"
+            order_details += f"Коментар: {booking.comment}\n"
+
+            send_order_details(BOOKING_BOT_TOKEN, BOOKING_CHAT_ID, order_details)
     except IntegrityError as e:
         messages.error(request, f"Помилка бронювання: {e}")
