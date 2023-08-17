@@ -100,3 +100,16 @@ def render_index_page(request):
             "weekend_price": get_weekend_price(),
         },
     )
+
+
+def devices_page(request):
+    signup_url = reverse("account_signup")
+    login_url = reverse("account_login")
+    return render(
+        request,
+        "site/devices.html",
+        {
+            "signup_url": signup_url,
+            "login_url": login_url,
+        },
+    )
