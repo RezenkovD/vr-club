@@ -14,7 +14,7 @@ app_name = "site"
 urlpatterns = [
     path("", index_page, name="home"),
     path("games/", games_page, name="games"),
-    path("deviсes/", devices_page, name="devices"),
+    path("devices/", devices_page, name="devices"),
     path(
         "api/get_available_slots/",
         get_available_slots_view,
