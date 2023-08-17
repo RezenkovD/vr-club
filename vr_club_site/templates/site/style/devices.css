@@ -238,6 +238,7 @@
 }
 
 .accordion-content{
+    margin-left: 20px;
     max-height: 0;
     overflow: hidden;
     position: relative;
@@ -406,6 +407,7 @@
     }
 
     .accordion-content{
+        margin-left: 12px;
         max-height: 0;
         overflow: hidden;
         position: relative;
