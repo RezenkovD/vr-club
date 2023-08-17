@@ -346,6 +346,20 @@
         z-index: 1;
     }
 
+    .questions {
+        margin-top: 40px;
+        width: auto;
+        height: auto;
+        color: #FFF;
+        text-align: center;
+        font-family: Montserrat, serif;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        z-index: 5;
+    }
+
     #faq i{
         margin-top: auto;
         margin-bottom: auto;
