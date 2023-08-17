@@ -251,6 +251,11 @@
     line-height: normal;
 }
 
+.accordion-content p {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
 @media screen and (max-width: 768px) {
 
     .ellipse-1 {
