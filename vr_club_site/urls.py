@@ -2,17 +2,19 @@ from django.urls import path
 
 from .views import (
     index_page,
+    devices_page,
     get_available_slots_view,
     get_available_slots_for_month_view,
     get_price_day,
 )
-from games.views import game_page
+from games.views import games_page
 
 app_name = "site"
 
 urlpatterns = [
     path("", index_page, name="home"),
-    path("games/", game_page, name="games"),
+    path("games/", games_page, name="games"),
+    path("devives/", devices_page, name="devices"),
     path(
         "api/get_available_slots/",
         get_available_slots_view,

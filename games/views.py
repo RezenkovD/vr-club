@@ -16,7 +16,7 @@ from vr_club_site.utils import (
 )
 
 
-def game_page(request):
+def games_page(request):
     if request.method == "POST":
         form = BookingForm(request.POST)
         if not form.is_valid():

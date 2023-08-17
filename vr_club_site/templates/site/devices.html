@@ -1,0 +1,213 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load socialaccount %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'site/style/devices.css' %}">
+{% endblock %}
+{% block intro_bg_block %}
+    <div class="intro_bg_block">
+        <div class="ellipse-1"></div>
+        <div class="ellipse-3"></div>
+        <div class="ellipse-4"></div>
+        {% include 'site/svg-objects/devices-first-object.html' %}
+        {% include 'site/svg-objects/devices-second-object.html' %}
+        {% include 'site/svg-objects/devices-third-object.html' %}
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="oculus-meta-quest-2">
+        <span>
+            <span class="oculus-meta-quest-2-span">Oculus Meta Quest 2</span>
+            <span class="oculus-meta-quest-2-span2">до ваших послуг!</span>
+        </span>
+    </div>
+    <div class="facebook-vr-oculus-quest-2-wi-fi">
+      Цей комплект для віртуальної реальності від компанії Facebook є сучасним та
+      комфортним рішенням для гри в VR. Ключовою особливістю є повна відсутність
+      кабелів. А отже, Oculus Quest 2 не потребує постійного підключення до ПК. Ми
+      просто під’єднуємо приставку до Wi-fi, а ви насолоджуєтесь грою!
+    </div>
+    <div class="photo-back-device">
+        <img class="device-helmet" src="{% static 'site/static_files/3qJcNeo5N672p7qSwoGzYo-removebg.png' %}"/>
+    </div>
+    <div class="rectangle-32"></div>
+    <div class="questions">Поширені запитання</div>
+    <section id="faq">
+    <div class="accordion">
+        <div class="accordion-item">
+        <div class="accordion-title">
+          <div class="text">Чи нудить в VR?</div>
+          <i class="material-icons add">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <line x1="10.0898" y1="-4.37114e-08" x2="10.0898" y2="20" stroke="#FBFBFB" stroke-width="2"></line>
+                  <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+              </svg>
+          </i>
+          <i class="material-icons remove">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+              </svg>
+          </i>
+        </div>
+         <div class="accordion-content">
+            <p>
+                Це найчастіше питання.
+                Коротко: якщо немає відомих вам собисто медичних
+                протипоказань - сміливо приходьте і
+                ми підберемо для вас гру.
+            </p>
+         </div>
+        </div>
+        <div class="accordion-item">
+        <div class="accordion-title">
+        <div class="text">Чи VR це боляче?</div>
+        <i class="material-icons add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="10.0898" y1="-4.37114e-08" x2="10.0898" y2="20" stroke="#FBFBFB" stroke-width="2"></line>
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        <i class="material-icons remove">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        </div>
+        <div class="accordion-content">
+        <p>
+            Це найчастіше питання.
+            Коротко: якщо немає відомих вам собисто медичних
+            протипоказань - сміливо приходьте і
+            ми підберемо для вас гру.
+        </p>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <div class="accordion-title">
+        <div class="text">Як проходить гра? VR це складно?</div>
+        <i class="material-icons add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="10.0898" y1="-4.37114e-08" x2="10.0898" y2="20" stroke="#FBFBFB" stroke-width="2"></line>
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        <i class="material-icons remove">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        </div>
+        <div class="accordion-content">
+        <p>
+            Це найчастіше питання.
+            Коротко: якщо немає відомих вам собисто медичних
+            протипоказань - сміливо приходьте і
+            ми підберемо для вас гру.
+        </p>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <div class="accordion-title">
+        <div class="text">Чи можна знімати шолом під час гри?</div>
+        <i class="material-icons add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="10.0898" y1="-4.37114e-08" x2="10.0898" y2="20" stroke="#FBFBFB" stroke-width="2"></line>
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        <i class="material-icons remove">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        </div>
+        <div class="accordion-content">
+        <p>
+            Це найчастіше питання.
+            Коротко: якщо немає відомих вам собисто медичних
+            протипоказань - сміливо приходьте і
+            ми підберемо для вас гру.
+        </p>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <div class="accordion-title">
+        <div class="text">Скільки часу поспіль можна грати в VR?</div>
+        <i class="material-icons add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="10.0898" y1="-4.37114e-08" x2="10.0898" y2="20" stroke="#FBFBFB" stroke-width="2"></line>
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        <i class="material-icons remove">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        </div>
+        <div class="accordion-content">
+        <p>
+            Це найчастіше питання.
+            Коротко: якщо немає відомих вам собисто медичних
+            протипоказань - сміливо приходьте і
+            ми підберемо для вас гру.
+        </p>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <div class="accordion-title">
+        <div class="text">Чи можна грати в VR людям з поганим зором?</div>
+        <i class="material-icons add">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="10.0898" y1="-4.37114e-08" x2="10.0898" y2="20" stroke="#FBFBFB" stroke-width="2"></line>
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        <i class="material-icons remove">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <line x1="20" y1="10.0908" y2="10.0908" stroke="#FBFBFB" stroke-width="2"></line>
+          </svg>
+        </i>
+        </div>
+        <div class="accordion-content">
+        <p>
+            Це найчастіше питання.
+            Коротко: якщо немає відомих вам собисто медичних
+            протипоказань - сміливо приходьте і
+            ми підберемо для вас гру.
+        </p>
+        </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}
+{% block script %}
+<script>
+    const questions = document.getElementsByClassName('accordion-title')//Gets all the questions (plus icon)
+
+    for (const question of questions) {
+      const answer = question.parentElement.querySelector('.accordion-content')
+      const remove = question.parentElement.querySelector(".remove")
+      const add = question.parentElement.querySelector(".add")
+      let open = false //Variable to check if the answer is visible or not
+
+      function openAnswer() {
+        if (open == true) { //If you click the question while the answer is visible it will stop being visible and open will change it's value to false
+          add.style.display = "block";
+          remove.style.display = "none";
+          answer.style.overflow = "hidden";
+          answer.style.maxHeight = '0';
+          open = false;
+        } else { //If you click the question while the answer is not visible it will start being visible and open will change it's value to true
+          add.style.display = "none";
+          remove.style.display = "block";
+          answer.style.maxHeight = "300px";
+          answer.style.overflow = "visible";
+          open = true;
+        }
+      }
+
+      question.addEventListener('click', openAnswer)
+    }
+</script>
+{% endblock %}
