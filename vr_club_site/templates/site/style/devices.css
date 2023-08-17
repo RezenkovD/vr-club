@@ -1,0 +1,148 @@
+.intro_bg_block {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow-x: clip;
+    z-index: 0;
+}
+
+.ellipse-1,
+.ellipse-1 * {
+    box-sizing: border-box;
+}
+.ellipse-1 {
+    background: #ef7d1e;
+    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    filter: blur(200px);
+    top: 274px;
+    left: 78px;
+}
+
+.ellipse-3,
+.ellipse-3 * {
+  box-sizing: border-box;
+}
+.ellipse-3 {
+    background: #00a3ff;
+    border-radius: 50%;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(200px);
+    top: 608px;
+    left: 1524px;
+}
+
+.ellipse-4,
+.ellipse-4 * {
+  box-sizing: border-box;
+}
+.ellipse-4 {
+    background: #00a3ff;
+    border-radius: 50%;
+    opacity: 0.800000011920929;
+    width: 371px;
+    height: 371px;
+    position: absolute;
+    filter: blur(200px);
+    top: 1416px;
+    left: -60px;
+}
+
+
+.first-object,
+.first-object * {
+  box-sizing: border-box;
+}
+.first-object {
+    position: absolute;
+    transform: translate(-503px, -335px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+    z-index: 0;
+}
+
+.second-object,
+.second-object * {
+  box-sizing: border-box;
+}
+.second-object {
+    position: absolute;
+    transform: translate(955px, 163px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+    z-index: 0;
+}
+
+.third-object,
+.third-object * {
+  box-sizing: border-box;
+}
+.third-object {
+    position: absolute;
+    transform: translate(-262px, -404px);
+    overflow: visible;
+    opacity: 0.11999999731779099;
+    z-index: 0;
+}
+
+@media screen and (max-width: 768px) {
+
+    .ellipse-1 {
+        background: #ef7d1e;
+        border-radius: 50%;
+        width: 165px;
+        height: 165px;
+        position: absolute;
+        filter: blur(125px);
+        top: 502px;
+        left: 306px;
+    }
+
+
+    .ellipse-3 {
+        background: #00a3ff;
+        border-radius: 50%;
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        top: -66px;
+        left: -55px;
+    }
+
+
+    .ellipse-4 {
+        background: #00a3ff;
+        border-radius: 50%;
+        width: 178px;
+        height: 178px;
+        position: absolute;
+        filter: blur(125px);
+        top: 873px;
+        left: -55px;
+    }
+
+    .first-object {
+        display: none;
+    }
+
+    .second-object {
+        position: absolute;
+        transform: rotate(114deg);
+        top: -1073px;
+        left: -832px;
+        overflow: visible;
+        opacity: 0.11999999731779099;
+        z-index: 0;
+    }
+
+    .third-object {
+        display: none;
+    }
+}
