@@ -5,7 +5,6 @@
     left: 0;
     top: 0;
     overflow-x: clip;
-    z-index: 0;
 }
 
 .ellipse-1,
@@ -36,6 +35,7 @@
     filter: blur(200px);
     top: 608px;
     left: 1524px;
+    z-index: 5;
 }
 
 .ellipse-4,
@@ -52,6 +52,7 @@
     filter: blur(200px);
     top: 1416px;
     left: -60px;
+    z-index: 5;
 }
 
 
@@ -91,6 +92,73 @@
     z-index: 0;
 }
 
+.oculus-meta-quest-2,
+.oculus-meta-quest-2 * {
+  box-sizing: border-box;
+}
+.oculus-meta-quest-2 {
+    margin-top: 90px;
+    text-align: center;
+    font: 700 48px "Montserrat", sans-serif;
+    position: relative;
+    max-width: 780px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+.oculus-meta-quest-2-span {
+  color: #4fb4fe;
+  font: 700 48px "Montserrat", sans-serif;
+}
+.oculus-meta-quest-2-span2 {
+  color: #ffffff;
+  font: 700 48px "Montserrat", sans-serif;
+}
+
+.facebook-vr-oculus-quest-2-wi-fi {
+    margin-top: 24px;
+    color: #ffffff;
+    text-align: center;
+    font: 500 24px "Montserrat", sans-serif;
+    position: relative;
+    max-width: 1043px;
+    width: auto;
+    max-height: 119px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.photo-back-device {
+    text-align: center;
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    position: sticky;
+}
+
+.device-helmet {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+}
+.rectangle-32,
+.rectangle-32 * {
+  box-sizing: border-box;
+}
+.rectangle-32 {
+    background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 85%);
+    width: 100%;
+    height: 497px;
+    position: absolute;
+    margin-top: -325px;
+    z-index: 1;
+}
+
 @media screen and (max-width: 768px) {
 
     .ellipse-1 {
@@ -102,6 +170,7 @@
         filter: blur(125px);
         top: 502px;
         left: 306px;
+        z-index: 5;
     }
 
 
@@ -144,5 +213,45 @@
 
     .third-object {
         display: none;
+    }
+
+    .oculus-meta-quest-2 {
+        margin-top: 54px;
+        text-align: center;
+        font: 700 28px "Montserrat", sans-serif;
+        position: relative;
+        width: 327px;
+        height: auto;
+    }
+    .oculus-meta-quest-2-span {
+      color: #4fb4fe;
+      font: 700 28px "Montserrat", sans-serif;
+    }
+    .oculus-meta-quest-2-span2 {
+      color: #ffffff;
+      font: 700 28px "Montserrat", sans-serif;
+    }
+
+    .facebook-vr-oculus-quest-2-wi-fi {
+        margin-top: 20px;
+        color: #ffffff;
+        text-align: center;
+        font: 500 16px "Montserrat", sans-serif;
+        position: relative;
+        max-width: 343px;
+        width: auto;
+        max-height: 184px;
+        height: auto;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .rectangle-32 {
+        background: linear-gradient(1.94deg, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 0) 75%);
+        width: 100%;
+        height: 375px;
+        position: absolute;
+        margin-top: -320px;
+        z-index: 1;
     }
 }
