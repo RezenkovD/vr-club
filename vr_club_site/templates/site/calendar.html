@@ -42,6 +42,22 @@
     <script src="{% static 'site/js/calendar.js' %}"></script>
 </section>
 <script>
+function formatTime(date) {
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+}
+
+function getCurrentTimeUTC() {
+    const currentTime = new Date();
+    const utcOffset = 0;
+    return new Date(currentTime.getTime() + utcOffset * 60 * 60 * 1000);
+}
+
 async function getAvailableSlots(date) {
     fetch(`{% url 'site:get_available_slots' %}?date=${date}`, {
         method: "GET",
@@ -52,16 +68,33 @@ async function getAvailableSlots(date) {
         .then(response => response.json())
         .then(data => {
             const avSlotsLabels = document.getElementsByClassName('av_slots');
+            const currentTimeUTC2 = getCurrentTimeUTC();
+            const slots = document.querySelectorAll('.form-check-label');
+
             for (let i = 0; i < avSlotsLabels.length; i++) {
                 const avSlotElement = avSlotsLabels[i];
                 const newAvSlotValue = data.available_slots[i];
-                if (newAvSlotValue > 0) {
-                    avSlotElement.textContent = `${newAvSlotValue} місця`;
-                } else {
-                    avSlotElement.textContent = "";
+
+                const slot = slots[i];
+                const slotText = slot.textContent.trim();
+                const hourRegex = /(\d+\.\d+)/;
+                const matches = slotText.match(hourRegex);
+
+                if (matches) {
+                    const hour = parseFloat(matches[1]);
+                    const slotDate = new Date(date);
+                    slotDate.setHours(hour, 0, 0, 0);
+
+                    if (slotDate <= currentTimeUTC2) {
+                        avSlotElement.textContent = "";
+                    } else if (newAvSlotValue > 0) {
+                        avSlotElement.textContent = `${newAvSlotValue} місця`;
+                    } else {
+                        avSlotElement.textContent = "";
+                    }
                 }
             }
-             updateSlotAvailability();
+            updateSlotAvailability();
         });
 }
 async function getAvailableSlotsMonth(currentYear, currentMonth) {
